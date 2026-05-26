@@ -7,8 +7,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [
     { url: `${site.url}/`, lastModified: now, changeFrequency: 'weekly', priority: 1 },
     { url: `${site.url}/nosotros`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${site.url}/inverti-con-nosotros`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${site.url}/proyectos`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${site.url}/terrenos`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${site.url}/oportunidades`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
+    { url: `${site.url}/comunidad`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${site.url}/contacto`, lastModified: now, changeFrequency: 'yearly', priority: 0.7 },
   ];
   for (const p of projects) {

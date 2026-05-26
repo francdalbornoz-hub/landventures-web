@@ -42,10 +42,39 @@ export const site = {
   nav: [
     { label: 'Inicio', href: '/' },
     { label: 'Nosotros', href: '/nosotros' },
-    { label: 'Invertí con nosotros', href: '/inverti-con-nosotros' },
     { label: 'Proyectos', href: '/proyectos' },
+    { label: 'Terrenos', href: '/terrenos' },
+    { label: 'Oportunidades', href: '/oportunidades' },
+    { label: 'Comunidad', href: '/comunidad' },
     { label: 'Contacto', href: '/contacto' },
   ],
+  /** Tres pilares del negocio + comunidad transversal */
+  pillars: [
+    {
+      slug: 'proyectos',
+      label: 'Proyectos',
+      tagline: 'Desarrollos propios en ubicaciones estratégicas de CABA.',
+      href: '/proyectos',
+    },
+    {
+      slug: 'terrenos',
+      label: 'Terrenos',
+      tagline: 'Inversión en tierra. Compra conjunta y banca de terrenos.',
+      href: '/terrenos',
+    },
+    {
+      slug: 'oportunidades',
+      label: 'Oportunidades',
+      tagline: 'Unidades en pozo curadas, respaldadas por nuestro historial.',
+      href: '/oportunidades',
+    },
+    {
+      slug: 'comunidad',
+      label: 'Comunidad',
+      tagline: 'Eventos, charlas y encuentros con inversores e invitados.',
+      href: '/comunidad',
+    },
+  ] as const,
 } as const;
 
 export type Site = typeof site;

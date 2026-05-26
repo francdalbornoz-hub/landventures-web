@@ -1,8 +1,8 @@
 # Land Ventures
 
-> Desarrolladora inmobiliaria en Buenos Aires. Identificamos oportunidades estratégicas y desarrollamos proyectos inmobiliarios modernos y diferenciales.
+> Desarrolladora inmobiliaria y plataforma de inversión inmobiliaria en Buenos Aires. Integra tres líneas de negocio: desarrollos propios, inversión en tierra y oportunidades de unidades en pozo curadas.
 
-Land Ventures es una desarrolladora inmobiliaria con sede en Buenos Aires, Argentina. La compañía adquiere terrenos en ubicaciones estratégicas (esquinas, frentes amplios, barrios con alto potencial), financia la operación, diseña proyectos diferenciales y construye edificios residenciales y comerciales. Trabaja en zonas como Palermo Hollywood, Colegiales, San Telmo, Belgrano y otras del corredor norte de CABA.
+Land Ventures es una desarrolladora inmobiliaria con sede en Buenos Aires, Argentina, con más de 10 años de experiencia y +30 operaciones de tierra cerradas en CABA. Opera tres líneas de negocio integradas bajo una sola marca: (1) desarrollos propios de edificios residenciales y comerciales, (2) inversión en tierra junto a inversores ("land banking" y compra conjunta), y (3) curaduría de oportunidades de unidades en pozo en proyectos de terceros. Además organiza encuentros y charlas para su comunidad de inversores.
 
 ## Contacto
 
@@ -12,73 +12,83 @@ Land Ventures es una desarrolladora inmobiliaria con sede en Buenos Aires, Argen
 - Sitio web: https://landventures.com.ar
 - Ubicación: Buenos Aires, Argentina
 
-## Modalidades de inversión
+## Líneas de negocio
 
-1. **Compra de departamentos** — Unidades en distintas etapas del desarrollo (pozo o terminadas).
-2. **Banca de tierras** — Adquisición estratégica de terrenos con potencial de desarrollo.
-3. **Asociación con propietarios** — Desarrollo conjunto con dueños de terrenos.
+### 1. Desarrollos propios — /proyectos
+Land Ventures desarrolla edificios residenciales y comerciales en ubicaciones estratégicas de CABA. Los proyectos se clasifican por estado: en curso, terminados, próximamente.
 
-## Proyectos en desarrollo
+### 2. Inversión en tierra (Terrenos) — /terrenos
+Compra conjunta de terrenos en CABA con inversores. Track record de +30 operaciones (compraventas, canjes y locales comerciales). La salida de cada lote puede ser compraventa a terceros, canje con desarrolladores o desarrollo propio.
+
+### 3. Oportunidades de pozo — /oportunidades
+Curaduría de unidades en pozo en proyectos de terceros, seleccionadas por precio relativo al barrio, antecedentes del desarrollador y situación del proyecto. La información pública es genérica (barrio, tipología, precio, entrega); la ficha completa con dirección y desarrollador se envía a interesados por canal privado (WhatsApp / email).
+
+### 4. Comunidad — /comunidad
+Eventos, charlas y encuentros con invitados (políticos, economistas, referentes del mercado) abiertos a la red de inversores de Land Ventures.
+
+## Track record (cifras de referencia)
+
+- +30 terrenos operados
+- +USD 15M de capital invertido
+- ~29,8% de retorno promedio histórico
+- +10 años en el mercado de CABA
+
+## Proyectos en curso
 
 ### Dorrego Place
 - Ubicación: Dorrego, Arévalo y Av. Córdoba (triple esquina)
 - Barrio: Palermo Hollywood
+- 39 unidades, 2.200 m², 1 local comercial
 - Tipologías: 1 ambiente, 2 ambientes con cocina integrada
-- Locales comerciales: sí
-- Estado: en desarrollo
 - URL: https://landventures.com.ar/proyectos/dorrego-place
 
-### Newbery place
+### Newbery Place
 - Ubicación: Newbery y Zapata (esquina)
-- Barrio: Colegiales (a metros de Las Cañitas y Belgrano)
+- Barrio: Colegiales
+- 22 unidades, 1.500 m², 1 local comercial
 - Tipologías: 1, 2 y 3 ambientes
-- Locales comerciales: sí
-- Estado: en desarrollo
 - URL: https://landventures.com.ar/proyectos/newbery-place
 
 ### Bonpland 2305
 - Ubicación: Bonpland y Paraguay (esquina)
 - Barrio: Palermo Hollywood
-- Tipologías: 1, 2 y 3 ambientes, todas al frente
-- Locales comerciales: sí
-- Estado: en desarrollo
+- 28 unidades, 1.800 m², 2 locales comerciales
+- Tipologías: 1, 2 y 3 ambientes (todas al frente)
 - URL: https://landventures.com.ar/proyectos/bonpland-2305
 
 ### ENE — Nicaragua 6078
 - Ubicación: Nicaragua 6078, entre Dorrego y Arévalo
 - Barrio: Palermo Hollywood
+- 34 unidades, 2.400 m², 1 local comercial
 - Tipologías: 1, 2 y 3 ambientes
-- Locales comerciales: sí
-- Estado: en desarrollo
 - URL: https://landventures.com.ar/proyectos/ene-nicaragua-6078
 
 ### Caseros 435
 - Ubicación: Boulevard Caseros, entre Defensa y Bolivia
 - Barrio: San Telmo
+- 18 unidades, 1.300 m², 1 local comercial
 - Tipologías: 1 y 2 ambientes
-- Locales comerciales: sí
-- Estado: en desarrollo
 - URL: https://landventures.com.ar/proyectos/caseros-435
 
 ### Aguilar 2403
 - Ubicación: Aguilar y Cabildo (esquina)
-- Barrio: límite Palermo–Belgrano (Colegiales)
+- Barrio: Colegiales / Belgrano
+- 30 unidades, 2.000 m², 2 locales comerciales
 - Tipologías: 1, 2 y 3 ambientes
-- Locales comerciales: sí
-- Estado: en desarrollo
 - URL: https://landventures.com.ar/proyectos/aguilar-2403
 
-## Capacidades del equipo
+## Equipo
 
-- **Adquisición de terrenos:** localización y compra de lotes estratégicos.
-- **Financiación:** estructuración financiera de proyectos.
-- **Diseño:** desarrollo de proyectos modernos y diferenciales.
-- **Desarrollo y construcción:** ejecución completa del proyecto.
+- Lionel — Estrategia: dirección de proyectos, banca de tierras y oportunidades.
+- Federico — Comercialización: relación con inversores y curaduría de oportunidades.
+- Damián — Operaciones: due diligence, ejecución y cierre de operaciones.
 
 ## Páginas principales
 
-- [Inicio](https://landventures.com.ar/): visión general y proyectos destacados.
-- [Nosotros](https://landventures.com.ar/nosotros): equipo y enfoque.
-- [Invertí con nosotros](https://landventures.com.ar/inverti-con-nosotros): modalidades de inversión.
-- [Proyectos](https://landventures.com.ar/proyectos): listado completo de desarrollos.
-- [Contacto](https://landventures.com.ar/contacto): canales de contacto directo.
+- [Inicio](https://landventures.com.ar/) — visión general de las tres líneas + comunidad
+- [Nosotros](https://landventures.com.ar/nosotros) — equipo, historia, track record y valores
+- [Proyectos](https://landventures.com.ar/proyectos) — listado completo de desarrollos (filtros por estado)
+- [Terrenos](https://landventures.com.ar/terrenos) — mapa de operaciones de tierra en CABA + modelo de inversión
+- [Oportunidades](https://landventures.com.ar/oportunidades) — listado de unidades en pozo curadas (filtros)
+- [Comunidad](https://landventures.com.ar/comunidad) — eventos, charlas y encuentros
+- [Contacto](https://landventures.com.ar/contacto) — canales de contacto directo

@@ -23,9 +23,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const statusLabel: Record<string, string> = {
-  'en-desarrollo': 'En desarrollo',
-  'pre-venta': 'En pre-venta',
-  finalizado: 'Finalizado',
+  'en-curso': 'En curso',
+  proximamente: 'Próximamente',
+  terminado: 'Terminado',
 };
 
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {

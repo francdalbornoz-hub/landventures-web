@@ -6,7 +6,7 @@
  *  4. Listo — aparece en home, /proyectos, sitemap, JSON-LD y llms.txt automáticamente.
  */
 
-export type ProjectStatus = 'en-desarrollo' | 'pre-venta' | 'finalizado';
+export type ProjectStatus = 'proximamente' | 'en-curso' | 'terminado';
 
 export type Project = {
   slug: string;
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     surface: 2200,
     commercial: true,
     commercialCount: 1,
-    status: 'en-desarrollo',
+    status: 'en-curso',
   },
   {
     slug: 'newbery-place',
@@ -79,7 +79,7 @@ export const projects: Project[] = [
     surface: 1500,
     commercial: true,
     commercialCount: 1,
-    status: 'en-desarrollo',
+    status: 'en-curso',
   },
   {
     slug: 'bonpland-2305',
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     surface: 1800,
     commercial: true,
     commercialCount: 2,
-    status: 'en-desarrollo',
+    status: 'en-curso',
   },
   {
     slug: 'ene-nicaragua-6078',
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     surface: 2400,
     commercial: true,
     commercialCount: 1,
-    status: 'en-desarrollo',
+    status: 'en-curso',
   },
   {
     slug: 'caseros-435',
@@ -130,7 +130,7 @@ export const projects: Project[] = [
     surface: 1300,
     commercial: true,
     commercialCount: 1,
-    status: 'en-desarrollo',
+    status: 'en-curso',
   },
   {
     slug: 'aguilar-2403',
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     surface: 2000,
     commercial: true,
     commercialCount: 2,
-    status: 'en-desarrollo',
+    status: 'en-curso',
   },
 ];
 
