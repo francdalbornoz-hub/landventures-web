@@ -18,12 +18,14 @@ export const team: TeamMember[] = [
     name: 'Lionel',
     role: 'Estrategia',
     bio: 'Define la dirección de los proyectos, banca de tierras y oportunidades de inversión.',
+    photo: '/images/Team/Lionel.png',
   },
   {
     slug: 'federico',
     name: 'Federico',
     role: 'Comercialización',
     bio: 'A cargo de la relación con inversores y la curaduría de oportunidades.',
+    photo: '/images/Team/Federico.png',
   },
   {
     slug: 'damian',

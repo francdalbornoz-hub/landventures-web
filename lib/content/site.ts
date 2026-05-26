@@ -25,14 +25,14 @@ export const site = {
     phoneRaw: '+5491151636153',
     whatsapp: '5491151636153',
     address: {
-      street: 'Av. del Libertador 6201',
-      building: 'DOME Business Plaza',
-      neighborhood: 'Núñez',
+      street: 'Olazábal 1483, Oficina 503',
+      building: 'DOME Olazábal',
+      neighborhood: 'Belgrano',
       city: 'Ciudad Autónoma de Buenos Aires',
       country: 'Argentina',
       countryCode: 'AR',
       /** Link que abre Google Maps */
-      mapsUrl: 'https://maps.app.goo.gl/boiT8VfgH5svrfqb7',
+      mapsUrl: 'https://maps.app.goo.gl/1UvRzUvSt8pdGdtu8',
       /** Para embeber Google Maps con iframe (centro aproximado) */
       lat: -34.5544912,
       lng: -58.4491121,

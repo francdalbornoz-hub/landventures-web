@@ -112,11 +112,11 @@ export default function NosotrosPage() {
             {team.map((member, i) => (
               <Reveal key={member.slug} delay={i * 100}>
                 <article className="card-soft card-hover p-7 text-center h-full">
-                  <div className="relative w-28 h-28 mx-auto mb-5 rounded-full overflow-hidden bg-gradient-to-br from-brand/30 to-ink-dark border border-white/10">
+                  <div className="relative w-36 h-36 md:w-40 md:h-40 mx-auto mb-6 rounded-full overflow-hidden bg-gradient-to-br from-brand/30 to-ink-dark border border-white/10">
                     {member.photo ? (
-                      <Image src={member.photo} alt={member.name} fill sizes="112px" className="object-cover" />
+                      <Image src={member.photo} alt={member.name} fill sizes="160px" className="object-cover" />
                     ) : (
-                      <div className="absolute inset-0 grid place-items-center font-light text-3xl text-brand/80">
+                      <div className="absolute inset-0 grid place-items-center font-light text-4xl text-brand/80">
                         {member.name[0]}
                       </div>
                     )}
