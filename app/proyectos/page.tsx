@@ -42,23 +42,15 @@ export default function ProyectosPage() {
         ]}
       />
 
-      <section className="pt-36 pb-12 md:pt-44 md:pb-16 relative overflow-hidden">
-        <BgRender opacity={0.06} variant="hero" />
+      <section className="pt-40 pb-20 md:pt-48 md:pb-28 relative overflow-hidden">
+        <BgRender opacity={0.45} variant="hero" />
         <div className="container-page relative">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr_1fr] items-center gap-8 md:gap-6">
-            <div className="hidden md:block aspect-[3/4] relative overflow-hidden">
-              <Image src={projects[0].image} alt={projects[0].name} fill sizes="20vw" className="object-cover" />
-            </div>
-            <div className="text-center">
-              <p className="eyebrow mb-5 mx-auto justify-center w-fit">Portfolio</p>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-balance">
-                Desarrollamos proyectos<br />
-                <span className="serif-accent">modernos y diferenciales</span>
-              </h1>
-            </div>
-            <div className="hidden md:block aspect-[3/4] relative overflow-hidden">
-              <Image src={projects[1].image} alt={projects[1].name} fill sizes="20vw" className="object-cover" />
-            </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="eyebrow mb-6 mx-auto justify-center w-fit">Portfolio</p>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight text-balance">
+              Desarrollamos proyectos<br />
+              <span className="serif-accent">modernos y diferenciales</span>
+            </h1>
           </div>
         </div>
       </section>

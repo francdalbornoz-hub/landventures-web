@@ -3,6 +3,7 @@ import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import Reveal from '@/components/Reveal';
 import BgRender from '@/components/BgRender';
+import CountUp from '@/components/CountUp';
 import { site } from '@/lib/content/site';
 import { trackRecord } from '@/lib/content/timeline';
 import { lands } from '@/lib/content/lands';
@@ -82,12 +83,19 @@ export default function TerrenosPage() {
           <Reveal>
             <p className="eyebrow mb-12 mx-auto justify-center w-fit">Track record</p>
           </Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
             {trackRecord.map((m, i) => (
               <Reveal key={m.label} delay={i * 100}>
                 <div>
-                  <p className="font-light text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
-                  <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-white/65">{m.label}</p>
+                  <p className="font-light text-3xl sm:text-4xl md:text-4xl lg:text-5xl text-brand leading-none whitespace-nowrap">
+                    <CountUp
+                      target={m.value}
+                      decimals={m.decimals ?? 0}
+                      prefix={m.prefix ?? ''}
+                      suffix={m.suffix ?? ''}
+                    />
+                  </p>
+                  <p className="mt-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/65">{m.label}</p>
                 </div>
               </Reveal>
             ))}

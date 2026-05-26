@@ -24,9 +24,11 @@ const config: Config = {
           soft: '#f0a84e',
         },
         coral: {
-          DEFAULT: '#e25a3c',
-          500: '#e25a3c',
-          600: '#c84727',
+          DEFAULT: '#D25E35',
+          400: '#e25a3c',
+          500: '#D25E35',
+          600: '#b94a26',
+          700: '#9a3a1d',
         },
         ink: {
           DEFAULT: '#1a1817',

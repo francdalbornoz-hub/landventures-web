@@ -4,7 +4,6 @@ import JsonLd from '@/components/JsonLd';
 import { site } from '@/lib/content/site';
 import OpportunitiesGrid from '@/components/OpportunitiesGrid';
 import BgRender from '@/components/BgRender';
-import { priceReference } from '@/lib/content/opportunities';
 
 export const metadata = buildMetadata({
   title: 'Oportunidades',
@@ -16,20 +15,60 @@ export const metadata = buildMetadata({
 const steps = [
   {
     n: '01',
+    icon: 'curator',
     title: 'Curaduría',
     body: 'Seleccionamos unidades en pozo en zonas con buen recorrido de precio por m².',
   },
   {
     n: '02',
+    icon: 'private',
     title: 'Información en privado',
     body: 'La ficha completa (dirección, planos, condiciones) se envía a los interesados por canal directo.',
   },
   {
     n: '03',
+    icon: 'handshake',
     title: 'Acompañamos la operación',
     body: 'Coordinamos la reunión con el desarrollador, asistimos en el boleto y el seguimiento de obra.',
   },
 ];
+
+function StepIcon({ icon, className = '' }: { icon: string; className?: string }) {
+  const common = 'fill-none stroke-current';
+  switch (icon) {
+    case 'curator':
+      // lupa con corazón / curaduría
+      return (
+        <svg viewBox="0 0 32 32" className={`${common} ${className}`} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <circle cx="13" cy="13" r="8" />
+          <path d="M19 19l8 8" />
+          <path d="M13 11.5c-1.5-1.5-4-.5-4 1.5 0 2 2.5 4 4 5 1.5-1 4-3 4-5 0-2-2.5-3-4-1.5z" />
+        </svg>
+      );
+    case 'private':
+      // candado con doc
+      return (
+        <svg viewBox="0 0 32 32" className={`${common} ${className}`} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <rect x="7" y="14" width="18" height="14" rx="2" />
+          <path d="M11 14v-4a5 5 0 0110 0v4" />
+          <circle cx="16" cy="21" r="1.5" fill="currentColor" stroke="none" />
+        </svg>
+      );
+    case 'handshake':
+      // apretón de manos
+      return (
+        <svg viewBox="0 0 32 32" className={`${common} ${className}`} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <path d="M4 14l5-5 4 4" />
+          <path d="M28 14l-5-5-4 4" />
+          <path d="M9 14l5 5a2 2 0 002.83 0L19 16.5" />
+          <path d="M14 19l3 3a2 2 0 002.83 0l3.17-3.17" />
+          <path d="M23 14l-3.5 3.5" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 const faq = [
   {
@@ -84,13 +123,16 @@ export default function OportunidadesPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16 border-t border-white/[0.06]">
+      <section className="py-16 md:py-20 border-t border-white/[0.06]">
         <div className="container-page max-w-5xl mx-auto">
           <p className="eyebrow mb-3 mx-auto justify-center w-fit">Cómo funciona</p>
           <div className="grid gap-6 md:grid-cols-3 mt-10">
             {steps.map((s) => (
               <article key={s.n} className="card-soft card-hover p-7">
-                <p className="font-light text-3xl text-brand mb-3">{s.n}</p>
+                <div className="flex items-start justify-between mb-5">
+                  <StepIcon icon={s.icon} className="h-10 w-10 text-brand" />
+                  <span className="text-xs font-medium tracking-[0.25em] text-brand/60">{s.n}</span>
+                </div>
                 <h3 className="text-lg font-medium mb-2">{s.title}</h3>
                 <p className="text-sm text-white/70 leading-relaxed">{s.body}</p>
               </article>
@@ -106,28 +148,6 @@ export default function OportunidadesPage() {
             <h2 className="text-3xl md:text-4xl font-light">Oportunidades <span className="serif-accent">activas</span></h2>
           </div>
           <OpportunitiesGrid />
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 border-t border-white/[0.06] relative overflow-hidden">
-        <BgRender opacity={0.04} />
-        <div className="container-page max-w-5xl mx-auto relative">
-          <p className="eyebrow mb-3 mx-auto justify-center w-fit">Referencia</p>
-          <h2 className="text-3xl md:text-4xl font-light text-center mb-3">
-            Precio por m² por barrio
-          </h2>
-          <p className="text-center text-sm text-white/60 max-w-xl mx-auto mb-10">
-            Valores aproximados de unidades en pozo, actualizados periódicamente. Sirven como referencia, no son cotizaciones oficiales.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-            {priceReference.map((r) => (
-              <div key={r.barrio} className="card-soft p-4 text-center">
-                <p className="text-xs uppercase tracking-[0.15em] text-white/60">{r.barrio}</p>
-                <p className="text-lg font-semibold text-brand mt-1 tabular-nums">USD {new Intl.NumberFormat('en-US').format(r.precioM2)}</p>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">por m²</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

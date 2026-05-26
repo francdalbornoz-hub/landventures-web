@@ -18,8 +18,15 @@ const FILTERS: { label: string; value: 'todos' | LandStatus }[] = [
   { label: 'Compraventas', value: 'cerrado-compraventa' },
   { label: 'Canjes', value: 'cerrado-canje' },
   { label: 'Locales', value: 'cerrado-local' },
-  { label: 'Abiertas', value: 'abierto' },
-  { label: 'Próximamente', value: 'proximo' },
+];
+
+/** Estados que se muestran en la leyenda del mapa. Excluye 'abierto' y 'proximo'
+ *  porque son tipos reservados para uso futuro y no se exponen en la UI pública. */
+const LEGEND_STATUSES: LandStatus[] = [
+  'en-desarrollo',
+  'cerrado-compraventa',
+  'cerrado-canje',
+  'cerrado-local',
 ];
 
 /** SVG path strokes — íconos flat sin relleno. Color del stroke = currentColor blanco. */
@@ -199,7 +206,7 @@ export default function LandsMap() {
       {/* Leyenda */}
       <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/70">
         <span className="text-[10px] uppercase tracking-[0.22em] text-white/50 mr-2">Referencias</span>
-        {(Object.keys(landStatusLabels) as LandStatus[]).map((k) => (
+        {LEGEND_STATUSES.map((k) => (
           <div key={k} className="flex items-center gap-2">
             <span
               className="inline-block w-3 h-3 rounded-full"

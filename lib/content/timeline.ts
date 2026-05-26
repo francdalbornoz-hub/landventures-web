@@ -43,12 +43,19 @@ export const timeline: Milestone[] = [
   },
 ];
 
-/** Métricas de track record. Editar con valores reales. */
-export const trackRecord = [
-  { value: '+30', label: 'Terrenos operados' },
-  { value: '+USD 15M', label: 'Capital invertido' },
-  { value: '~29,8%', label: 'Retorno promedio' },
-  { value: '+10', label: 'Años en el mercado' },
+/** Métricas de track record. Cada entrada define el valor numérico (animable como
+ *  counter) y los strings de prefijo/sufijo. Editar con valores reales. */
+export const trackRecord: Array<{
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+  label: string;
+}> = [
+  { value: 30, prefix: '+', label: 'Terrenos operados' },
+  { value: 15, prefix: '+', suffix: 'M', label: 'USD invertidos' },
+  { value: 29.8, prefix: '~', suffix: '%', decimals: 1, label: 'Retorno promedio' },
+  { value: 10, prefix: '+', label: 'Años en el mercado' },
 ];
 
 /** Valores de la empresa. */

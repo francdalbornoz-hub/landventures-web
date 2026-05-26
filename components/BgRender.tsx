@@ -19,7 +19,7 @@ type Props = {
  */
 export default function BgRender({
   src = '/images/bg-default.jpg',
-  opacity = 0.22,
+  opacity = 0.4,
   variant = 'block',
 }: Props) {
   return (
@@ -35,8 +35,8 @@ export default function BgRender({
       <div
         className={
           variant === 'hero'
-            ? 'absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/65 to-ink'
-            : 'absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink/85'
+            ? 'absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/55 to-ink'
+            : 'absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/40 to-ink/70'
         }
       />
       <div className="absolute inset-0 grain" />

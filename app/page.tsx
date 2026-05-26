@@ -9,6 +9,7 @@ import { events } from '@/lib/content/community';
 import JsonLd from '@/components/JsonLd';
 import Reveal from '@/components/Reveal';
 import BgRender from '@/components/BgRender';
+import CountUp from '@/components/CountUp';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
@@ -48,7 +49,7 @@ export default function HomePage() {
             className="object-cover object-center"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/35 via-ink/45 to-ink" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/65 via-ink/75 to-ink" />
         <div className="absolute inset-0 grain" />
 
         <div className="relative z-10 container-page text-center pt-20 animate-fade-up">
@@ -104,7 +105,7 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-3xl md:text-5xl font-light text-center mb-16 text-balance">
-              Nuestras <span className="serif-accent">cuatro líneas</span>
+              Nuestros <span className="serif-accent">pilares</span>
             </h2>
           </Reveal>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -138,12 +139,19 @@ export default function HomePage() {
           <Reveal>
             <p className="eyebrow mb-12 mx-auto justify-center w-fit">Track record</p>
           </Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
             {trackRecord.map((m, i) => (
               <Reveal key={m.label} delay={i * 100} variant="fade-up">
                 <div>
-                  <p className="font-light text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
-                  <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-white/65">{m.label}</p>
+                  <p className="font-light text-3xl sm:text-4xl md:text-4xl lg:text-5xl text-brand leading-none whitespace-nowrap">
+                    <CountUp
+                      target={m.value}
+                      decimals={m.decimals ?? 0}
+                      prefix={m.prefix ?? ''}
+                      suffix={m.suffix ?? ''}
+                    />
+                  </p>
+                  <p className="mt-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/65">{m.label}</p>
                 </div>
               </Reveal>
             ))}
@@ -214,8 +222,8 @@ export default function HomePage() {
               <div>
                 <p className="eyebrow mb-4">Terrenos</p>
                 <h2 className="text-3xl md:text-5xl font-light mb-6 text-balance leading-tight">
-                  +{lands.length} operaciones de{' '}
-                  <span className="serif-accent">tierra en CABA</span>
+                  +30 terrenos{' '}
+                  <span className="serif-accent">operados en CABA</span>
                 </h2>
                 <p className="text-white/75 leading-relaxed mb-8 max-w-md">
                   Más de una década comprando, canjeando y vendiendo tierra junto a inversores en los mejores corredores de Buenos Aires.
@@ -228,7 +236,9 @@ export default function HomePage() {
             <Reveal delay={200} variant="scale">
               <div className="aspect-square relative rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-brand/20 via-ink-dark to-ink-deep grid place-items-center">
                 <div className="text-center relative z-10">
-                  <p className="font-light text-7xl md:text-8xl text-brand leading-none">+30</p>
+                  <p className="font-light text-7xl md:text-8xl text-brand leading-none">
+                    <CountUp target={30} prefix="+" />
+                  </p>
                   <p className="text-[11px] uppercase tracking-[0.28em] text-white/60 mt-3">terrenos operados</p>
                 </div>
                 <div className="absolute inset-0 grain opacity-50" />
