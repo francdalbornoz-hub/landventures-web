@@ -1,9 +1,12 @@
 /**
  * Listado de proyectos. Para agregar uno nuevo:
- *  1. Sumá la imagen principal a /public/images/projects/<slug>.png (idealmente 1600x1200 o similar)
- *  2. Sumá imágenes secundarias a /public/images/projects/<slug>-*.jpg para la galería
+ *  1. Sumá la imagen portada a /public/images/projects/<Slug>-portada.webp
+ *  2. Sumá las imágenes secundarias a /public/images/projects/<Slug>-1.webp, -2.webp, etc.
  *  3. Agregá un objeto al array `projects` con los datos
  *  4. Listo — aparece en home, /proyectos, sitemap, JSON-LD y llms.txt automáticamente.
+ *
+ * El campo `winbuildUrl` apunta a la página de renders WinBuild de cada proyecto.
+ * Cuando se aprueba la URL real, reemplazá el placeholder.
  */
 
 export type ProjectStatus = 'proximamente' | 'en-curso' | 'terminado';
@@ -20,9 +23,9 @@ export type Project = {
   locationDetail: string;
   /** Barrio en CABA */
   neighborhood: string;
-  /** Imagen hero del proyecto (relativa a /public) */
+  /** Imagen portada (preview en home/proyectos + hero del detalle) */
   image: string;
-  /** Galería de imágenes secundarias (relativa a /public) */
+  /** Galería de imágenes secundarias */
   gallery?: string[];
   /** Descripción larga (1-2 oraciones) */
   description: string;
@@ -39,9 +42,11 @@ export type Project = {
   status: ProjectStatus;
   /** Año tentativo de finalización (opcional) */
   year?: number;
-  /** URL de la carpeta del proyecto (PDF u otro) */
+  /** URL de la página de renders WinBuild del proyecto */
+  winbuildUrl?: string;
+  /** URL de la carpeta del proyecto (PDF) */
   brochureUrl?: string;
-  /** Hashtag o handle de Instagram del proyecto, sin @ */
+  /** Handle de Instagram del proyecto, sin @ */
   instagramHandle?: string;
 };
 
@@ -53,8 +58,11 @@ export const projects: Project[] = [
     locationHeadline: 'Triple esquina',
     locationDetail: 'Dorrego, Arévalo y Av. Córdoba',
     neighborhood: 'Palermo Hollywood',
-    image: '/images/block-default.jpg',
-    gallery: ['/images/block-default.jpg'],
+    image: '/images/projects/Dorrego-portada.webp',
+    gallery: [
+      '/images/projects/Dorrego-2.webp',
+      '/images/projects/Dorrego-3.webp',
+    ],
     description:
       'Triple esquina en Palermo Hollywood. Excelente accesibilidad en el polo gastronómico y cultural del barrio. Unidades de 1 y 2 ambientes con cocinas integradas.',
     units: ['1 ambiente', '2 ambientes con cocina integrada'],
@@ -63,6 +71,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'en-curso',
+    winbuildUrl: 'https://winbuild.com.ar/dorrego-place', // TODO: reemplazar por URL real
   },
   {
     slug: 'newbery-place',
@@ -71,7 +80,12 @@ export const projects: Project[] = [
     locationHeadline: 'Esquina',
     locationDetail: 'Newbery y Zapata',
     neighborhood: 'Colegiales',
-    image: '/images/block-default.jpg',
+    image: '/images/projects/Newbery-portada.webp',
+    gallery: [
+      '/images/projects/Newbery-1.webp',
+      '/images/projects/Newbery-2.webp',
+      '/images/projects/Newbery-3.webp',
+    ],
     description:
       'Esquina única en Colegiales, a metros de Las Cañitas y Belgrano. Unidades de 1, 2 y 3 ambientes en una zona en pleno crecimiento.',
     units: ['1 ambiente', '2 ambientes', '3 ambientes'],
@@ -80,6 +94,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'en-curso',
+    winbuildUrl: 'https://winbuild.com.ar/newbery-place', // TODO
   },
   {
     slug: 'bonpland-2305',
@@ -88,7 +103,11 @@ export const projects: Project[] = [
     locationHeadline: 'Esquina',
     locationDetail: 'Bonpland y Paraguay',
     neighborhood: 'Palermo Hollywood',
-    image: '/images/block-default.jpg',
+    image: '/images/projects/Bonpland-portada.webp',
+    gallery: [
+      '/images/projects/Bonpland-1.webp',
+      '/images/projects/Bonpland-2.webp',
+    ],
     description:
       'Esquina única en Palermo Hollywood. Unidades de 1, 2 y 3 ambientes, todas al frente y con luz natural.',
     units: ['1 ambiente', '2 ambientes', '3 ambientes'],
@@ -97,6 +116,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 2,
     status: 'en-curso',
+    winbuildUrl: 'https://winbuild.com.ar/bonpland-2305', // TODO
   },
   {
     slug: 'ene-nicaragua-6078',
@@ -105,7 +125,13 @@ export const projects: Project[] = [
     locationHeadline: 'Entre',
     locationDetail: 'Dorrego y Arévalo',
     neighborhood: 'Palermo Hollywood',
-    image: '/images/block-default.jpg',
+    image: '/images/projects/Nicaragua-portada.webp',
+    gallery: [
+      '/images/projects/Nicaragua-1.webp',
+      '/images/projects/Nicaragua-2.webp',
+      '/images/projects/Nicaragua-3.webp',
+      '/images/projects/Nicaragua-4.webp',
+    ],
     description:
       'Edificio sobre Nicaragua 6078, entre Dorrego y Arévalo. Diseño cuidado en el corazón de Palermo Hollywood.',
     units: ['1 ambiente', '2 ambientes', '3 ambientes'],
@@ -114,6 +140,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'en-curso',
+    winbuildUrl: 'https://winbuild.com.ar/ene-nicaragua', // TODO
   },
   {
     slug: 'caseros-435',
@@ -122,7 +149,12 @@ export const projects: Project[] = [
     locationHeadline: 'Entre',
     locationDetail: 'Defensa y Bolivia',
     neighborhood: 'San Telmo',
-    image: '/images/block-default.jpg',
+    image: '/images/projects/Caseros-portada.webp',
+    gallery: [
+      '/images/projects/Caseros-1.webp',
+      '/images/projects/Caseros-2.webp',
+      '/images/projects/Caseros-3.webp',
+    ],
     description:
       'Sobre el icónico Boulevard Caseros, con acceso al polo cultural emergente de San Telmo. Unidades de 1 y 2 ambientes.',
     units: ['1 ambiente', '2 ambientes'],
@@ -131,6 +163,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'en-curso',
+    winbuildUrl: 'https://winbuild.com.ar/caseros-435', // TODO
   },
   {
     slug: 'aguilar-2403',
@@ -139,7 +172,12 @@ export const projects: Project[] = [
     locationHeadline: 'Esquina',
     locationDetail: 'Aguilar y Cabildo',
     neighborhood: 'Colegiales / Belgrano',
-    image: '/images/block-default.jpg',
+    image: '/images/projects/Aguilar-portada.webp',
+    gallery: [
+      '/images/projects/Aguilar-2.webp',
+      '/images/projects/Aguilar-3.webp',
+      '/images/projects/Aguilar-4.webp',
+    ],
     description:
       'Esquina sobre el límite Palermo–Belgrano. Ubicación premium con accesibilidad a Av. Cabildo.',
     units: ['1 ambiente', '2 ambientes', '3 ambientes'],
@@ -148,6 +186,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 2,
     status: 'en-curso',
+    winbuildUrl: 'https://winbuild.com.ar/aguilar-2403', // TODO
   },
 ];
 

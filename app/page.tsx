@@ -133,11 +133,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TRACK RECORD */}
-      <section className="py-20 md:py-24 border-t border-white/[0.06] bg-gradient-to-b from-ink to-ink-dark/40">
+      {/* TRACK RECORD — bloque en cream para romper monotonía */}
+      <section className="py-20 md:py-24 border-t border-white/[0.06] bg-cream text-ink">
         <div className="container-page max-w-5xl mx-auto">
           <Reveal>
-            <p className="eyebrow mb-12 mx-auto justify-center w-fit">Track record</p>
+            <p className="eyebrow mb-12 mx-auto justify-center w-fit !text-coral">Track record</p>
           </Reveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
             {trackRecord.map((m, i) => (
@@ -151,7 +151,7 @@ export default function HomePage() {
                       suffix={m.suffix ?? ''}
                     />
                   </p>
-                  <p className="mt-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/65">{m.label}</p>
+                  <p className="mt-3 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-ink/60">{m.label}</p>
                 </div>
               </Reveal>
             ))}

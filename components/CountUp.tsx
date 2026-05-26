@@ -26,7 +26,7 @@ type Props = {
  */
 export default function CountUp({
   target,
-  duration = 1600,
+  duration = 900,
   decimals = 0,
   prefix = '',
   suffix = '',

@@ -144,9 +144,9 @@ function Select({
 function OpportunityCard({ opportunity: o }: { opportunity: Opportunity }) {
   const message = `Hola, me interesa la oportunidad ${o.tipologia} en ${o.barrio} (${o.id}).`;
   return (
-    <article className={`relative border ${o.destacado ? 'border-brand/50' : 'border-white/10'} bg-ink-dark/40 p-6 hover:border-brand/80 transition-colors`}>
+    <article className={`relative border ${o.destacado ? 'border-coral/60' : 'border-white/10'} bg-ink-dark/40 p-6 hover:border-brand/80 transition-colors`}>
       {o.destacado && (
-        <span className="absolute -top-2 left-4 bg-brand text-white text-[10px] uppercase tracking-[0.2em] px-2 py-0.5 rounded">
+        <span className="absolute -top-2 left-4 bg-coral text-white text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded font-medium">
           Destacada
         </span>
       )}
