@@ -21,6 +21,7 @@ const config: Config = {
           700: '#9a5b02',
           800: '#7d4708',
           900: '#683b0b',
+          soft: '#f0a84e',
         },
         coral: {
           DEFAULT: '#e25a3c',
@@ -28,11 +29,11 @@ const config: Config = {
           600: '#c84727',
         },
         ink: {
-          DEFAULT: '#3a3a3a',
-          dark: '#2a2a2a',
-          deep: '#1a1a1a',
-          soft: '#4a4a4a',
-          mute: '#9a9a9a',
+          DEFAULT: '#1a1817',
+          dark: '#141312',
+          deep: '#0d0c0b',
+          soft: '#2a2725',
+          mute: '#9a8b7c',
         },
         cream: {
           DEFAULT: '#f4f1ec',
@@ -50,6 +51,29 @@ const config: Config = {
       },
       letterSpacing: {
         wider2: '0.18em',
+        widest2: '0.28em',
+      },
+      animation: {
+        'fade-in': 'fade-in 1s ease-out forwards',
+        'fade-up': 'fade-up 0.9s cubic-bezier(0.22,1,0.36,1) forwards',
+        'slow-zoom': 'slow-zoom 18s ease-out forwards',
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'slow-zoom': {
+          '0%': { transform: 'scale(1.08)' },
+          '100%': { transform: 'scale(1.0)' },
+        },
+      },
+      backdropBlur: {
+        xs: '2px',
       },
     },
   },

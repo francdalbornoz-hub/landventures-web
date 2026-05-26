@@ -25,9 +25,17 @@ export const site = {
     phoneRaw: '+5491151636153',
     whatsapp: '5491151636153',
     address: {
-      city: 'Buenos Aires',
+      street: 'Av. del Libertador 6201',
+      building: 'DOME Business Plaza',
+      neighborhood: 'Núñez',
+      city: 'Ciudad Autónoma de Buenos Aires',
       country: 'Argentina',
       countryCode: 'AR',
+      /** Link que abre Google Maps */
+      mapsUrl: 'https://maps.app.goo.gl/boiT8VfgH5svrfqb7',
+      /** Para embeber Google Maps con iframe (centro aproximado) */
+      lat: -34.5544912,
+      lng: -58.4491121,
     },
   },
   social: {

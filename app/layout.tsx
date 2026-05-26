@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Montserrat, Playfair_Display } from 'next/font/google';
+import SmoothScroll from '@/components/SmoothScroll';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsappFloat from '@/components/WhatsappFloat';
@@ -8,10 +9,11 @@ import JsonLd from '@/components/JsonLd';
 import { organizationJsonLd, websiteJsonLd } from '@/lib/seo';
 import { site } from '@/lib/content/site';
 
-const sans = Inter({
+const sans = Montserrat({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
 });
 
 const display = Playfair_Display({
@@ -85,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es-AR" className={`${sans.variable} ${display.variable}`}>
       <body className="min-h-screen flex flex-col">
+        <SmoothScroll />
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <Header />
         <main className="flex-1">{children}</main>

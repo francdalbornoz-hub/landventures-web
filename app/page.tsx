@@ -7,6 +7,7 @@ import { opportunities } from '@/lib/content/opportunities';
 import { lands } from '@/lib/content/lands';
 import { events } from '@/lib/content/community';
 import JsonLd from '@/components/JsonLd';
+import Reveal from '@/components/Reveal';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
@@ -36,222 +37,289 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center">
-        <Image
-          src="/images/projects/dorrego.jpg"
-          alt="Land Ventures — Desarrollos inmobiliarios en Buenos Aires"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70" />
-        <div className="relative z-10 container-page text-center text-white pt-20">
+        <div className="absolute inset-0 animate-slow-zoom">
+          <Image
+            src="/images/projects/dorrego.jpg"
+            alt="Land Ventures — Desarrollos inmobiliarios en Buenos Aires"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/30 to-ink" />
+        <div className="absolute inset-0 grain" />
+
+        <div className="relative z-10 container-page text-center pt-20 animate-fade-up">
           <Image
             src="/images/logo.png"
             alt="Land Ventures"
             width={2522}
             height={1240}
             priority
-            className="mx-auto h-20 md:h-28 lg:h-36 w-auto drop-shadow-2xl brightness-0 invert"
+            className="mx-auto h-16 md:h-24 lg:h-28 w-auto brightness-0 invert opacity-95"
           />
           <h1 className="sr-only">{site.name} — Desarrollos inmobiliarios y oportunidades de inversión en Buenos Aires</h1>
-          <p className="mt-8 font-display text-xl md:text-2xl font-normal max-w-2xl mx-auto text-balance">
-            Desarrollos propios, inversión en tierra y oportunidades en pozo —{' '}
-            <em className="text-brand not-italic">todo en un solo lugar</em>.
+          <div className="mt-10 mx-auto w-px h-8 bg-brand/60" />
+          <p className="mt-8 font-display text-xl md:text-2xl font-normal max-w-2xl mx-auto text-balance text-white/90">
+            Desarrollos propios, inversión en tierra y oportunidades en pozo.<br />
+            <em className="text-brand not-italic">Todo en un solo lugar.</em>
           </p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+            <Link href="/proyectos" className="btn-outline-white">Ver proyectos</Link>
+            <Link href="/oportunidades" className="btn-outline-white">Oportunidades</Link>
+          </div>
         </div>
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10" aria-hidden>
-          <svg viewBox="0 0 24 24" className="h-6 w-6 text-white/70 animate-bounce" fill="currentColor">
-            <path d="M12 16l-6-6h12z" />
-          </svg>
+
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-scroll-hint" aria-hidden>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-white/60">Scroll</span>
+          <div className="w-px h-10 bg-gradient-to-b from-white/60 to-transparent" />
         </div>
       </section>
 
       {/* TAGLINE */}
-      <section className="py-16 md:py-24">
+      <section className="py-20 md:py-32">
         <div className="container-page text-center max-w-4xl mx-auto">
-          <p className="font-display text-2xl md:text-3xl lg:text-4xl font-normal leading-snug text-balance">
-            Identificamos oportunidades{' '}
-            <span className="text-brand">estratégicas</span> y desarrollamos en ellas
-            proyectos inmobiliarios{' '}
-            <span className="text-brand">modernos y diferenciales</span>.
-          </p>
+          <Reveal>
+            <p className="font-display text-2xl md:text-3xl lg:text-4xl font-normal leading-snug text-balance">
+              Identificamos oportunidades{' '}
+              <em className="text-brand not-italic">estratégicas</em> y desarrollamos en ellas
+              proyectos inmobiliarios{' '}
+              <em className="text-brand not-italic">modernos y diferenciales</em>.
+            </p>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="divider-line" />
+          </Reveal>
         </div>
       </section>
 
       {/* PILARES */}
-      <section className="py-16 md:py-24 border-t border-white/10">
+      <section className="py-20 md:py-28 border-t border-white/[0.06]">
         <div className="container-page max-w-6xl mx-auto">
-          <p className="eyebrow mb-4 text-center">Lo que hacemos</p>
-          <h2 className="font-display text-3xl md:text-4xl font-normal text-center mb-12">Nuestras líneas</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {site.pillars.map((p) => (
-              <Link
-                key={p.slug}
-                href={p.href}
-                className="group border border-white/10 bg-ink-dark/30 p-7 hover:border-brand transition-colors"
-              >
-                <div className="font-display text-3xl text-brand mb-3 group-hover:translate-x-1 transition-transform">
-                  {p.label}
-                </div>
-                <p className="text-sm text-white/75 leading-relaxed">{p.tagline}</p>
-                <span className="mt-4 inline-block text-xs uppercase tracking-[0.2em] text-white/60 group-hover:text-brand">
-                  Ver más →
-                </span>
-              </Link>
+          <Reveal>
+            <p className="eyebrow mb-5 mx-auto justify-center w-fit">Lo que hacemos</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="font-display text-3xl md:text-5xl font-normal text-center mb-16 text-balance">
+              Nuestras cuatro líneas
+            </h2>
+          </Reveal>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {site.pillars.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 100} variant="fade-up">
+                <Link
+                  href={p.href}
+                  className="group card-soft card-hover p-8 h-full block relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 w-20 h-20 -mr-10 -mt-10 rounded-full bg-brand/5 group-hover:bg-brand/10 transition-colors duration-500" />
+                  <span className="text-[10px] font-medium text-brand/70 tracking-[0.3em]">
+                    0{i + 1}
+                  </span>
+                  <h3 className="font-display text-3xl text-white mt-3 mb-4 group-hover:text-brand transition-colors duration-500">
+                    {p.label}
+                  </h3>
+                  <p className="text-sm text-white/65 leading-relaxed">{p.tagline}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-brand opacity-70 group-hover:opacity-100 group-hover:gap-3 transition-all duration-500">
+                    Conocer <span>→</span>
+                  </span>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* TRACK RECORD */}
-      <section className="py-16 md:py-20 border-t border-white/10">
+      <section className="py-20 md:py-24 border-t border-white/[0.06] bg-gradient-to-b from-ink to-ink-dark/40">
         <div className="container-page max-w-5xl mx-auto">
-          <p className="eyebrow mb-4 text-center">Track record</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 text-center">
-            {trackRecord.map((m) => (
-              <div key={m.label}>
-                <p className="font-display text-4xl md:text-5xl text-brand">{m.value}</p>
-                <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/70">{m.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROYECTOS DESTACADOS — preview */}
-      <section className="py-16 md:py-24 border-t border-white/10">
-        <div className="container-page">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 max-w-6xl mx-auto">
-            <div>
-              <p className="eyebrow mb-2">Proyectos</p>
-              <h2 className="font-display text-3xl md:text-4xl font-normal">
-                Nuestros desarrollos
-              </h2>
-            </div>
-            <Link href="/proyectos" className="btn-outline self-start md:self-auto">
-              Ver todos los proyectos
-            </Link>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            {projects.slice(0, 6).map((p) => (
-              <Link
-                key={p.slug}
-                href={`/proyectos/${p.slug}`}
-                className="group block"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-neutral-900">
-                  <Image
-                    src={p.image}
-                    alt={`${p.name} — ${p.locationDetail}`}
-                    fill
-                    sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 90vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-5">
-                    <p className="eyebrow mb-1">{p.neighborhood}</p>
-                    <h3 className="font-display text-2xl md:text-3xl font-normal">
-                      {p.name} <em className="text-white/80 not-italic">{p.suffix}</em>
-                    </h3>
-                  </div>
+          <Reveal>
+            <p className="eyebrow mb-12 mx-auto justify-center w-fit">Track record</p>
+          </Reveal>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 text-center">
+            {trackRecord.map((m, i) => (
+              <Reveal key={m.label} delay={i * 100} variant="fade-up">
+                <div>
+                  <p className="font-display text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
+                  <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-white/65">{m.label}</p>
                 </div>
-              </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* TERRENOS PREVIEW */}
-      <section className="py-16 md:py-24 border-t border-white/10 bg-ink-dark/40">
-        <div className="container-page max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <p className="eyebrow mb-3">Terrenos</p>
-              <h2 className="font-display text-3xl md:text-5xl font-normal mb-5 text-balance">
-                +{lands.length} operaciones de tierra en CABA
-              </h2>
-              <p className="text-white/80 leading-relaxed mb-8">
-                Más de una década comprando, canjeando y vendiendo tierra junto a inversores en los mejores corredores de Buenos Aires.
-              </p>
-              <Link href="/terrenos" className="btn-outline">
-                Ver el mapa
-              </Link>
-            </div>
-            <div className="aspect-square relative rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-brand/20 via-ink-dark to-ink-deep grid place-items-center">
-              <div className="text-center">
-                <p className="font-display text-7xl text-brand">+30</p>
-                <p className="text-sm uppercase tracking-[0.2em] text-white/60 mt-2">terrenos operados</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* OPORTUNIDADES PREVIEW */}
-      {featuredOpportunities.length > 0 && (
-        <section className="py-16 md:py-24 border-t border-white/10">
-          <div className="container-page max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+      {/* PROYECTOS DESTACADOS */}
+      <section className="py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="container-page">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 max-w-6xl mx-auto">
+            <Reveal>
               <div>
-                <p className="eyebrow mb-2">Oportunidades</p>
-                <h2 className="font-display text-3xl md:text-4xl font-normal">
-                  Unidades en pozo curadas
+                <p className="eyebrow mb-3">Proyectos</p>
+                <h2 className="font-display text-3xl md:text-5xl font-normal text-balance">
+                  Nuestros desarrollos
                 </h2>
               </div>
-              <Link href="/oportunidades" className="btn-outline self-start md:self-auto">
-                Ver oportunidades
+            </Reveal>
+            <Reveal delay={150}>
+              <Link href="/proyectos" className="btn-outline self-start md:self-auto">
+                Ver todos
               </Link>
+            </Reveal>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+            {projects.slice(0, 6).map((p, i) => (
+              <Reveal key={p.slug} delay={i * 80}>
+                <Link
+                  href={`/proyectos/${p.slug}`}
+                  className="group block relative overflow-hidden"
+                >
+                  <div className="relative aspect-[4/5] overflow-hidden bg-neutral-900">
+                    <Image
+                      src={p.image}
+                      alt={`${p.name} — ${p.locationDetail}`}
+                      fill
+                      sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 90vw"
+                      className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
+                      <p className="eyebrow mb-2 !text-white/80">{p.neighborhood}</p>
+                      <h3 className="font-display text-2xl md:text-3xl font-normal leading-tight">
+                        {p.name} <em className="text-white/70 not-italic">{p.suffix}</em>
+                      </h3>
+                      <p className="text-xs text-white/60 mt-1.5">{p.locationDetail}</p>
+                      <span className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-brand opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                        Ver proyecto <span>→</span>
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TERRENOS */}
+      <section className="py-20 md:py-28 border-t border-white/[0.06] bg-ink-dark/30 relative overflow-hidden">
+        <div className="absolute top-1/2 -translate-y-1/2 -right-32 w-96 h-96 rounded-full bg-brand/5 blur-3xl" aria-hidden />
+        <div className="container-page max-w-5xl mx-auto relative">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <Reveal>
+              <div>
+                <p className="eyebrow mb-4">Terrenos</p>
+                <h2 className="font-display text-3xl md:text-5xl font-normal mb-6 text-balance leading-tight">
+                  +{lands.length} operaciones de{' '}
+                  <em className="text-brand not-italic">tierra en CABA</em>
+                </h2>
+                <p className="text-white/75 leading-relaxed mb-8 max-w-md">
+                  Más de una década comprando, canjeando y vendiendo tierra junto a inversores en los mejores corredores de Buenos Aires.
+                </p>
+                <Link href="/terrenos" className="btn-outline">
+                  Ver el mapa →
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal delay={200} variant="scale">
+              <div className="aspect-square relative rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-brand/20 via-ink-dark to-ink-deep grid place-items-center">
+                <div className="text-center relative z-10">
+                  <p className="font-display text-7xl md:text-8xl text-brand leading-none">+30</p>
+                  <p className="text-[11px] uppercase tracking-[0.28em] text-white/60 mt-3">terrenos operados</p>
+                </div>
+                <div className="absolute inset-0 grain opacity-50" />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* OPORTUNIDADES */}
+      {featuredOpportunities.length > 0 && (
+        <section className="py-20 md:py-28 border-t border-white/[0.06]">
+          <div className="container-page max-w-6xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+              <Reveal>
+                <div>
+                  <p className="eyebrow mb-3">Oportunidades</p>
+                  <h2 className="font-display text-3xl md:text-5xl font-normal text-balance">
+                    Unidades en pozo <em className="text-brand not-italic">curadas</em>
+                  </h2>
+                </div>
+              </Reveal>
+              <Reveal delay={150}>
+                <Link href="/oportunidades" className="btn-outline self-start md:self-auto">
+                  Ver listado
+                </Link>
+              </Reveal>
             </div>
             <div className="grid gap-5 md:grid-cols-3">
-              {featuredOpportunities.map((o) => (
-                <article key={o.id} className="border border-white/10 bg-ink-dark/40 p-6">
-                  <p className="eyebrow mb-2">{o.barrio}</p>
-                  <h3 className="font-display text-2xl mb-4">{o.tipologia}</h3>
-                  <p className="font-display text-xl text-brand">USD {new Intl.NumberFormat('en-US').format(o.precio)}</p>
-                  <p className="text-xs uppercase tracking-[0.15em] text-white/60 mt-1">
-                    USD {new Intl.NumberFormat('en-US').format(o.precioM2)}/m² · Entrega {o.entrega}
-                  </p>
-                </article>
+              {featuredOpportunities.map((o, i) => (
+                <Reveal key={o.id} delay={i * 100}>
+                  <article className="card-soft card-hover p-7 h-full">
+                    <p className="eyebrow mb-3">{o.barrio}</p>
+                    <h3 className="font-display text-2xl mb-5">{o.tipologia}</h3>
+                    <p className="font-display text-3xl text-brand">
+                      USD {new Intl.NumberFormat('en-US').format(o.precio)}
+                    </p>
+                    <p className="text-[11px] uppercase tracking-[0.18em] text-white/55 mt-2">
+                      USD {new Intl.NumberFormat('en-US').format(o.precioM2)}/m² · Entrega {o.entrega}
+                    </p>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* COMUNIDAD PREVIEW */}
+      {/* COMUNIDAD */}
       {upcomingEvent && (
-        <section className="py-16 md:py-24 border-t border-white/10 bg-ink-dark/40">
+        <section className="py-20 md:py-28 border-t border-white/[0.06] bg-ink-dark/30">
           <div className="container-page max-w-3xl mx-auto text-center">
-            <p className="eyebrow mb-3">Comunidad</p>
-            <h2 className="font-display text-3xl md:text-4xl font-normal mb-3">
-              {upcomingEvent.title}
-            </h2>
-            <p className="text-brand mb-3 text-sm uppercase tracking-[0.2em]">{upcomingEvent.dateLabel}</p>
-            <p className="text-white/80 max-w-xl mx-auto mb-8">{upcomingEvent.description}</p>
-            <Link href="/comunidad" className="btn-outline">Ver todos los eventos</Link>
+            <Reveal>
+              <p className="eyebrow mb-4 mx-auto justify-center w-fit">Comunidad</p>
+            </Reveal>
+            <Reveal delay={100}>
+              <h2 className="font-display text-3xl md:text-5xl font-normal mb-4 text-balance">
+                {upcomingEvent.title}
+              </h2>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="text-brand mb-5 text-[11px] uppercase tracking-[0.28em]">{upcomingEvent.dateLabel}</p>
+            </Reveal>
+            <Reveal delay={300}>
+              <p className="text-white/75 max-w-xl mx-auto mb-10 leading-relaxed">{upcomingEvent.description}</p>
+            </Reveal>
+            <Reveal delay={400}>
+              <Link href="/comunidad" className="btn-outline">Ver todos los eventos</Link>
+            </Reveal>
           </div>
         </section>
       )}
 
       {/* CTA FINAL */}
-      <section className="py-16 md:py-24 border-t border-white/10">
+      <section className="py-24 md:py-32 border-t border-white/[0.06]">
         <div className="container-page text-center max-w-3xl mx-auto">
-          <h2 className="font-display text-3xl md:text-5xl font-normal text-balance">
-            Ponete en <span className="text-brand">contacto</span> y organizamos una{' '}
-            <span className="text-brand">reunión</span> con nuestro equipo
-          </h2>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={`mailto:${site.contact.email}`} className="btn-outline">{site.contact.email}</a>
-            <a
-              href={`https://wa.me/${site.contact.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline"
-            >
-              WhatsApp {site.contact.phone}
-            </a>
-          </div>
+          <Reveal>
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-normal text-balance leading-tight">
+              Ponete en <em className="text-brand not-italic">contacto</em> y organizamos una{' '}
+              <em className="text-brand not-italic">reunión</em>.
+            </h2>
+          </Reveal>
+          <Reveal delay={200}>
+            <div className="mt-12 flex flex-col sm:flex-row gap-3 justify-center">
+              <a href={`mailto:${site.contact.email}`} className="btn-outline">{site.contact.email}</a>
+              <a
+                href={`https://wa.me/${site.contact.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline"
+              >
+                WhatsApp
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>
