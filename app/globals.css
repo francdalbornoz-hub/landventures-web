@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #3a3a3a;
+  --foreground: #ffffff;
+  --brand: #e09900;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-ink text-white font-sans;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: #e09900;
+    color: #ffffff;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-page px-6 md:px-10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-7 py-3 text-xs font-medium uppercase tracking-[0.2em] transition-all duration-300 border rounded-full;
+  }
+
+  .btn-outline {
+    @apply btn border-brand text-brand hover:bg-brand hover:text-white;
+  }
+
+  .btn-outline-white {
+    @apply btn border-white text-white hover:bg-white hover:text-ink;
+  }
+
+  .btn-brand {
+    @apply btn border-brand bg-brand text-white hover:bg-brand-600 hover:border-brand-600;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-[0.25em] text-brand;
+  }
+
+  /* Línea decorativa naranja debajo de un título serif */
+  .title-underline {
+    @apply relative inline-block;
+  }
+  .title-underline::after {
+    content: '';
+    @apply absolute left-0 -bottom-2 h-px w-full bg-brand;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}

@@ -1,0 +1,10 @@
+/* TEAM */
+Empresa: Land Ventures
+Sitio: https://landventures.com.ar
+Contacto: info@landventures.com.ar
+Ubicación: Buenos Aires, Argentina
+
+/* SITE */
+Stack: Next.js 15, React 19, TypeScript, Tailwind CSS
+Hosting: Vercel
+Idioma: Español (es-AR)

@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+.env*.local
+.env
+.vercel
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+.claude/
+_homepage_raw.html
+_nosotros_raw.html
+_proyectos_raw.html
+_inverti_raw.html
