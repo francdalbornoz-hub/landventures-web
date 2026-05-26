@@ -4,6 +4,7 @@ import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import { site } from '@/lib/content/site';
 import { events } from '@/lib/content/community';
+import BgRender from '@/components/BgRender';
 
 export const metadata = buildMetadata({
   title: 'Comunidad',
@@ -25,11 +26,12 @@ export default function ComunidadPage() {
         ])}
       />
 
-      <section className="pt-36 pb-12 md:pt-44 md:pb-16">
-        <div className="container-page max-w-4xl mx-auto text-center">
-          <p className="eyebrow mb-4">Encuentros y charlas</p>
-          <h1 className="font-display text-4xl md:text-6xl font-normal leading-tight text-balance">
-            La <em className="text-brand not-italic">comunidad</em> de Land Ventures
+      <section className="pt-36 pb-12 md:pt-44 md:pb-16 relative overflow-hidden">
+        <BgRender opacity={0.06} variant="hero" />
+        <div className="container-page max-w-4xl mx-auto text-center relative">
+          <p className="eyebrow mb-5 mx-auto justify-center w-fit">Encuentros y charlas</p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-balance">
+            La <span className="serif-accent">comunidad</span> de Land Ventures
           </h1>
           <p className="mt-6 text-base md:text-lg text-white/80 max-w-2xl mx-auto">
             Inversores, desarrolladores e invitados que se suman a nuestras conversaciones sobre mercado inmobiliario, coyuntura económica y nuevas oportunidades.
@@ -64,10 +66,10 @@ export default function ComunidadPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 border-t border-white/10">
+      <section className="py-20 md:py-24 border-t border-white/[0.06]">
         <div className="container-page max-w-3xl mx-auto text-center">
-          <h2 className="font-display text-3xl md:text-5xl font-normal text-balance">
-            ¿Querés sumarte a la comunidad?
+          <h2 className="text-3xl md:text-5xl font-light text-balance">
+            ¿Querés sumarte a la <span className="serif-accent">comunidad</span>?
           </h2>
           <p className="mt-4 text-white/70">
             Te avisamos del próximo encuentro y te mandamos las novedades del mercado.
@@ -111,12 +113,12 @@ function EventCard({
         </div>
       ) : (
         <div className="relative aspect-[16/9] bg-gradient-to-br from-brand/20 via-ink-dark to-ink-deep grid place-items-center">
-          <span className="font-display text-brand/60 text-3xl">{event.dateLabel ?? event.date}</span>
+          <span className="font-serif italic text-brand/60 text-2xl">{event.dateLabel ?? event.date}</span>
         </div>
       )}
       <div className="p-6">
         <p className="eyebrow mb-2">{event.dateLabel ?? event.date}</p>
-        <h3 className="font-display text-2xl mb-2">{event.title}</h3>
+        <h3 className="text-xl font-medium mb-2">{event.title}</h3>
         {event.guest && <p className="text-sm text-brand mb-2">con {event.guest}</p>}
         <p className="text-sm text-white/70 leading-relaxed">{event.description}</p>
         {event.externalUrl && (

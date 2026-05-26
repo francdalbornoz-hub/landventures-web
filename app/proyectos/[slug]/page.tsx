@@ -87,27 +87,27 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         <div className="container-page grid gap-12 md:grid-cols-3">
           <div className="md:col-span-2">
             <p className="eyebrow mb-3">El proyecto</p>
-            <p className="font-display text-2xl md:text-3xl font-normal leading-snug text-balance text-white/90">
+            <p className="text-xl md:text-2xl font-light leading-snug text-balance text-white/90">
               {project.description}
             </p>
 
             <dl className="mt-10 space-y-3">
               {project.unitCount && (
                 <div className="flex items-baseline gap-4">
-                  <dd className="font-display text-4xl md:text-5xl text-white">{project.unitCount}</dd>
-                  <dt className="text-brand text-sm uppercase tracking-[0.2em]">Unidades</dt>
+                  <dd className="font-serif text-4xl md:text-5xl text-white tabular-nums">{project.unitCount}</dd>
+                  <dt className="text-brand text-xs uppercase tracking-[0.22em]">Unidades</dt>
                 </div>
               )}
               {project.surface && (
                 <div className="flex items-baseline gap-4">
-                  <dd className="font-display text-4xl md:text-5xl text-white">{project.surface.toLocaleString('es-AR')}</dd>
-                  <dt className="text-brand text-sm uppercase tracking-[0.2em]">Metros cuadrados</dt>
+                  <dd className="font-serif text-4xl md:text-5xl text-white tabular-nums">{project.surface.toLocaleString('es-AR')}</dd>
+                  <dt className="text-brand text-xs uppercase tracking-[0.22em]">Metros cuadrados</dt>
                 </div>
               )}
               {project.commercialCount && (
                 <div className="flex items-baseline gap-4">
-                  <dd className="font-display text-4xl md:text-5xl text-white">{project.commercialCount}</dd>
-                  <dt className="text-brand text-sm uppercase tracking-[0.2em]">
+                  <dd className="font-serif text-4xl md:text-5xl text-white tabular-nums">{project.commercialCount}</dd>
+                  <dt className="text-brand text-xs uppercase tracking-[0.22em]">
                     {project.commercialCount === 1 ? 'Local comercial' : 'Locales comerciales'}
                   </dt>
                 </div>
@@ -146,8 +146,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
 
       <section className="py-16 md:py-24 bg-ink-dark">
         <div className="container-page text-center">
-          <h2 className="font-display text-3xl md:text-5xl font-normal max-w-2xl mx-auto text-balance">
-            ¿Querés saber más sobre <span className="text-brand">{project.name}</span>?
+          <h2 className="text-3xl md:text-5xl font-light max-w-2xl mx-auto text-balance">
+            ¿Querés saber más sobre <span className="serif-accent">{project.name}</span>?
           </h2>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a href={`mailto:${site.contact.email}?subject=Consulta ${project.name}`} className="btn-outline">

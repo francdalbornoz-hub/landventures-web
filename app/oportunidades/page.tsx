@@ -3,6 +3,7 @@ import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import { site } from '@/lib/content/site';
 import OpportunitiesGrid from '@/components/OpportunitiesGrid';
+import BgRender from '@/components/BgRender';
 import { priceReference } from '@/lib/content/opportunities';
 
 export const metadata = buildMetadata({
@@ -59,11 +60,12 @@ export default function OportunidadesPage() {
         ])}
       />
 
-      <section className="pt-36 pb-12 md:pt-44 md:pb-16">
-        <div className="container-page max-w-4xl mx-auto text-center">
-          <p className="eyebrow mb-4">Unidades en pozo curadas</p>
-          <h1 className="font-display text-4xl md:text-6xl font-normal leading-tight text-balance">
-            Oportunidades <em className="text-brand not-italic">en pozo</em> respaldadas por nuestro track record.
+      <section className="pt-36 pb-12 md:pt-44 md:pb-16 relative overflow-hidden">
+        <BgRender opacity={0.06} variant="hero" />
+        <div className="container-page max-w-4xl mx-auto text-center relative">
+          <p className="eyebrow mb-5 mx-auto justify-center w-fit">Unidades en pozo curadas</p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-balance">
+            Oportunidades <span className="serif-accent">en pozo</span> respaldadas por nuestro track record.
           </h1>
           <p className="mt-6 text-base md:text-lg text-white/80 max-w-2xl mx-auto">
             Mostramos información general de cada unidad: barrio, tipología, precio y entrega. La ficha completa con dirección, planos y condiciones del desarrollador se envía a interesados por canal directo.
@@ -82,14 +84,14 @@ export default function OportunidadesPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16 border-t border-white/10">
+      <section className="py-12 md:py-16 border-t border-white/[0.06]">
         <div className="container-page max-w-5xl mx-auto">
-          <p className="eyebrow mb-3 text-center">Cómo funciona</p>
-          <div className="grid gap-6 md:grid-cols-3 mt-8">
+          <p className="eyebrow mb-3 mx-auto justify-center w-fit">Cómo funciona</p>
+          <div className="grid gap-6 md:grid-cols-3 mt-10">
             {steps.map((s) => (
-              <article key={s.n} className="border border-white/10 p-6">
-                <p className="font-display text-3xl text-brand mb-3">{s.n}</p>
-                <h3 className="font-display text-xl mb-2">{s.title}</h3>
+              <article key={s.n} className="card-soft card-hover p-7">
+                <p className="font-serif text-3xl text-brand mb-3">{s.n}</p>
+                <h3 className="text-lg font-medium mb-2">{s.title}</h3>
                 <p className="text-sm text-white/70 leading-relaxed">{s.body}</p>
               </article>
             ))}
@@ -97,20 +99,21 @@ export default function OportunidadesPage() {
         </div>
       </section>
 
-      <section id="listado" className="py-16 md:py-24 border-t border-white/10 scroll-mt-24">
+      <section id="listado" className="py-16 md:py-24 border-t border-white/[0.06] scroll-mt-24">
         <div className="container-page max-w-6xl mx-auto">
-          <div className="mb-8">
+          <div className="mb-10">
             <p className="eyebrow mb-2">Listado</p>
-            <h2 className="font-display text-3xl md:text-4xl font-normal">Oportunidades activas</h2>
+            <h2 className="text-3xl md:text-4xl font-light">Oportunidades <span className="serif-accent">activas</span></h2>
           </div>
           <OpportunitiesGrid />
         </div>
       </section>
 
-      <section className="py-16 md:py-24 border-t border-white/10">
-        <div className="container-page max-w-5xl mx-auto">
-          <p className="eyebrow mb-3 text-center">Referencia</p>
-          <h2 className="font-display text-3xl md:text-4xl font-normal text-center mb-3">
+      <section className="py-16 md:py-24 border-t border-white/[0.06] relative overflow-hidden">
+        <BgRender opacity={0.04} />
+        <div className="container-page max-w-5xl mx-auto relative">
+          <p className="eyebrow mb-3 mx-auto justify-center w-fit">Referencia</p>
+          <h2 className="text-3xl md:text-4xl font-light text-center mb-3">
             Precio por m² por barrio
           </h2>
           <p className="text-center text-sm text-white/60 max-w-xl mx-auto mb-10">
@@ -118,9 +121,9 @@ export default function OportunidadesPage() {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
             {priceReference.map((r) => (
-              <div key={r.barrio} className="border border-white/10 p-4 text-center">
+              <div key={r.barrio} className="card-soft p-4 text-center">
                 <p className="text-xs uppercase tracking-[0.15em] text-white/60">{r.barrio}</p>
-                <p className="font-display text-xl text-brand mt-1">USD {new Intl.NumberFormat('en-US').format(r.precioM2)}</p>
+                <p className="text-lg font-semibold text-brand mt-1 tabular-nums">USD {new Intl.NumberFormat('en-US').format(r.precioM2)}</p>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">por m²</p>
               </div>
             ))}
@@ -128,11 +131,11 @@ export default function OportunidadesPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 border-t border-white/10">
+      <section className="py-16 md:py-24 border-t border-white/[0.06]">
         <div className="container-page max-w-3xl mx-auto">
-          <p className="eyebrow mb-3 text-center">FAQ</p>
-          <h2 className="font-display text-3xl md:text-4xl font-normal text-center mb-10">
-            Preguntas frecuentes
+          <p className="eyebrow mb-3 mx-auto justify-center w-fit">FAQ</p>
+          <h2 className="text-3xl md:text-4xl font-light text-center mb-10">
+            Preguntas <span className="serif-accent">frecuentes</span>
           </h2>
           <div className="space-y-4">
             {faq.map((item) => (
@@ -148,10 +151,10 @@ export default function OportunidadesPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 border-t border-white/10">
+      <section className="py-20 md:py-24 border-t border-white/[0.06]">
         <div className="container-page max-w-3xl mx-auto text-center">
-          <h2 className="font-display text-3xl md:text-5xl font-normal text-balance">
-            Suscribite para recibir las nuevas oportunidades
+          <h2 className="text-3xl md:text-5xl font-light text-balance">
+            Suscribite para recibir las <span className="serif-accent">nuevas oportunidades</span>
           </h2>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a

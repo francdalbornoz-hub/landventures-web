@@ -8,6 +8,7 @@ import { lands } from '@/lib/content/lands';
 import { events } from '@/lib/content/community';
 import JsonLd from '@/components/JsonLd';
 import Reveal from '@/components/Reveal';
+import BgRender from '@/components/BgRender';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
@@ -61,9 +62,9 @@ export default function HomePage() {
           />
           <h1 className="sr-only">{site.name} — Desarrollos inmobiliarios y oportunidades de inversión en Buenos Aires</h1>
           <div className="mt-10 mx-auto w-px h-8 bg-brand/60" />
-          <p className="mt-8 font-display text-xl md:text-2xl font-normal max-w-2xl mx-auto text-balance text-white/90">
+          <p className="mt-8 text-xl md:text-2xl font-light max-w-2xl mx-auto text-balance text-white/90">
             Desarrollos propios, inversión en tierra y oportunidades en pozo.<br />
-            <em className="text-brand not-italic">Todo en un solo lugar.</em>
+            <span className="serif-accent">Todo en un solo lugar.</span>
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/proyectos" className="btn-outline-white">Ver proyectos</Link>
@@ -81,11 +82,11 @@ export default function HomePage() {
       <section className="py-20 md:py-32">
         <div className="container-page text-center max-w-4xl mx-auto">
           <Reveal>
-            <p className="font-display text-2xl md:text-3xl lg:text-4xl font-normal leading-snug text-balance">
+            <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug text-balance">
               Identificamos oportunidades{' '}
-              <em className="text-brand not-italic">estratégicas</em> y desarrollamos en ellas
+              <span className="serif-accent">estratégicas</span> y desarrollamos en ellas
               proyectos inmobiliarios{' '}
-              <em className="text-brand not-italic">modernos y diferenciales</em>.
+              <span className="serif-accent">modernos y diferenciales</span>.
             </p>
           </Reveal>
           <Reveal delay={150}>
@@ -95,14 +96,15 @@ export default function HomePage() {
       </section>
 
       {/* PILARES */}
-      <section className="py-20 md:py-28 border-t border-white/[0.06]">
-        <div className="container-page max-w-6xl mx-auto">
+      <section className="py-20 md:py-28 border-t border-white/[0.06] relative overflow-hidden">
+        <BgRender />
+        <div className="container-page max-w-6xl mx-auto relative">
           <Reveal>
             <p className="eyebrow mb-5 mx-auto justify-center w-fit">Lo que hacemos</p>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="font-display text-3xl md:text-5xl font-normal text-center mb-16 text-balance">
-              Nuestras cuatro líneas
+            <h2 className="text-3xl md:text-5xl font-light text-center mb-16 text-balance">
+              Nuestras <span className="serif-accent">cuatro líneas</span>
             </h2>
           </Reveal>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -116,7 +118,7 @@ export default function HomePage() {
                   <span className="text-[10px] font-medium text-brand/70 tracking-[0.3em]">
                     0{i + 1}
                   </span>
-                  <h3 className="font-display text-3xl text-white mt-3 mb-4 group-hover:text-brand transition-colors duration-500">
+                  <h3 className="text-2xl md:text-3xl text-white mt-3 mb-4 font-light group-hover:text-brand transition-colors duration-500">
                     {p.label}
                   </h3>
                   <p className="text-sm text-white/65 leading-relaxed">{p.tagline}</p>
@@ -140,7 +142,7 @@ export default function HomePage() {
             {trackRecord.map((m, i) => (
               <Reveal key={m.label} delay={i * 100} variant="fade-up">
                 <div>
-                  <p className="font-display text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
+                  <p className="font-serif text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
                   <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-white/65">{m.label}</p>
                 </div>
               </Reveal>
@@ -150,14 +152,15 @@ export default function HomePage() {
       </section>
 
       {/* PROYECTOS DESTACADOS */}
-      <section className="py-20 md:py-28 border-t border-white/[0.06]">
-        <div className="container-page">
+      <section className="py-20 md:py-28 border-t border-white/[0.06] relative overflow-hidden">
+        <BgRender opacity={0.04} />
+        <div className="container-page relative">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 max-w-6xl mx-auto">
             <Reveal>
               <div>
                 <p className="eyebrow mb-3">Proyectos</p>
-                <h2 className="font-display text-3xl md:text-5xl font-normal text-balance">
-                  Nuestros desarrollos
+                <h2 className="text-3xl md:text-5xl font-light text-balance">
+                  Nuestros <span className="serif-accent">desarrollos</span>
                 </h2>
               </div>
             </Reveal>
@@ -203,15 +206,16 @@ export default function HomePage() {
 
       {/* TERRENOS */}
       <section className="py-20 md:py-28 border-t border-white/[0.06] bg-ink-dark/30 relative overflow-hidden">
+        <BgRender opacity={0.05} />
         <div className="absolute top-1/2 -translate-y-1/2 -right-32 w-96 h-96 rounded-full bg-brand/5 blur-3xl" aria-hidden />
         <div className="container-page max-w-5xl mx-auto relative">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             <Reveal>
               <div>
                 <p className="eyebrow mb-4">Terrenos</p>
-                <h2 className="font-display text-3xl md:text-5xl font-normal mb-6 text-balance leading-tight">
+                <h2 className="text-3xl md:text-5xl font-light mb-6 text-balance leading-tight">
                   +{lands.length} operaciones de{' '}
-                  <em className="text-brand not-italic">tierra en CABA</em>
+                  <span className="serif-accent">tierra en CABA</span>
                 </h2>
                 <p className="text-white/75 leading-relaxed mb-8 max-w-md">
                   Más de una década comprando, canjeando y vendiendo tierra junto a inversores en los mejores corredores de Buenos Aires.
@@ -224,7 +228,7 @@ export default function HomePage() {
             <Reveal delay={200} variant="scale">
               <div className="aspect-square relative rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-brand/20 via-ink-dark to-ink-deep grid place-items-center">
                 <div className="text-center relative z-10">
-                  <p className="font-display text-7xl md:text-8xl text-brand leading-none">+30</p>
+                  <p className="font-serif text-7xl md:text-8xl text-brand leading-none">+30</p>
                   <p className="text-[11px] uppercase tracking-[0.28em] text-white/60 mt-3">terrenos operados</p>
                 </div>
                 <div className="absolute inset-0 grain opacity-50" />
@@ -242,8 +246,8 @@ export default function HomePage() {
               <Reveal>
                 <div>
                   <p className="eyebrow mb-3">Oportunidades</p>
-                  <h2 className="font-display text-3xl md:text-5xl font-normal text-balance">
-                    Unidades en pozo <em className="text-brand not-italic">curadas</em>
+                  <h2 className="text-3xl md:text-5xl font-light text-balance">
+                    Unidades en pozo <span className="serif-accent">curadas</span>
                   </h2>
                 </div>
               </Reveal>
@@ -258,8 +262,8 @@ export default function HomePage() {
                 <Reveal key={o.id} delay={i * 100}>
                   <article className="card-soft card-hover p-7 h-full">
                     <p className="eyebrow mb-3">{o.barrio}</p>
-                    <h3 className="font-display text-2xl mb-5">{o.tipologia}</h3>
-                    <p className="font-display text-3xl text-brand">
+                    <h3 className="text-2xl mb-5 font-medium">{o.tipologia}</h3>
+                    <p className="font-serif text-3xl text-brand">
                       USD {new Intl.NumberFormat('en-US').format(o.precio)}
                     </p>
                     <p className="text-[11px] uppercase tracking-[0.18em] text-white/55 mt-2">
@@ -275,13 +279,14 @@ export default function HomePage() {
 
       {/* COMUNIDAD */}
       {upcomingEvent && (
-        <section className="py-20 md:py-28 border-t border-white/[0.06] bg-ink-dark/30">
-          <div className="container-page max-w-3xl mx-auto text-center">
+        <section className="py-20 md:py-28 border-t border-white/[0.06] bg-ink-dark/30 relative overflow-hidden">
+          <BgRender opacity={0.04} />
+          <div className="container-page max-w-3xl mx-auto text-center relative">
             <Reveal>
               <p className="eyebrow mb-4 mx-auto justify-center w-fit">Comunidad</p>
             </Reveal>
             <Reveal delay={100}>
-              <h2 className="font-display text-3xl md:text-5xl font-normal mb-4 text-balance">
+              <h2 className="text-3xl md:text-5xl font-light mb-4 text-balance">
                 {upcomingEvent.title}
               </h2>
             </Reveal>
@@ -302,9 +307,9 @@ export default function HomePage() {
       <section className="py-24 md:py-32 border-t border-white/[0.06]">
         <div className="container-page text-center max-w-3xl mx-auto">
           <Reveal>
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-normal text-balance leading-tight">
-              Ponete en <em className="text-brand not-italic">contacto</em> y organizamos una{' '}
-              <em className="text-brand not-italic">reunión</em>.
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-balance leading-tight">
+              Ponete en <span className="serif-accent">contacto</span> y organizamos una{' '}
+              <span className="serif-accent">reunión</span>.
             </h2>
           </Reveal>
           <Reveal delay={200}>
@@ -325,3 +330,4 @@ export default function HomePage() {
     </>
   );
 }
+

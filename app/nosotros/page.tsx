@@ -2,8 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
+import Reveal from '@/components/Reveal';
+import BgRender from '@/components/BgRender';
 import { SearchIcon, HandMoneyIcon, MapIcon, BuildingsIcon } from '@/components/Icons';
-import { timeline, trackRecord, values } from '@/lib/content/timeline';
+import { trackRecord } from '@/lib/content/timeline';
 import { team } from '@/lib/content/team';
 import { site } from '@/lib/content/site';
 
@@ -11,7 +13,7 @@ export const metadata = buildMetadata({
   title: 'Nosotros',
   path: '/nosotros',
   description:
-    'Equipo, historia y track record de Land Ventures: +10 años desarrollando, comprando y curando oportunidades inmobiliarias en CABA.',
+    'Equipo y expertise de Land Ventures: +10 años desarrollando, comprando y curando oportunidades inmobiliarias en CABA.',
 });
 
 const expertise = [
@@ -31,121 +33,136 @@ export default function NosotrosPage() {
         ])}
       />
 
-      <section className="pt-36 pb-12 md:pt-44 md:pb-16">
-        <div className="container-page max-w-4xl text-center mx-auto">
-          <p className="eyebrow mb-4">Quiénes somos</p>
-          <h1 className="font-display text-3xl md:text-5xl font-normal leading-snug text-balance">
-            En Land Ventures nos dedicamos a identificar{' '}
-            <span className="text-brand">oportunidades estratégicas</span>, para luego desarrollar en ellas
-            proyectos inmobiliarios <span className="text-brand">modernos y diferenciales</span>.
-          </h1>
-        </div>
-      </section>
-
-      <section className="py-12 md:py-16 border-t border-white/10">
-        <div className="container-page max-w-5xl mx-auto">
-          <p className="eyebrow mb-4 text-center">Track record</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 text-center">
-            {trackRecord.map((m) => (
-              <div key={m.label}>
-                <p className="font-display text-4xl md:text-5xl text-brand">{m.value}</p>
-                <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/70">{m.label}</p>
+      {/* HERO con foto al lado */}
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
+        <BgRender opacity={0.06} variant="hero" />
+        <div className="container-page max-w-6xl mx-auto relative">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <Reveal>
+              <div>
+                <p className="eyebrow mb-5">Quiénes somos</p>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-balance">
+                  Identificamos{' '}
+                  <span className="serif-accent">oportunidades estratégicas</span>{' '}
+                  y desarrollamos proyectos{' '}
+                  <span className="serif-accent">modernos y diferenciales</span>{' '}
+                  en CABA.
+                </h1>
+                <p className="mt-6 text-white/75 leading-relaxed max-w-md">
+                  Más de una década adquiriendo terrenos, financiando operaciones, diseñando y construyendo. Hoy integramos esa experiencia en una sola plataforma: desarrollos propios, inversión en tierra y oportunidades curadas.
+                </p>
               </div>
-            ))}
+            </Reveal>
+            <Reveal delay={200} variant="scale">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+                <Image
+                  src="/images/projects/dorrego-card.png"
+                  alt="Land Ventures — Equipo"
+                  fill
+                  priority
+                  sizes="(min-width:768px) 45vw, 90vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 border-t border-white/10">
-        <div className="container-page max-w-3xl mx-auto">
-          <p className="eyebrow mb-4 text-center">Nuestra historia</p>
-          <h2 className="font-display text-3xl md:text-4xl font-normal text-center mb-12">
-            Más de una década en CABA
-          </h2>
-          <ol className="relative pl-8 border-l border-brand/30 space-y-10">
-            {timeline.map((m) => (
-              <li key={m.year} className="relative">
-                <span className={`absolute -left-[37px] top-1 w-4 h-4 rounded-full border-2 border-brand ${m.done ? 'bg-brand' : 'bg-ink'}`} />
-                <p className="text-xs uppercase tracking-[0.2em] text-brand mb-1">{m.year}</p>
-                <h3 className="font-display text-xl mb-2">{m.title}</h3>
-                <p className="text-sm text-white/75 leading-relaxed">{m.body}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 border-t border-white/10">
+      {/* TRACK RECORD */}
+      <section className="py-16 md:py-20 border-t border-white/[0.06]">
         <div className="container-page max-w-5xl mx-auto">
-          <p className="eyebrow mb-4 text-center">Equipo</p>
-          <h2 className="font-display text-3xl md:text-4xl font-normal text-center mb-12">
-            Las personas detrás
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {team.map((member) => (
-              <article key={member.slug} className="border border-white/10 bg-ink-dark/40 p-6 text-center">
-                <div className="relative w-28 h-28 mx-auto mb-5 rounded-full overflow-hidden bg-gradient-to-br from-brand/30 to-ink-dark border border-white/10">
-                  {member.photo ? (
-                    <Image src={member.photo} alt={member.name} fill sizes="112px" className="object-cover" />
-                  ) : (
-                    <div className="absolute inset-0 grid place-items-center font-display text-3xl text-brand/80">
-                      {member.name[0]}
-                    </div>
-                  )}
+          <Reveal>
+            <p className="eyebrow mb-12 mx-auto justify-center w-fit">Track record</p>
+          </Reveal>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 text-center">
+            {trackRecord.map((m, i) => (
+              <Reveal key={m.label} delay={i * 100}>
+                <div>
+                  <p className="font-serif text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
+                  <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-white/65">{m.label}</p>
                 </div>
-                <h3 className="font-display text-xl">{member.name}</h3>
-                <p className="text-xs uppercase tracking-[0.2em] text-brand mb-3">{member.role}</p>
-                {member.bio && <p className="text-sm text-white/70">{member.bio}</p>}
-              </article>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 border-t border-white/10">
+      {/* EQUIPO */}
+      <section className="py-20 md:py-28 border-t border-white/[0.06]">
         <div className="container-page max-w-5xl mx-auto">
-          <p className="eyebrow mb-4 text-center">Lo que hacemos</p>
-          <h2 className="font-display text-3xl md:text-4xl font-normal text-center mb-12">
-            Nuestro expertise
-          </h2>
+          <Reveal>
+            <p className="eyebrow mb-4 mx-auto justify-center w-fit">Equipo</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="text-3xl md:text-4xl font-light text-center mb-14 text-balance">
+              Las <span className="serif-accent">personas</span> detrás
+            </h2>
+          </Reveal>
+          <div className="grid gap-6 md:grid-cols-3">
+            {team.map((member, i) => (
+              <Reveal key={member.slug} delay={i * 100}>
+                <article className="card-soft card-hover p-7 text-center h-full">
+                  <div className="relative w-28 h-28 mx-auto mb-5 rounded-full overflow-hidden bg-gradient-to-br from-brand/30 to-ink-dark border border-white/10">
+                    {member.photo ? (
+                      <Image src={member.photo} alt={member.name} fill sizes="112px" className="object-cover" />
+                    ) : (
+                      <div className="absolute inset-0 grid place-items-center font-serif text-3xl text-brand/80">
+                        {member.name[0]}
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="text-xl font-medium">{member.name}</h3>
+                  <p className="text-[10px] uppercase tracking-[0.28em] text-brand mb-3">{member.role}</p>
+                  {member.bio && <p className="text-sm text-white/70 leading-relaxed">{member.bio}</p>}
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EXPERTISE */}
+      <section className="py-20 md:py-28 border-t border-white/[0.06] relative overflow-hidden">
+        <BgRender opacity={0.04} />
+        <div className="container-page max-w-5xl mx-auto relative">
+          <Reveal>
+            <p className="eyebrow mb-4 mx-auto justify-center w-fit">Lo que hacemos</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="text-3xl md:text-4xl font-light text-center mb-14 text-balance">
+              Nuestro <span className="serif-accent">expertise</span>
+            </h2>
+          </Reveal>
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {expertise.map((e) => (
-              <article key={e.label} className="text-center px-4">
-                <e.Icon className="h-14 w-14 mx-auto text-white mb-6" />
-                <h3 className="text-brand font-semibold mb-2">{e.label}</h3>
-                <p className="text-sm text-white/80 leading-relaxed">{e.body}</p>
-              </article>
+            {expertise.map((e, i) => (
+              <Reveal key={e.label} delay={i * 100}>
+                <article className="text-center px-4">
+                  <e.Icon className="h-14 w-14 mx-auto text-brand mb-6" />
+                  <h3 className="text-brand font-medium mb-3 text-sm uppercase tracking-[0.15em]">{e.label}</h3>
+                  <p className="text-sm text-white/75 leading-relaxed">{e.body}</p>
+                </article>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 border-t border-white/10">
-        <div className="container-page max-w-5xl mx-auto">
-          <p className="eyebrow mb-4 text-center">Valores</p>
-          <h2 className="font-display text-3xl md:text-4xl font-normal text-center mb-12">
-            Cómo trabajamos
-          </h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {values.map((v) => (
-              <article key={v.title} className="border border-white/10 p-6">
-                <h3 className="font-display text-xl text-brand mb-3">{v.title}</h3>
-                <p className="text-sm text-white/80 leading-relaxed">{v.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 border-t border-white/10">
+      {/* CTA */}
+      <section className="py-20 md:py-24 border-t border-white/[0.06]">
         <div className="container-page max-w-3xl mx-auto text-center">
-          <h2 className="font-display text-3xl md:text-5xl font-normal text-balance">
-            ¿Querés conocernos en persona?
-          </h2>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={`mailto:${site.contact.email}`} className="btn-outline">{site.contact.email}</a>
-            <Link href="/comunidad" className="btn-outline">Ver próximos eventos</Link>
-          </div>
+          <Reveal>
+            <h2 className="text-3xl md:text-5xl font-light text-balance">
+              ¿Querés conocernos <span className="serif-accent">en persona</span>?
+            </h2>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+              <a href={`mailto:${site.contact.email}`} className="btn-outline">{site.contact.email}</a>
+              <Link href="/comunidad" className="btn-outline">Ver próximos eventos</Link>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

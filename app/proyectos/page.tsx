@@ -5,6 +5,7 @@ import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import { site } from '@/lib/content/site';
 import ProjectsFilter from '@/components/ProjectsFilter';
+import BgRender from '@/components/BgRender';
 
 export const metadata = buildMetadata({
   title: 'Proyectos',
@@ -41,17 +42,18 @@ export default function ProyectosPage() {
         ]}
       />
 
-      <section className="pt-36 pb-12 md:pt-44 md:pb-16">
-        <div className="container-page">
+      <section className="pt-36 pb-12 md:pt-44 md:pb-16 relative overflow-hidden">
+        <BgRender opacity={0.06} variant="hero" />
+        <div className="container-page relative">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr_1fr] items-center gap-8 md:gap-6">
             <div className="hidden md:block aspect-[3/4] relative overflow-hidden">
               <Image src={projects[0].image} alt={projects[0].name} fill sizes="20vw" className="object-cover" />
             </div>
             <div className="text-center">
-              <p className="eyebrow mb-4">Portfolio</p>
-              <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-normal leading-tight text-balance">
+              <p className="eyebrow mb-5 mx-auto justify-center w-fit">Portfolio</p>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-balance">
                 Desarrollamos proyectos<br />
-                <em className="text-brand not-italic">modernos y diferenciales</em>
+                <span className="serif-accent">modernos y diferenciales</span>
               </h1>
             </div>
             <div className="hidden md:block aspect-[3/4] relative overflow-hidden">
@@ -84,8 +86,8 @@ export default function ProyectosPage() {
                 <p className="eyebrow mb-3">
                   {p.locationHeadline} — <span>{p.locationDetail}</span>
                 </p>
-                <h2 className="font-display text-4xl md:text-6xl font-normal mb-2">
-                  {p.name} {p.suffix && <em className="text-white/80 not-italic">{p.suffix}</em>}
+                <h2 className="font-display text-4xl md:text-6xl font-normal italic mb-2">
+                  {p.name} {p.suffix && <span className="text-white/80 not-italic">{p.suffix}</span>}
                 </h2>
                 <p className="text-xs uppercase tracking-[0.2em] text-brand mb-6">{STATUS_LABEL[p.status]}</p>
                 <p className="text-white/85 leading-relaxed text-balance max-w-prose">{p.description}</p>
@@ -162,8 +164,8 @@ export default function ProyectosPage() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="flex items-baseline gap-3">
-      <dd className="font-display text-3xl md:text-4xl text-white">{value}</dd>
-      <dt className="text-brand text-sm uppercase tracking-[0.2em]">{label}</dt>
+      <dd className="font-serif text-3xl md:text-4xl text-white tabular-nums">{value}</dd>
+      <dt className="text-brand text-xs uppercase tracking-[0.22em]">{label}</dt>
     </div>
   );
 }

@@ -151,16 +151,16 @@ function OpportunityCard({ opportunity: o }: { opportunity: Opportunity }) {
         </span>
       )}
       <p className="eyebrow mb-2">{o.barrio}</p>
-      <h3 className="font-display text-2xl mb-3">{o.tipologia}</h3>
+      <h3 className="text-xl font-medium mb-4">{o.tipologia}</h3>
 
       <dl className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
         <div>
           <dt className="text-white/50 text-xs uppercase tracking-[0.15em]">Precio</dt>
-          <dd className="font-display text-xl text-white">USD {fmtUSD(o.precio)}</dd>
+          <dd className="text-lg font-semibold text-white tabular-nums">USD {fmtUSD(o.precio)}</dd>
         </div>
         <div>
           <dt className="text-white/50 text-xs uppercase tracking-[0.15em]">USD/m²</dt>
-          <dd className="font-display text-xl text-brand">{fmtUSD(o.precioM2)}</dd>
+          <dd className="text-lg font-semibold text-brand tabular-nums">{fmtUSD(o.precioM2)}</dd>
         </div>
         <div>
           <dt className="text-white/50 text-xs uppercase tracking-[0.15em]">Superficie</dt>

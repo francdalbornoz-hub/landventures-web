@@ -77,12 +77,22 @@ export const landStatusLabels: Record<LandStatus, string> = {
   proximo: 'Próximamente',
 };
 
-/** Color por estado — usado en markers y leyenda. */
+/** Color por estado — distintos tonos de naranja + verde abierto + violeta próximo. */
 export const landStatusColors: Record<LandStatus, string> = {
-  'cerrado-compraventa': '#9a8772',
-  'cerrado-canje': '#9a8772',
-  'cerrado-local': '#9a8772',
-  'en-desarrollo': '#E8943A',
-  abierto: '#4ade80',
-  proximo: '#a78bfa',
+  'cerrado-compraventa': '#C9502A', // terracota
+  'cerrado-canje': '#E8943A', // naranja medio
+  'cerrado-local': '#D4944A', // naranja claro
+  'en-desarrollo': '#F0A84E', // naranja brillante
+  abierto: '#4ade80', // verde — oportunidad activa
+  proximo: '#a78bfa', // violeta — próximamente
+};
+
+/** Familia de íconos para los markers del mapa. */
+export const landStatusIcons: Record<LandStatus, 'building' | 'money' | 'shop' | 'crane' | 'gem' | 'soon'> = {
+  'cerrado-compraventa': 'money',
+  'cerrado-canje': 'building',
+  'cerrado-local': 'shop',
+  'en-desarrollo': 'crane',
+  abierto: 'gem',
+  proximo: 'soon',
 };
