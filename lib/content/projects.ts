@@ -53,8 +53,8 @@ export const projects: Project[] = [
     locationHeadline: 'Triple esquina',
     locationDetail: 'Dorrego, Arévalo y Av. Córdoba',
     neighborhood: 'Palermo Hollywood',
-    image: '/images/projects/dorrego.jpg',
-    gallery: ['/images/projects/dorrego-card.png'],
+    image: '/images/block-default.jpg',
+    gallery: ['/images/block-default.jpg'],
     description:
       'Triple esquina en Palermo Hollywood. Excelente accesibilidad en el polo gastronómico y cultural del barrio. Unidades de 1 y 2 ambientes con cocinas integradas.',
     units: ['1 ambiente', '2 ambientes con cocina integrada'],
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     locationHeadline: 'Esquina',
     locationDetail: 'Newbery y Zapata',
     neighborhood: 'Colegiales',
-    image: '/images/projects/newbery.png',
+    image: '/images/block-default.jpg',
     description:
       'Esquina única en Colegiales, a metros de Las Cañitas y Belgrano. Unidades de 1, 2 y 3 ambientes en una zona en pleno crecimiento.',
     units: ['1 ambiente', '2 ambientes', '3 ambientes'],
@@ -88,7 +88,7 @@ export const projects: Project[] = [
     locationHeadline: 'Esquina',
     locationDetail: 'Bonpland y Paraguay',
     neighborhood: 'Palermo Hollywood',
-    image: '/images/projects/bonpland.png',
+    image: '/images/block-default.jpg',
     description:
       'Esquina única en Palermo Hollywood. Unidades de 1, 2 y 3 ambientes, todas al frente y con luz natural.',
     units: ['1 ambiente', '2 ambientes', '3 ambientes'],
@@ -105,7 +105,7 @@ export const projects: Project[] = [
     locationHeadline: 'Entre',
     locationDetail: 'Dorrego y Arévalo',
     neighborhood: 'Palermo Hollywood',
-    image: '/images/projects/ene.png',
+    image: '/images/block-default.jpg',
     description:
       'Edificio sobre Nicaragua 6078, entre Dorrego y Arévalo. Diseño cuidado en el corazón de Palermo Hollywood.',
     units: ['1 ambiente', '2 ambientes', '3 ambientes'],
@@ -122,7 +122,7 @@ export const projects: Project[] = [
     locationHeadline: 'Entre',
     locationDetail: 'Defensa y Bolivia',
     neighborhood: 'San Telmo',
-    image: '/images/projects/caseros.png',
+    image: '/images/block-default.jpg',
     description:
       'Sobre el icónico Boulevard Caseros, con acceso al polo cultural emergente de San Telmo. Unidades de 1 y 2 ambientes.',
     units: ['1 ambiente', '2 ambientes'],
@@ -139,7 +139,7 @@ export const projects: Project[] = [
     locationHeadline: 'Esquina',
     locationDetail: 'Aguilar y Cabildo',
     neighborhood: 'Colegiales / Belgrano',
-    image: '/images/projects/aguilar.png',
+    image: '/images/block-default.jpg',
     description:
       'Esquina sobre el límite Palermo–Belgrano. Ubicación premium con accesibilidad a Av. Cabildo.',
     units: ['1 ambiente', '2 ambientes', '3 ambientes'],

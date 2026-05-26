@@ -86,7 +86,7 @@ export default function ProyectosPage() {
                 <p className="eyebrow mb-3">
                   {p.locationHeadline} — <span>{p.locationDetail}</span>
                 </p>
-                <h2 className="font-display text-4xl md:text-6xl font-normal italic mb-2">
+                <h2 className="font-extralight italic text-4xl md:text-6xl mb-2">
                   {p.name} {p.suffix && <span className="text-white/80 not-italic">{p.suffix}</span>}
                 </h2>
                 <p className="text-xs uppercase tracking-[0.2em] text-brand mb-6">{STATUS_LABEL[p.status]}</p>
@@ -164,7 +164,7 @@ export default function ProyectosPage() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="flex items-baseline gap-3">
-      <dd className="font-serif text-3xl md:text-4xl text-white tabular-nums">{value}</dd>
+      <dd className="font-light text-3xl md:text-4xl text-white tabular-nums">{value}</dd>
       <dt className="text-brand text-xs uppercase tracking-[0.22em]">{label}</dt>
     </div>
   );

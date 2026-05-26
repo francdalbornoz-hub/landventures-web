@@ -86,7 +86,7 @@ export default function TerrenosPage() {
             {trackRecord.map((m, i) => (
               <Reveal key={m.label} delay={i * 100}>
                 <div>
-                  <p className="font-serif text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
+                  <p className="font-light text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
                   <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-white/65">{m.label}</p>
                 </div>
               </Reveal>

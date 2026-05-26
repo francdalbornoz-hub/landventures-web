@@ -83,7 +83,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="block group"
             >
-              <p className="font-display text-base text-white group-hover:text-brand transition-colors">
+              <p className="text-base font-medium text-white group-hover:text-brand transition-colors">
                 {site.contact.address.building}
               </p>
               <p className="text-sm text-white/70 mt-1 group-hover:text-white/90 transition-colors">

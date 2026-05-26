@@ -43,8 +43,10 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-display)', 'Georgia', 'serif'],
-        serif: ['var(--font-display)', 'Georgia', 'serif'],
+        // display / serif quedan como alias del sans — todo es Montserrat.
+        // El acento elegante se logra con weight + italic, no con otra familia.
+        display: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-sans)', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         page: '1280px',

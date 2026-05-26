@@ -52,8 +52,7 @@
     }
   }
 
-  /* Tipografía base — encabezados en sans (Montserrat) por default.
-     Playfair Display sólo cuando se aplica explícitamente font-display/font-serif. */
+  /* Tipografía base — todo en Montserrat. La jerarquía se logra con peso e italic. */
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans;
     letter-spacing: -0.015em;
@@ -90,13 +89,14 @@
     @apply text-[10px] font-medium uppercase tracking-[0.28em] text-brand inline-flex items-center gap-2;
   }
 
-  /* Acento elegante: Playfair italic en color brand. Usalo en frases destacadas
-     dentro de encabezados largos. Ejemplo:
-       Compramos terrenos para <span class="serif-accent">maximizar su rentabilidad</span>. */
+  /* Acento elegante: Montserrat light italic en color brand. Mantiene unidad
+     tipográfica con el resto del sitio pero el contraste de peso + italic + color
+     genera la jerarquía. Usalo en frases destacadas dentro de encabezados.
+     Ejemplo: "Compramos terrenos para <span class='serif-accent'>maximizar su rentabilidad</span>". */
   .serif-accent {
-    @apply font-serif italic text-brand;
-    font-weight: 500;
-    letter-spacing: -0.005em;
+    @apply italic text-brand;
+    font-weight: 300;
+    letter-spacing: -0.01em;
   }
 
   .eyebrow::before {

@@ -74,7 +74,7 @@ export default function ProjectsFilter({ projects }: { projects: Project[] }) {
                 </span>
               </div>
               <div className="mt-5 text-center">
-                <h2 className="font-display text-3xl md:text-4xl font-normal italic">
+                <h2 className="font-extralight italic text-3xl md:text-4xl">
                   {p.name} <span className="not-italic">{p.suffix}</span>
                 </h2>
                 <p className="eyebrow mt-2">{p.locationHeadline}</p>

@@ -113,7 +113,7 @@ function EventCard({
         </div>
       ) : (
         <div className="relative aspect-[16/9] bg-gradient-to-br from-brand/20 via-ink-dark to-ink-deep grid place-items-center">
-          <span className="font-serif italic text-brand/60 text-2xl">{event.dateLabel ?? event.date}</span>
+          <span className="font-light italic text-brand/60 text-2xl">{event.dateLabel ?? event.date}</span>
         </div>
       )}
       <div className="p-6">

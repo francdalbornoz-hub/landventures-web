@@ -40,7 +40,7 @@ export default function HomePage() {
       <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 animate-slow-zoom">
           <Image
-            src="/images/projects/dorrego.jpg"
+            src="/images/bg-default.jpg"
             alt="Land Ventures — Desarrollos inmobiliarios en Buenos Aires"
             fill
             priority
@@ -48,7 +48,7 @@ export default function HomePage() {
             className="object-cover object-center"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/30 to-ink" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/35 via-ink/45 to-ink" />
         <div className="absolute inset-0 grain" />
 
         <div className="relative z-10 container-page text-center pt-20 animate-fade-up">
@@ -142,7 +142,7 @@ export default function HomePage() {
             {trackRecord.map((m, i) => (
               <Reveal key={m.label} delay={i * 100} variant="fade-up">
                 <div>
-                  <p className="font-serif text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
+                  <p className="font-light text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
                   <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-white/65">{m.label}</p>
                 </div>
               </Reveal>
@@ -188,7 +188,7 @@ export default function HomePage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
                       <p className="eyebrow mb-2 !text-white/80">{p.neighborhood}</p>
-                      <h3 className="font-display text-2xl md:text-3xl font-normal leading-tight">
+                      <h3 className="font-light text-2xl md:text-3xl leading-tight">
                         {p.name} <em className="text-white/70 not-italic">{p.suffix}</em>
                       </h3>
                       <p className="text-xs text-white/60 mt-1.5">{p.locationDetail}</p>
@@ -228,7 +228,7 @@ export default function HomePage() {
             <Reveal delay={200} variant="scale">
               <div className="aspect-square relative rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-brand/20 via-ink-dark to-ink-deep grid place-items-center">
                 <div className="text-center relative z-10">
-                  <p className="font-serif text-7xl md:text-8xl text-brand leading-none">+30</p>
+                  <p className="font-light text-7xl md:text-8xl text-brand leading-none">+30</p>
                   <p className="text-[11px] uppercase tracking-[0.28em] text-white/60 mt-3">terrenos operados</p>
                 </div>
                 <div className="absolute inset-0 grain opacity-50" />
@@ -263,7 +263,7 @@ export default function HomePage() {
                   <article className="card-soft card-hover p-7 h-full">
                     <p className="eyebrow mb-3">{o.barrio}</p>
                     <h3 className="text-2xl mb-5 font-medium">{o.tipologia}</h3>
-                    <p className="font-serif text-3xl text-brand">
+                    <p className="font-light text-3xl text-brand">
                       USD {new Intl.NumberFormat('en-US').format(o.precio)}
                     </p>
                     <p className="text-[11px] uppercase tracking-[0.18em] text-white/55 mt-2">

@@ -1,34 +1,42 @@
 import Image from 'next/image';
 
 type Props = {
-  /** Imagen de fondo. Por ahora todos usan el mismo render placeholder. */
+  /** Imagen de fondo. Por default usa /images/bg-default.jpg como placeholder. */
   src?: string;
-  /** Opacidad de la imagen (0–1). Mantenerlo bajo para que no compita con el texto. */
+  /** Opacidad de la imagen (0–1). 0.22 da presencia sin competir con el texto. */
   opacity?: number;
-  /** Posición del overlay: clearer arriba (hero) o uniforme (bloque). */
+  /** hero = overlay más claro arriba para mostrar más imagen.
+   *  block = overlay uniforme, imagen como acento. */
   variant?: 'hero' | 'block';
 };
 
 /**
- * Fondo traslúcido reutilizable. Por defecto usa dorrego.jpg como placeholder
- * con baja opacidad y blend con el color de fondo. Reemplazar por render por bloque
- * cuando estén disponibles.
+ * Fondo traslúcido reutilizable. Por defecto usa la imagen placeholder
+ * /images/bg-default.jpg con opacidad notoria (~0.22) y un overlay que
+ * mantiene la legibilidad del texto.
  *
- * Uso:
- *   <section className="relative overflow-hidden">
- *     <BgRender />
- *     <div className="relative">…contenido…</div>
- *   </section>
+ * Para cambiar la imagen por bloque: pasá `src="/images/<archivo>.jpg"`.
  */
-export default function BgRender({ src = '/images/projects/dorrego.jpg', opacity = 0.08, variant = 'block' }: Props) {
+export default function BgRender({
+  src = '/images/bg-default.jpg',
+  opacity = 0.22,
+  variant = 'block',
+}: Props) {
   return (
     <div aria-hidden className="absolute inset-0 pointer-events-none">
-      <Image src={src} alt="" fill sizes="100vw" className="object-cover" style={{ opacity }} />
+      <Image
+        src={src}
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover"
+        style={{ opacity }}
+      />
       <div
         className={
           variant === 'hero'
-            ? 'absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/80 to-ink'
-            : 'absolute inset-0 bg-gradient-to-b from-ink via-ink/85 to-ink'
+            ? 'absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/65 to-ink'
+            : 'absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink/85'
         }
       />
       <div className="absolute inset-0 grain" />

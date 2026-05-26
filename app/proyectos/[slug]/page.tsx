@@ -75,7 +75,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
             ← Volver a proyectos
           </Link>
           <p className="eyebrow mt-4">{project.locationHeadline} — {project.locationDetail}</p>
-          <h1 className="mt-2 font-display text-5xl md:text-8xl font-normal leading-none">
+          <h1 className="mt-2 font-light text-5xl md:text-8xl leading-none">
             {project.name}
             {project.suffix && <em className="block text-3xl md:text-5xl mt-2 opacity-80 not-italic">{project.suffix}</em>}
           </h1>
@@ -94,19 +94,19 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
             <dl className="mt-10 space-y-3">
               {project.unitCount && (
                 <div className="flex items-baseline gap-4">
-                  <dd className="font-serif text-4xl md:text-5xl text-white tabular-nums">{project.unitCount}</dd>
+                  <dd className="font-light text-4xl md:text-5xl text-white tabular-nums">{project.unitCount}</dd>
                   <dt className="text-brand text-xs uppercase tracking-[0.22em]">Unidades</dt>
                 </div>
               )}
               {project.surface && (
                 <div className="flex items-baseline gap-4">
-                  <dd className="font-serif text-4xl md:text-5xl text-white tabular-nums">{project.surface.toLocaleString('es-AR')}</dd>
+                  <dd className="font-light text-4xl md:text-5xl text-white tabular-nums">{project.surface.toLocaleString('es-AR')}</dd>
                   <dt className="text-brand text-xs uppercase tracking-[0.22em]">Metros cuadrados</dt>
                 </div>
               )}
               {project.commercialCount && (
                 <div className="flex items-baseline gap-4">
-                  <dd className="font-serif text-4xl md:text-5xl text-white tabular-nums">{project.commercialCount}</dd>
+                  <dd className="font-light text-4xl md:text-5xl text-white tabular-nums">{project.commercialCount}</dd>
                   <dt className="text-brand text-xs uppercase tracking-[0.22em]">
                     {project.commercialCount === 1 ? 'Local comercial' : 'Locales comerciales'}
                   </dt>

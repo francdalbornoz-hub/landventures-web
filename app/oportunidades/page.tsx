@@ -90,7 +90,7 @@ export default function OportunidadesPage() {
           <div className="grid gap-6 md:grid-cols-3 mt-10">
             {steps.map((s) => (
               <article key={s.n} className="card-soft card-hover p-7">
-                <p className="font-serif text-3xl text-brand mb-3">{s.n}</p>
+                <p className="font-light text-3xl text-brand mb-3">{s.n}</p>
                 <h3 className="text-lg font-medium mb-2">{s.title}</h3>
                 <p className="text-sm text-white/70 leading-relaxed">{s.body}</p>
               </article>

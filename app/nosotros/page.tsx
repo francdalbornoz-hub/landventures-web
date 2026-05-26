@@ -56,7 +56,7 @@ export default function NosotrosPage() {
             <Reveal delay={200} variant="scale">
               <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
                 <Image
-                  src="/images/projects/dorrego-card.png"
+                  src="/images/block-default.jpg"
                   alt="Land Ventures — Equipo"
                   fill
                   priority
@@ -80,7 +80,7 @@ export default function NosotrosPage() {
             {trackRecord.map((m, i) => (
               <Reveal key={m.label} delay={i * 100}>
                 <div>
-                  <p className="font-serif text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
+                  <p className="font-light text-5xl md:text-6xl text-brand leading-none">{m.value}</p>
                   <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-white/65">{m.label}</p>
                 </div>
               </Reveal>
@@ -108,7 +108,7 @@ export default function NosotrosPage() {
                     {member.photo ? (
                       <Image src={member.photo} alt={member.name} fill sizes="112px" className="object-cover" />
                     ) : (
-                      <div className="absolute inset-0 grid place-items-center font-serif text-3xl text-brand/80">
+                      <div className="absolute inset-0 grid place-items-center font-light text-3xl text-brand/80">
                         {member.name[0]}
                       </div>
                     )}

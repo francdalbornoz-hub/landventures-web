@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Montserrat, Playfair_Display } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import SmoothScroll from '@/components/SmoothScroll';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -9,18 +9,13 @@ import JsonLd from '@/components/JsonLd';
 import { organizationJsonLd, websiteJsonLd } from '@/lib/seo';
 import { site } from '@/lib/content/site';
 
+// Sola tipografía del sitio: Montserrat en todo el rango de pesos + italic.
+// Sin serif — el acento elegante se logra con Montserrat 300 italic en color brand.
 const sans = Montserrat({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
-  weight: ['300', '400', '500', '600', '700'],
-});
-
-const display = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
+  weight: ['200', '300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
 });
 
@@ -85,7 +80,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-AR" className={`${sans.variable} ${display.variable}`}>
+    <html lang="es-AR" className={sans.variable}>
       <body className="min-h-screen flex flex-col">
         <SmoothScroll />
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
