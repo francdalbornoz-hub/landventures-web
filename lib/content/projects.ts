@@ -186,7 +186,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 2,
     status: 'en-curso',
-    winbuildUrl: 'https://winbuild.com.ar/aguilar-2403', // TODO
+    winbuildUrl: 'https://aguilarplace.vercel.app/',
   },
 ];
 
