@@ -45,10 +45,9 @@ export default function ProyectosPage() {
         <BgRender opacity={0.55} variant="hero" />
         <div className="container-page relative">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="eyebrow mb-6 mx-auto justify-center w-fit">Nuestros proyectos</p>
+            <p className="eyebrow mb-6 mx-auto justify-center w-fit">Portfolio</p>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight text-balance">
-              Desarrollamos proyectos<br />
-              <span className="serif-accent">modernos y diferenciales</span>
+              Conocé <span className="serif-accent">nuestros proyectos</span>
             </h1>
           </div>
         </div>
