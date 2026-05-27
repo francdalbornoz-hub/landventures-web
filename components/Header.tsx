@@ -30,7 +30,7 @@ export default function Header() {
           : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="container-page flex items-center justify-between py-4 md:py-5">
+      <div className="container-page flex items-center justify-between py-3 md:py-4">
         <Link href="/" aria-label={`${site.name} — Inicio`} className="block transition-opacity hover:opacity-80">
           <Image
             src="/images/logo.png"
@@ -38,7 +38,7 @@ export default function Header() {
             width={2522}
             height={1240}
             priority
-            className="h-8 w-auto md:h-10"
+            className="h-12 w-auto md:h-16"
           />
         </Link>
 

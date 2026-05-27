@@ -52,8 +52,19 @@ export default function ComunidadPage() {
         </section>
       )}
 
-      <section className="py-16 md:py-24 border-t border-white/10">
-        <div className="container-page max-w-5xl mx-auto">
+      <section className="py-16 md:py-24 border-t border-white/10 relative overflow-hidden">
+        <div aria-hidden className="absolute inset-0 pointer-events-none">
+          <Image
+            src="/images/Eventos/ruckauf.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover opacity-25"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink/85" />
+          <div className="absolute inset-0 grain" />
+        </div>
+        <div className="container-page max-w-5xl mx-auto relative">
           <p className="eyebrow mb-6">Encuentros y charlas</p>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {past.map((e) => (

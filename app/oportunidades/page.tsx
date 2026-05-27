@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
@@ -100,7 +101,7 @@ export default function OportunidadesPage() {
       />
 
       <section className="pt-36 pb-12 md:pt-44 md:pb-16 relative overflow-hidden">
-        <BgRender opacity={0.5} variant="hero" />
+        <BgRender src="/images/Pozo/Pozo-background.jpg" opacity={0.55} variant="hero" />
         <div className="container-page max-w-4xl mx-auto text-center relative">
           <p className="eyebrow mb-5 mx-auto justify-center w-fit">Land Ventures Pozo Club</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-balance">
@@ -123,12 +124,12 @@ export default function OportunidadesPage() {
         </div>
       </section>
 
-      {/* CÓMO FUNCIONA — fondo cream */}
-      <section className="py-20 md:py-24 border-t border-white/[0.06] bg-cream text-ink">
+      {/* CÓMO FUNCIONA — fondo gris claro */}
+      <section className="py-20 md:py-24 border-t border-white/[0.06] bg-[#dad7d1] text-ink">
         <div className="container-page max-w-5xl mx-auto">
           <p className="eyebrow mb-3 mx-auto justify-center w-fit !text-coral">Cómo funciona</p>
           <h2 className="text-3xl md:text-4xl font-light text-center mb-12">
-            Tu camino al <span className="serif-accent">pozo</span>
+            El proceso, <span className="serif-accent">paso a paso</span>
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
             {steps.map((s) => (
@@ -155,9 +156,19 @@ export default function OportunidadesPage() {
         </div>
       </section>
 
-      {/* FAQ — fondo cream, items animados */}
-      <section className="py-20 md:py-24 border-t border-white/[0.06] bg-cream text-ink">
-        <div className="container-page max-w-3xl mx-auto">
+      {/* FAQ — fondo con imagen pozo y overlay claro, items animados */}
+      <section className="py-20 md:py-24 border-t border-white/[0.06] bg-cream text-ink relative overflow-hidden">
+        <div aria-hidden className="absolute inset-0 pointer-events-none">
+          <Image
+            src="/images/Pozo/Pozo-background.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-cream/70 via-cream/80 to-cream" />
+        </div>
+        <div className="container-page max-w-3xl mx-auto relative">
           <p className="eyebrow mb-3 mx-auto justify-center w-fit !text-coral">FAQ</p>
           <h2 className="text-3xl md:text-4xl font-light text-center mb-12">
             Preguntas <span className="serif-accent">frecuentes</span>

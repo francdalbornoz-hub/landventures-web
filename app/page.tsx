@@ -249,8 +249,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* COMUNIDAD — fondo blanco */}
+      {/* COMUNIDAD — fondo blanco con imagen sutil de personas */}
       <section className="py-24 md:py-32 border-t border-white/[0.06] bg-white text-ink relative overflow-hidden">
+        <div aria-hidden className="absolute inset-0 pointer-events-none">
+          <Image
+            src="/images/Eventos/ruckauf.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover opacity-25"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white" />
+        </div>
         <div className="container-page max-w-4xl mx-auto text-center relative">
           <Reveal>
             <p className="eyebrow mb-5 mx-auto justify-center w-fit !text-coral">Comunidad</p>
