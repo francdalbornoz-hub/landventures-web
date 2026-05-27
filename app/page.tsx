@@ -3,8 +3,6 @@ import Link from 'next/link';
 import { site } from '@/lib/content/site';
 import { projects } from '@/lib/content/projects';
 import { trackRecord } from '@/lib/content/timeline';
-import { opportunities } from '@/lib/content/opportunities';
-import { lands } from '@/lib/content/lands';
 import { events } from '@/lib/content/community';
 import JsonLd from '@/components/JsonLd';
 import Reveal from '@/components/Reveal';
@@ -18,7 +16,6 @@ export const metadata = buildMetadata({
 });
 
 export default function HomePage() {
-  const featuredOpportunities = opportunities.filter((o) => o.activo && o.destacado).slice(0, 3);
   const upcomingEvent = events.find((e) => e.status === 'proximo');
 
   return (
@@ -59,15 +56,15 @@ export default function HomePage() {
             width={2522}
             height={1240}
             priority
-            className="mx-auto h-16 md:h-24 lg:h-28 w-auto brightness-0 invert opacity-95"
+            className="mx-auto h-28 md:h-40 lg:h-48 w-auto brightness-0 invert opacity-95"
           />
           <h1 className="sr-only">{site.name} — Desarrollos inmobiliarios y oportunidades de inversión en Buenos Aires</h1>
-          <div className="mt-10 mx-auto w-px h-8 bg-brand/60" />
-          <p className="mt-8 text-xl md:text-2xl font-light max-w-2xl mx-auto text-balance text-white/90">
-            Desarrollos propios, inversión en tierra y oportunidades en pozo.<br />
-            <span className="serif-accent">Todo en un solo lugar.</span>
+          <div className="mt-12 mx-auto w-px h-10 bg-brand/60" />
+          <p className="mt-10 text-2xl md:text-3xl lg:text-4xl font-light max-w-3xl mx-auto text-balance text-white/95 leading-snug">
+            Desarrollos, inversiones en tierra y oportunidades en pozo{' '}
+            <span className="serif-accent">en un solo lugar</span>.
           </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="mt-12 flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/proyectos" className="btn-outline-white">Ver proyectos</Link>
             <Link href="/oportunidades" className="btn-outline-white">Oportunidades</Link>
           </div>
@@ -84,10 +81,9 @@ export default function HomePage() {
         <div className="container-page text-center max-w-4xl mx-auto">
           <Reveal>
             <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug text-balance">
-              Identificamos oportunidades{' '}
-              <span className="serif-accent">estratégicas</span> y desarrollamos en ellas
-              proyectos inmobiliarios{' '}
-              <span className="serif-accent">modernos y diferenciales</span>.
+              Identificamos{' '}
+              <span className="serif-accent">oportunidades estratégicas</span> y desarrollamos{' '}
+              <span className="serif-accent">proyectos inmobiliarios</span> modernos y diferenciales.
             </p>
           </Reveal>
           <Reveal delay={150}>
@@ -105,7 +101,7 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-3xl md:text-5xl font-light text-center mb-16 text-balance">
-              Nuestros <span className="serif-accent">pilares</span>
+              Descubrí <span className="serif-accent">Land Ventures</span>
             </h2>
           </Reveal>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -113,18 +109,18 @@ export default function HomePage() {
               <Reveal key={p.slug} delay={i * 100} variant="fade-up">
                 <Link
                   href={p.href}
-                  className="group card-soft card-hover p-8 h-full block relative overflow-hidden"
+                  className="group card-soft card-hover p-7 h-full block relative overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 w-20 h-20 -mr-10 -mt-10 rounded-full bg-brand/5 group-hover:bg-brand/10 transition-colors duration-500" />
                   <span className="text-[10px] font-medium text-brand/70 tracking-[0.3em]">
                     0{i + 1}
                   </span>
-                  <h3 className="text-2xl md:text-3xl text-white mt-3 mb-4 font-light group-hover:text-brand transition-colors duration-500">
+                  <h3 className="text-xl md:text-2xl text-white mt-3 mb-4 font-light group-hover:text-brand transition-colors duration-500 leading-tight">
                     {p.label}
                   </h3>
                   <p className="text-sm text-white/65 leading-relaxed">{p.tagline}</p>
                   <span className="mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-brand opacity-70 group-hover:opacity-100 group-hover:gap-3 transition-all duration-500">
-                    Conocer <span>→</span>
+                    Conocé más <span>→</span>
                   </span>
                 </Link>
               </Reveal>
@@ -133,7 +129,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TRACK RECORD — bloque en cream para romper monotonía */}
+      {/* TRACK RECORD — fondo cream para romper monotonía */}
       <section className="py-20 md:py-24 border-t border-white/[0.06] bg-cream text-ink">
         <div className="container-page max-w-5xl mx-auto">
           <Reveal>
@@ -161,7 +157,7 @@ export default function HomePage() {
 
       {/* PROYECTOS DESTACADOS */}
       <section className="py-20 md:py-28 border-t border-white/[0.06] relative overflow-hidden">
-        <BgRender opacity={0.04} />
+        <BgRender opacity={0.5} />
         <div className="container-page relative">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 max-w-6xl mx-auto">
             <Reveal>
@@ -196,8 +192,8 @@ export default function HomePage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
                       <p className="eyebrow mb-2 !text-white/80">{p.neighborhood}</p>
-                      <h3 className="font-light text-2xl md:text-3xl leading-tight">
-                        {p.name} <em className="text-white/70 not-italic">{p.suffix}</em>
+                      <h3 className="font-extralight italic text-2xl md:text-3xl leading-tight">
+                        {p.name} <span className="not-italic text-white/70">{p.suffix}</span>
                       </h3>
                       <p className="text-xs text-white/60 mt-1.5">{p.locationDetail}</p>
                       <span className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-brand opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
@@ -213,8 +209,7 @@ export default function HomePage() {
       </section>
 
       {/* TERRENOS */}
-      <section className="py-20 md:py-28 border-t border-white/[0.06] bg-ink-dark/30 relative overflow-hidden">
-        <BgRender opacity={0.05} />
+      <section className="py-20 md:py-28 border-t border-white/[0.06] bg-ink-dark/40 relative overflow-hidden">
         <div className="absolute top-1/2 -translate-y-1/2 -right-32 w-96 h-96 rounded-full bg-brand/5 blur-3xl" aria-hidden />
         <div className="container-page max-w-5xl mx-auto relative">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -222,96 +217,80 @@ export default function HomePage() {
               <div>
                 <p className="eyebrow mb-4">Terrenos</p>
                 <h2 className="text-3xl md:text-5xl font-light mb-6 text-balance leading-tight">
-                  +30 terrenos{' '}
-                  <span className="serif-accent">operados en CABA</span>
+                  +30 terrenos <span className="serif-accent">comprados en CABA</span>
                 </h2>
                 <p className="text-white/75 leading-relaxed mb-8 max-w-md">
                   Más de una década comprando, canjeando y vendiendo tierra junto a inversores en los mejores corredores de Buenos Aires.
                 </p>
-                <Link href="/terrenos" className="btn-outline">
-                  Ver el mapa →
-                </Link>
+                <div className="flex flex-wrap gap-3">
+                  <Link href="/terrenos" className="btn-outline">
+                    Ver el mapa →
+                  </Link>
+                  <Link href="/oportunidades" className="btn-outline">
+                    Ver oportunidades
+                  </Link>
+                </div>
               </div>
             </Reveal>
             <Reveal delay={200} variant="scale">
-              <div className="aspect-square relative rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-brand/20 via-ink-dark to-ink-deep grid place-items-center">
-                <div className="text-center relative z-10">
-                  <p className="font-light text-7xl md:text-8xl text-brand leading-none">
-                    <CountUp target={30} prefix="+" />
-                  </p>
-                  <p className="text-[11px] uppercase tracking-[0.28em] text-white/60 mt-3">terrenos operados</p>
-                </div>
-                <div className="absolute inset-0 grain opacity-50" />
+              {/* Placeholder para imagen del bloque Terrenos — reemplazar src cuando esté */}
+              <div className="aspect-square relative rounded-sm overflow-hidden border border-white/10">
+                <Image
+                  src="/images/block-default.jpg"
+                  alt="Operaciones de tierra en CABA"
+                  fill
+                  sizes="(min-width:768px) 45vw, 90vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-ink/30 via-transparent to-transparent" />
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* OPORTUNIDADES */}
-      {featuredOpportunities.length > 0 && (
-        <section className="py-20 md:py-28 border-t border-white/[0.06]">
-          <div className="container-page max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-              <Reveal>
-                <div>
-                  <p className="eyebrow mb-3">Oportunidades</p>
-                  <h2 className="text-3xl md:text-5xl font-light text-balance">
-                    Unidades en pozo <span className="serif-accent">curadas</span>
-                  </h2>
-                </div>
-              </Reveal>
-              <Reveal delay={150}>
-                <Link href="/oportunidades" className="btn-outline self-start md:self-auto">
-                  Ver listado
-                </Link>
-              </Reveal>
-            </div>
-            <div className="grid gap-5 md:grid-cols-3">
-              {featuredOpportunities.map((o, i) => (
-                <Reveal key={o.id} delay={i * 100}>
-                  <article className="card-soft card-hover p-7 h-full">
-                    <p className="eyebrow mb-3">{o.barrio}</p>
-                    <h3 className="text-2xl mb-5 font-medium">{o.tipologia}</h3>
-                    <p className="font-light text-3xl text-brand">
-                      USD {new Intl.NumberFormat('en-US').format(o.precio)}
-                    </p>
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-white/55 mt-2">
-                      USD {new Intl.NumberFormat('en-US').format(o.precioM2)}/m² · Entrega {o.entrega}
-                    </p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* COMUNIDAD */}
-      {upcomingEvent && (
-        <section className="py-20 md:py-28 border-t border-white/[0.06] bg-ink-dark/30 relative overflow-hidden">
-          <BgRender opacity={0.04} />
-          <div className="container-page max-w-3xl mx-auto text-center relative">
-            <Reveal>
-              <p className="eyebrow mb-4 mx-auto justify-center w-fit">Comunidad</p>
-            </Reveal>
-            <Reveal delay={100}>
-              <h2 className="text-3xl md:text-5xl font-light mb-4 text-balance">
-                {upcomingEvent.title}
-              </h2>
-            </Reveal>
-            <Reveal delay={200}>
-              <p className="text-brand mb-5 text-[11px] uppercase tracking-[0.28em]">{upcomingEvent.dateLabel}</p>
-            </Reveal>
+      {/* COMUNIDAD — fondo blanco */}
+      <section className="py-24 md:py-32 border-t border-white/[0.06] bg-white text-ink relative overflow-hidden">
+        <div className="container-page max-w-4xl mx-auto text-center relative">
+          <Reveal>
+            <p className="eyebrow mb-5 mx-auto justify-center w-fit !text-coral">Comunidad</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-light mb-6 text-balance leading-tight">
+              Formá parte de la <span className="serif-accent">comunidad Land Ventures</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="text-ink/70 max-w-2xl mx-auto leading-relaxed text-base md:text-lg mb-10">
+              Encuentros, charlas e invitados que se suman a las conversaciones sobre mercado inmobiliario y nuevas oportunidades.
+            </p>
+          </Reveal>
+          {upcomingEvent && (
             <Reveal delay={300}>
-              <p className="text-white/75 max-w-xl mx-auto mb-10 leading-relaxed">{upcomingEvent.description}</p>
+              <div className="inline-block border border-ink/15 rounded-lg p-6 md:p-8 max-w-md mx-auto mb-10 text-left bg-cream/50">
+                <p className="text-[10px] uppercase tracking-[0.28em] text-coral mb-2">{upcomingEvent.dateLabel}</p>
+                <h3 className="text-xl font-medium mb-2">{upcomingEvent.title}</h3>
+                <p className="text-sm text-ink/70">{upcomingEvent.description}</p>
+              </div>
             </Reveal>
-            <Reveal delay={400}>
-              <Link href="/comunidad" className="btn-outline">Ver todos los eventos</Link>
-            </Reveal>
-          </div>
-        </section>
-      )}
+          )}
+          <Reveal delay={400}>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link href="/comunidad" className="btn border-ink/40 text-ink hover:bg-ink hover:text-white">
+                Ver todos los eventos
+              </Link>
+              <a
+                href={site.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn border-ink/40 text-ink hover:bg-ink hover:text-white"
+              >
+                Seguinos en Instagram
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* CTA FINAL */}
       <section className="py-24 md:py-32 border-t border-white/[0.06]">
@@ -340,4 +319,3 @@ export default function HomePage() {
     </>
   );
 }
-

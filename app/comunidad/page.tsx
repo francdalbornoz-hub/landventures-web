@@ -54,7 +54,7 @@ export default function ComunidadPage() {
 
       <section className="py-16 md:py-24 border-t border-white/10">
         <div className="container-page max-w-5xl mx-auto">
-          <p className="eyebrow mb-6">Encuentros pasados</p>
+          <p className="eyebrow mb-6">Encuentros y charlas</p>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {past.map((e) => (
               <EventCard key={e.slug} event={e} />
@@ -119,7 +119,12 @@ function EventCard({
       <div className="p-6">
         <p className="eyebrow mb-2">{event.dateLabel ?? event.date}</p>
         <h3 className="text-xl font-medium mb-2">{event.title}</h3>
-        {event.guest && <p className="text-sm text-brand mb-2">con {event.guest}</p>}
+        {event.guest && (
+          <p className="text-sm mb-3">
+            <span className="text-brand">{event.guest}</span>
+            {event.guestRole && <span className="text-white/55"> · {event.guestRole}</span>}
+          </p>
+        )}
         <p className="text-sm text-white/70 leading-relaxed">{event.description}</p>
         {event.externalUrl && (
           <a

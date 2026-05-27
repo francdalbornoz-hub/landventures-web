@@ -34,44 +34,39 @@ export default function NosotrosPage() {
         ])}
       />
 
-      {/* HERO con foto al lado */}
+      {/* HERO con logo en lugar de foto */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
-        <BgRender opacity={0.06} variant="hero" />
+        <BgRender opacity={0.6} variant="hero" />
         <div className="container-page max-w-6xl mx-auto relative">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             <Reveal>
               <div>
                 <p className="eyebrow mb-5">Quiénes somos</p>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-balance">
-                  Identificamos{' '}
-                  <span className="serif-accent">oportunidades estratégicas</span>{' '}
-                  y desarrollamos proyectos{' '}
-                  <span className="serif-accent">modernos y diferenciales</span>{' '}
-                  en CABA.
+                  Somos <span className="serif-accent">Land Ventures</span>
                 </h1>
-                <p className="mt-6 text-white/75 leading-relaxed max-w-md">
+                <p className="mt-6 text-white/80 leading-relaxed max-w-md text-base md:text-lg">
                   Más de una década adquiriendo terrenos, financiando operaciones, diseñando y construyendo. Hoy integramos esa experiencia en una sola plataforma: desarrollos propios, inversión en tierra y oportunidades curadas.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={200} variant="scale">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+              <div className="relative aspect-square md:aspect-[4/5] flex items-center justify-center">
                 <Image
-                  src="/images/block-default.jpg"
-                  alt="Land Ventures — Equipo"
-                  fill
+                  src="/images/logo.png"
+                  alt="Land Ventures"
+                  width={2522}
+                  height={1240}
+                  className="w-full max-w-md h-auto brightness-0 invert opacity-95"
                   priority
-                  sizes="(min-width:768px) 45vw, 90vw"
-                  className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* TRACK RECORD — fondo cream para romper la monotonía */}
+      {/* TRACK RECORD — fondo cream */}
       <section className="py-16 md:py-20 border-t border-white/[0.06] bg-cream text-ink">
         <div className="container-page max-w-5xl mx-auto">
           <Reveal>
@@ -97,43 +92,9 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* EQUIPO */}
-      <section className="py-20 md:py-28 border-t border-white/[0.06]">
-        <div className="container-page max-w-5xl mx-auto">
-          <Reveal>
-            <p className="eyebrow mb-4 mx-auto justify-center w-fit">Equipo</p>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2 className="text-3xl md:text-4xl font-light text-center mb-14 text-balance">
-              Las <span className="serif-accent">personas</span> detrás
-            </h2>
-          </Reveal>
-          <div className="grid gap-6 md:grid-cols-3">
-            {team.map((member, i) => (
-              <Reveal key={member.slug} delay={i * 100}>
-                <article className="card-soft card-hover p-7 text-center h-full">
-                  <div className="relative w-36 h-36 md:w-40 md:h-40 mx-auto mb-6 rounded-full overflow-hidden bg-gradient-to-br from-brand/30 to-ink-dark border border-white/10">
-                    {member.photo ? (
-                      <Image src={member.photo} alt={member.name} fill sizes="160px" className="object-cover" />
-                    ) : (
-                      <div className="absolute inset-0 grid place-items-center font-light text-4xl text-brand/80">
-                        {member.name[0]}
-                      </div>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-medium">{member.name}</h3>
-                  <p className="text-[10px] uppercase tracking-[0.28em] text-brand mb-3">{member.role}</p>
-                  {member.bio && <p className="text-sm text-white/70 leading-relaxed">{member.bio}</p>}
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* EXPERTISE */}
+      {/* EXPERTISE — Lo que hacemos */}
       <section className="py-20 md:py-28 border-t border-white/[0.06] relative overflow-hidden">
-        <BgRender opacity={0.04} />
+        <BgRender opacity={0.45} />
         <div className="container-page max-w-5xl mx-auto relative">
           <Reveal>
             <p className="eyebrow mb-4 mx-auto justify-center w-fit">Lo que hacemos</p>
@@ -150,6 +111,40 @@ export default function NosotrosPage() {
                   <e.Icon className="h-14 w-14 mx-auto text-brand mb-6" />
                   <h3 className="text-brand font-medium mb-3 text-sm uppercase tracking-[0.15em]">{e.label}</h3>
                   <p className="text-sm text-white/75 leading-relaxed">{e.body}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EQUIPO — fondo gris claro contrastante */}
+      <section className="py-20 md:py-28 border-t border-white/[0.06] bg-[#e6e3dd] text-ink">
+        <div className="container-page max-w-5xl mx-auto">
+          <Reveal>
+            <p className="eyebrow mb-4 mx-auto justify-center w-fit !text-coral">Equipo</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center mb-14 text-balance">
+              Conocé al equipo de <span className="serif-accent">Land Ventures</span>
+            </h2>
+          </Reveal>
+          <div className="grid gap-6 md:grid-cols-3">
+            {team.map((member, i) => (
+              <Reveal key={member.slug} delay={i * 100}>
+                <article className="bg-white/60 border border-ink/10 p-7 text-center h-full hover:border-coral/40 transition-colors">
+                  <div className="relative w-36 h-36 md:w-40 md:h-40 mx-auto mb-6 rounded-full overflow-hidden bg-gradient-to-br from-brand/20 to-ink/10 border border-ink/10">
+                    {member.photo ? (
+                      <Image src={member.photo} alt={member.name} fill sizes="160px" className="object-cover" />
+                    ) : (
+                      <div className="absolute inset-0 grid place-items-center font-light text-4xl text-brand/80">
+                        {member.name[0]}
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="text-xl font-medium text-ink">{member.name}</h3>
+                  <p className="text-[10px] uppercase tracking-[0.28em] text-coral mb-3">{member.role}</p>
+                  {member.bio && <p className="text-sm text-ink/70 leading-relaxed">{member.bio}</p>}
                 </article>
               </Reveal>
             ))}

@@ -137,11 +137,11 @@ export default function TerrenosPage() {
         <div className="container-page">
           <div className="max-w-5xl mx-auto mb-8">
             <Reveal>
-              <p className="eyebrow mb-3">Nuestros proyectos</p>
+              <p className="eyebrow mb-3">Track record</p>
             </Reveal>
             <Reveal delay={100}>
               <h2 className="text-3xl md:text-5xl font-light text-balance">
-                +{totalOps} operaciones en CABA
+                +30 <span className="serif-accent">operaciones en CABA</span>
               </h2>
             </Reveal>
             <Reveal delay={200}>

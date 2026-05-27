@@ -100,11 +100,11 @@ export default function OportunidadesPage() {
       />
 
       <section className="pt-36 pb-12 md:pt-44 md:pb-16 relative overflow-hidden">
-        <BgRender opacity={0.06} variant="hero" />
+        <BgRender opacity={0.5} variant="hero" />
         <div className="container-page max-w-4xl mx-auto text-center relative">
-          <p className="eyebrow mb-5 mx-auto justify-center w-fit">Unidades en pozo curadas</p>
+          <p className="eyebrow mb-5 mx-auto justify-center w-fit">Land Ventures Pozo Club</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-balance">
-            Oportunidades <span className="serif-accent">en pozo</span> respaldadas por nuestro track record.
+            Oportunidades <span className="serif-accent">en pozo</span> exclusivas
           </h1>
           <p className="mt-6 text-base md:text-lg text-white/80 max-w-2xl mx-auto">
             Mostramos información general de cada unidad: barrio, tipología, precio y entrega. La ficha completa con dirección, planos y condiciones del desarrollador se envía a interesados por canal directo.
@@ -123,18 +123,22 @@ export default function OportunidadesPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 border-t border-white/[0.06]">
+      {/* CÓMO FUNCIONA — fondo cream */}
+      <section className="py-20 md:py-24 border-t border-white/[0.06] bg-cream text-ink">
         <div className="container-page max-w-5xl mx-auto">
-          <p className="eyebrow mb-3 mx-auto justify-center w-fit">Cómo funciona</p>
-          <div className="grid gap-6 md:grid-cols-3 mt-10">
+          <p className="eyebrow mb-3 mx-auto justify-center w-fit !text-coral">Cómo funciona</p>
+          <h2 className="text-3xl md:text-4xl font-light text-center mb-12">
+            Tu camino al <span className="serif-accent">pozo</span>
+          </h2>
+          <div className="grid gap-6 md:grid-cols-3">
             {steps.map((s) => (
-              <article key={s.n} className="card-soft card-hover p-7">
+              <article key={s.n} className="bg-white border border-ink/10 p-7 hover:border-coral/40 transition-colors">
                 <div className="flex items-start justify-between mb-5">
-                  <StepIcon icon={s.icon} className="h-10 w-10 text-brand" />
-                  <span className="text-xs font-medium tracking-[0.25em] text-brand/60">{s.n}</span>
+                  <StepIcon icon={s.icon} className="h-10 w-10 text-coral" />
+                  <span className="text-xs font-medium tracking-[0.25em] text-coral/70">{s.n}</span>
                 </div>
-                <h3 className="text-lg font-medium mb-2">{s.title}</h3>
-                <p className="text-sm text-white/70 leading-relaxed">{s.body}</p>
+                <h3 className="text-lg font-medium mb-2 text-ink">{s.title}</h3>
+                <p className="text-sm text-ink/70 leading-relaxed">{s.body}</p>
               </article>
             ))}
           </div>
@@ -151,20 +155,28 @@ export default function OportunidadesPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 border-t border-white/[0.06]">
+      {/* FAQ — fondo cream, items animados */}
+      <section className="py-20 md:py-24 border-t border-white/[0.06] bg-cream text-ink">
         <div className="container-page max-w-3xl mx-auto">
-          <p className="eyebrow mb-3 mx-auto justify-center w-fit">FAQ</p>
-          <h2 className="text-3xl md:text-4xl font-light text-center mb-10">
+          <p className="eyebrow mb-3 mx-auto justify-center w-fit !text-coral">FAQ</p>
+          <h2 className="text-3xl md:text-4xl font-light text-center mb-12">
             Preguntas <span className="serif-accent">frecuentes</span>
           </h2>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {faq.map((item) => (
-              <details key={item.q} className="border border-white/10 p-6 group">
-                <summary className="cursor-pointer font-medium list-none flex items-start justify-between gap-4">
-                  <span>{item.q}</span>
-                  <span className="text-brand text-2xl leading-none group-open:rotate-45 transition-transform">+</span>
+              <details
+                key={item.q}
+                className="bg-white border border-ink/10 rounded-md overflow-hidden transition-all duration-300 open:border-coral/60 open:shadow-[0_8px_24px_-12px_rgba(210,94,53,0.25)]"
+              >
+                <summary className="cursor-pointer list-none px-6 py-5 flex items-start justify-between gap-4 hover:bg-ink/[0.03] transition-colors">
+                  <span className="font-medium text-ink group-open:text-coral">{item.q}</span>
+                  <span className="text-coral text-2xl leading-none flex-shrink-0 transition-transform duration-400 [details[open]_&]:rotate-45">
+                    +
+                  </span>
                 </summary>
-                <p className="mt-4 text-sm text-white/80 leading-relaxed">{item.a}</p>
+                <div className="px-6 pb-5 pt-1 border-t border-coral/15 bg-coral/[0.04]">
+                  <p className="text-sm text-ink/80 leading-relaxed">{item.a}</p>
+                </div>
               </details>
             ))}
           </div>

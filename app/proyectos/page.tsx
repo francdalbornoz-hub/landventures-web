@@ -4,7 +4,6 @@ import { projects } from '@/lib/content/projects';
 import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import { site } from '@/lib/content/site';
-import ProjectsFilter from '@/components/ProjectsFilter';
 import BgRender from '@/components/BgRender';
 
 export const metadata = buildMetadata({
@@ -43,21 +42,15 @@ export default function ProyectosPage() {
       />
 
       <section className="pt-40 pb-20 md:pt-48 md:pb-28 relative overflow-hidden">
-        <BgRender opacity={0.45} variant="hero" />
+        <BgRender opacity={0.55} variant="hero" />
         <div className="container-page relative">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="eyebrow mb-6 mx-auto justify-center w-fit">Portfolio</p>
+            <p className="eyebrow mb-6 mx-auto justify-center w-fit">Nuestros proyectos</p>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight text-balance">
               Desarrollamos proyectos<br />
               <span className="serif-accent">modernos y diferenciales</span>
             </h1>
           </div>
-        </div>
-      </section>
-
-      <section className="py-12 md:py-16">
-        <div className="container-page">
-          <ProjectsFilter projects={projects} />
         </div>
       </section>
 
@@ -128,7 +121,7 @@ export default function ProyectosPage() {
                         rel="noopener noreferrer"
                         className={isLight ? 'btn-brand text-base !px-9 !py-4' : 'btn-brand text-base !px-9 !py-4'}
                       >
-                        Ver renders del proyecto
+                        Conocé más del proyecto
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-1 h-4 w-4" aria-hidden>
                           <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>

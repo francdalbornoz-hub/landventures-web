@@ -87,12 +87,12 @@ export const landStatusColors: Record<LandStatus, string> = {
   proximo: '#a78bfa', // violeta — próximamente
 };
 
-/** Familia de íconos para los markers del mapa. */
-export const landStatusIcons: Record<LandStatus, 'building' | 'money' | 'shop' | 'crane' | 'gem' | 'soon'> = {
-  'cerrado-compraventa': 'money',
-  'cerrado-canje': 'building',
-  'cerrado-local': 'shop',
-  'en-desarrollo': 'crane',
-  abierto: 'gem',
-  proximo: 'soon',
+/** Familia de íconos para los markers del mapa. Mapea a SVGs en /public/images/Icons/ */
+export const landStatusIcons: Record<LandStatus, 'compraventa' | 'canje' | 'local' | 'desarrollo' | 'handshake'> = {
+  'cerrado-compraventa': 'compraventa',
+  'cerrado-canje': 'canje',
+  'cerrado-local': 'local',
+  'en-desarrollo': 'desarrollo',
+  abierto: 'handshake',
+  proximo: 'handshake',
 };
