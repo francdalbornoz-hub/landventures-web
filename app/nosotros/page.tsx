@@ -94,7 +94,7 @@ export default function NosotrosPage() {
 
       {/* EXPERTISE — Lo que hacemos */}
       <section className="py-20 md:py-28 border-t border-white/[0.06] relative overflow-hidden">
-        <BgRender opacity={0.45} />
+        <BgRender opacity={0.18} />
         <div className="container-page max-w-5xl mx-auto relative">
           <Reveal>
             <p className="eyebrow mb-4 mx-auto justify-center w-fit">Lo que hacemos</p>

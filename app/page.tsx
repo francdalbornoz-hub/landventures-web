@@ -233,16 +233,14 @@ export default function HomePage() {
               </div>
             </Reveal>
             <Reveal delay={200} variant="scale">
-              {/* Placeholder para imagen del bloque Terrenos — reemplazar src cuando esté */}
-              <div className="aspect-square relative rounded-sm overflow-hidden border border-white/10">
+              <div className="aspect-square relative">
                 <Image
-                  src="/images/block-default.jpg"
-                  alt="Operaciones de tierra en CABA"
+                  src="/images/CABA.png"
+                  alt="Mapa de operaciones en CABA"
                   fill
                   sizes="(min-width:768px) 45vw, 90vw"
-                  className="object-cover"
+                  className="object-contain"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-ink/30 via-transparent to-transparent" />
               </div>
             </Reveal>
           </div>
