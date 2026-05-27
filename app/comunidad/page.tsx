@@ -55,7 +55,7 @@ export default function ComunidadPage() {
       <section className="py-16 md:py-24 border-t border-white/10 relative overflow-hidden">
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <Image
-            src="/images/Eventos/ruckauf.jpg"
+            src="/images/Eventos/Background-comunidad.jpg"
             alt=""
             fill
             sizes="100vw"

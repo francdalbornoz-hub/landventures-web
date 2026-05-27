@@ -253,7 +253,7 @@ export default function HomePage() {
       <section className="py-24 md:py-32 border-t border-white/[0.06] bg-white text-ink relative overflow-hidden">
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <Image
-            src="/images/Eventos/ruckauf.jpg"
+            src="/images/Eventos/Background-comunidad.jpg"
             alt=""
             fill
             sizes="100vw"
