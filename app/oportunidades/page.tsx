@@ -13,24 +13,21 @@ export const metadata = buildMetadata({
     'Unidades en pozo curadas en CABA: barrio, precio, superficie y entrega. La ficha completa se envía a interesados en privado.',
 });
 
-const steps = [
+const offerings = [
   {
-    n: '01',
     icon: 'curator',
-    title: 'Curaduría',
-    body: 'Seleccionamos unidades en pozo en zonas con buen recorrido de precio por m².',
+    title: 'Distintos proyectos',
+    body: 'Unidades disponibles en varios de nuestros desarrollos en CABA.',
   },
   {
-    n: '02',
-    icon: 'private',
-    title: 'Información en privado',
-    body: 'La ficha completa (dirección, planos, condiciones) se envía a los interesados por canal directo.',
-  },
-  {
-    n: '03',
     icon: 'handshake',
-    title: 'Acompañamos la operación',
-    body: 'Coordinamos la reunión con el desarrollador, asistimos en el boleto y el seguimiento de obra.',
+    title: 'Distintas etapas',
+    body: 'En pozo, en construcción o terminadas, según lo que estés buscando.',
+  },
+  {
+    icon: 'private',
+    title: 'Precio de oportunidad',
+    body: 'Mejores zonas de la ciudad, con un precio de entrada difícil de igualar.',
   },
 ];
 
@@ -103,12 +100,12 @@ export default function OportunidadesPage() {
       <section className="pt-36 pb-12 md:pt-44 md:pb-16 relative overflow-hidden">
         <BgRender src="/images/Pozo/Pozo-background.jpg" opacity={0.55} variant="hero" />
         <div className="container-page max-w-4xl mx-auto text-center relative">
-          <p className="eyebrow mb-5 mx-auto justify-center w-fit">Land Ventures Pozo Club</p>
+          <p className="eyebrow mb-5 mx-auto justify-center w-fit">Land Ventures · Pozo Club</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-balance">
             Oportunidades <span className="serif-accent">en pozo</span> exclusivas
           </h1>
-          <p className="mt-6 text-base md:text-lg text-white/80 max-w-2xl mx-auto">
-            Mostramos información general de cada unidad: barrio, tipología, precio y entrega. La ficha completa con dirección, planos y condiciones del desarrollador se envía a interesados por canal directo.
+          <p className="mt-6 text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
+            Unidades en pozo seleccionadas en las mejores zonas de CABA. Entramos a cada proyecto desde el origen, y eso se traduce en mejores condiciones de entrada para vos.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#listado" className="btn-outline">Ver oportunidades</a>
@@ -124,22 +121,19 @@ export default function OportunidadesPage() {
         </div>
       </section>
 
-      {/* CÓMO FUNCIONA — fondo gris claro */}
+      {/* QUÉ OFRECEMOS — fondo gris claro */}
       <section className="py-20 md:py-24 border-t border-white/[0.06] bg-[#dad7d1] text-ink">
         <div className="container-page max-w-5xl mx-auto">
-          <p className="eyebrow mb-3 mx-auto justify-center w-fit !text-coral">Cómo funciona</p>
+          <p className="eyebrow mb-3 mx-auto justify-center w-fit !text-coral">Lo que ofrecemos</p>
           <h2 className="text-3xl md:text-4xl font-light text-center mb-12">
-            El proceso, <span className="serif-accent">paso a paso</span>
+            ¿Qué <span className="serif-accent">ofrecemos</span>?
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
-            {steps.map((s) => (
-              <article key={s.n} className="bg-white border border-ink/10 p-7 hover:border-coral/40 transition-colors">
-                <div className="flex items-start justify-between mb-5">
-                  <StepIcon icon={s.icon} className="h-10 w-10 text-coral" />
-                  <span className="text-xs font-medium tracking-[0.25em] text-coral/70">{s.n}</span>
-                </div>
-                <h3 className="text-lg font-medium mb-2 text-ink">{s.title}</h3>
-                <p className="text-sm text-ink/70 leading-relaxed">{s.body}</p>
+            {offerings.map((o) => (
+              <article key={o.title} className="bg-white border border-ink/10 p-7 hover:border-coral/40 transition-colors">
+                <StepIcon icon={o.icon} className="h-10 w-10 text-coral mb-5" />
+                <h3 className="text-lg font-medium mb-2 text-ink">{o.title}</h3>
+                <p className="text-sm text-ink/70 leading-relaxed">{o.body}</p>
               </article>
             ))}
           </div>

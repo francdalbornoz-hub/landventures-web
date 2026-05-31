@@ -81,7 +81,7 @@ export default function ContactoPage() {
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-6 text-white/75 max-w-2xl mx-auto text-base md:text-lg">
-              Email, WhatsApp o pasate por la oficina. Te respondemos en menos de 24hs hábiles.
+              Email, WhatsApp o pasate por la oficina. Te respondemos en menos de 24 horas hábiles.
             </p>
           </Reveal>
         </div>

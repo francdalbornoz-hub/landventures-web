@@ -5,7 +5,7 @@ import Reveal from '@/components/Reveal';
 import BgRender from '@/components/BgRender';
 import CountUp from '@/components/CountUp';
 import { site } from '@/lib/content/site';
-import { trackRecord } from '@/lib/content/timeline';
+import { trackRecordTerrenos } from '@/lib/content/timeline';
 import { lands } from '@/lib/content/lands';
 import LandsMap from '@/components/LandsMapClient';
 
@@ -13,33 +13,33 @@ export const metadata = buildMetadata({
   title: 'Terrenos',
   path: '/terrenos',
   description:
-    'Inversión en tierra en CABA junto a Land Ventures: compra conjunta, banca de tierras y más de 30 operaciones de track record.',
+    'Invertí en tierra desde el origen junto a Land Ventures: compra conjunta en las mejores zonas de CABA y +30 operaciones de track record.',
 });
 
 const advantages = [
   {
+    icon: 'invest',
+    title: 'Ponemos nuestro capital',
+    body: 'Somos el principal inversor de cada operación que ofrecemos. Si no invertiríamos nosotros, no te la ofrecemos.',
+    badge: '±30% de cada compra',
+  },
+  {
     icon: 'star',
-    title: 'El mejor precio del mercado',
-    body: 'Combinando la compra del terreno en oportunidad y el canje que realizamos con el desarrollador, obtenemos el precio de m² más bajo del mercado.',
-    badge: 'Hasta 25% por debajo de la lista del desarrollador',
+    title: 'Negociamos las mejores condiciones',
+    body: 'Comprar el terreno en oportunidad es solo la mitad. La otra es el canje: nuestra experiencia negociando con desarrolladores nos da, en promedio, ~29,8% de canje por metros en cada obra.',
+    badge: '~29,8% más m² por canje',
   },
   {
     icon: 'lock',
     title: 'Seguridad jurídica real',
-    body: 'Constituimos una hipoteca sobre el lote, a fin de proteger nuestra inversión.',
-    badge: 'Hipoteca hasta entrega de unidades funcionales',
+    body: 'Constituimos una hipoteca sobre el lote para proteger la inversión, vigente hasta la entrega de las unidades funcionales.',
+    badge: 'Hipoteca hasta entrega',
   },
   {
     icon: 'clock',
     title: 'Experiencia comprobada',
-    body: '+10 años en el mercado de tierras en CABA. Conocemos cada barrio, cada zonificación y cada oportunidad antes de que salga al mercado.',
-    badge: '+30 terrenos comprados en CABA',
-  },
-  {
-    icon: 'invest',
-    title: 'Invertimos siempre',
-    body: 'Somos el principal inversor de cada oportunidad de compra de terreno que ofrecemos a nuestros inversores.',
-    badge: '±30% de cada compra de terreno',
+    body: '+10 años operando tierra en CABA. Conocemos cada barrio, cada zonificación y cada oportunidad antes de que salga al mercado.',
+    badge: '+30 terrenos en CABA',
   },
 ];
 
@@ -57,18 +57,22 @@ export default function TerrenosPage() {
 
       {/* HERO */}
       <section className="pt-32 pb-12 md:pt-40 md:pb-16 relative overflow-hidden">
-        <BgRender opacity={0.07} variant="hero" />
+        <BgRender opacity={0.55} variant="hero" />
         <div className="container-page max-w-4xl mx-auto text-center relative">
           <Reveal>
             <p className="eyebrow mb-5 mx-auto justify-center w-fit">Inversión en tierra</p>
           </Reveal>
           <Reveal delay={100}>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-balance">
-              Compramos terrenos en CABA junto a inversores para{' '}
-              <span className="serif-accent">maximizar su rentabilidad</span>.
+              Invertí en tierra <span className="serif-accent">desde el origen</span>
             </h1>
           </Reveal>
-          <Reveal delay={250}>
+          <Reveal delay={200}>
+            <p className="mt-6 text-white/80 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+              Compramos terrenos en las mejores zonas de CABA junto a inversores. Nuestra fortaleza está en la negociación: conseguimos las mejores condiciones de canje del mercado.
+            </p>
+          </Reveal>
+          <Reveal delay={300}>
             <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
               <a href="#mapa" className="btn-outline">Ver el mapa</a>
               <Link href="/contacto" className="btn-outline">Quiero invertir</Link>
@@ -77,14 +81,14 @@ export default function TerrenosPage() {
         </div>
       </section>
 
-      {/* TRACK RECORD — fondo cream para romper la monotonía */}
+      {/* TRACK RECORD — fondo cream */}
       <section className="py-14 md:py-16 border-t border-white/[0.06] bg-cream text-ink">
         <div className="container-page max-w-5xl mx-auto">
           <Reveal>
             <p className="eyebrow mb-12 mx-auto justify-center w-fit !text-coral">Track record</p>
           </Reveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-            {trackRecord.map((m, i) => (
+            {trackRecordTerrenos.map((m, i) => (
               <Reveal key={m.label} delay={i * 100}>
                 <div>
                   <p className="font-light text-3xl sm:text-4xl md:text-4xl lg:text-5xl text-brand leading-none whitespace-nowrap">
@@ -100,15 +104,18 @@ export default function TerrenosPage() {
               </Reveal>
             ))}
           </div>
+          <p className="text-center text-[10px] uppercase tracking-[0.22em] text-ink/40 mt-8">
+            Datos promedio de operaciones realizadas
+          </p>
         </div>
       </section>
 
-      {/* CUATRO VENTAJAS ÚNICAS */}
+      {/* POR QUÉ INVERTIR EN TIERRA CON NOSOTROS — 4 ventajas reordenadas */}
       <section className="py-20 md:py-28 border-t border-white/[0.06] relative overflow-hidden">
         <BgRender opacity={0.04} />
         <div className="container-page max-w-6xl mx-auto relative">
           <Reveal>
-            <p className="eyebrow mb-4 mx-auto justify-center w-fit">Por qué Land Ventures</p>
+            <p className="eyebrow mb-4 mx-auto justify-center w-fit">Por qué invertir</p>
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center mb-16 text-balance">
@@ -141,7 +148,7 @@ export default function TerrenosPage() {
             </Reveal>
             <Reveal delay={100}>
               <h2 className="text-3xl md:text-5xl font-light text-balance">
-                +30 <span className="serif-accent">operaciones en CABA</span>
+                +{totalOps} <span className="serif-accent">operaciones en CABA</span>
               </h2>
             </Reveal>
             <Reveal delay={200}>
@@ -156,7 +163,7 @@ export default function TerrenosPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CIERRE */}
       <section className="py-20 md:py-24 border-t border-white/[0.06]">
         <div className="container-page max-w-3xl mx-auto text-center">
           <Reveal>
@@ -165,8 +172,8 @@ export default function TerrenosPage() {
             </h2>
           </Reveal>
           <Reveal delay={150}>
-            <p className="mt-5 text-white/70 max-w-lg mx-auto">
-              Te contamos cómo se estructura, qué tickets manejamos y qué oportunidades tenemos abiertas.
+            <p className="mt-5 text-white/70 max-w-lg mx-auto leading-relaxed">
+              Te contamos cómo se estructura una operación, desde qué ticket se entra y qué oportunidades tenemos abiertas hoy.
             </p>
           </Reveal>
           <Reveal delay={250}>

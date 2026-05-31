@@ -17,11 +17,15 @@ export function buildMetadata({
   type = 'website',
 }: BuildMetadataInput = {}): Metadata {
   const url = `${site.url}${path}`;
-  const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Desarrollos inmobiliarios en Buenos Aires`;
+  const fullTitle = title
+    ? `${title} | ${site.name}`
+    : `${site.name} — Desarrollos e inversión inmobiliaria en Buenos Aires`;
   const absoluteImage = image.startsWith('http') ? image : `${site.url}${image}`;
 
   return {
-    title: fullTitle,
+    // `absolute` evita que el template del root layout se aplique encima,
+    // bug que generaba "Land Ventures | Land Ventures" en algunas páginas.
+    title: { absolute: fullTitle },
     description,
     alternates: { canonical: url },
     openGraph: {

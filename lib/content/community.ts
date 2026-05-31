@@ -1,16 +1,17 @@
 /**
  * Eventos y actividades de comunidad. Editá libremente.
  * Para mostrar foto: poné el archivo en /public/images/Eventos/<archivo> y referenciá en `cover`.
+ *
+ * NOTA: las fechas no se muestran en la web (decisión de Diego 2026-05-27).
+ * Se mantienen en el código para ordenamiento interno y SEO/sitemap.
  */
 export type EventStatus = 'proximo' | 'pasado';
 
 export type CommunityEvent = {
   slug: string;
   title: string;
-  /** Fecha ISO YYYY-MM-DD (para ordenamiento y SEO) */
+  /** Fecha ISO YYYY-MM-DD (para ordenamiento interno, no se muestra) */
   date: string;
-  /** Texto humano: "16 de Septiembre, 2025" o "Próximamente" */
-  dateLabel?: string;
   /** Ubicación / venue */
   location?: string;
   /** Descripción corta (1-2 oraciones) */
@@ -31,33 +32,20 @@ export const events: CommunityEvent[] = [
     slug: 'charla-trebucq',
     title: 'Charla con Esteban Trebucq',
     date: '2026-04-30',
-    dateLabel: '30 de Abril, 2026',
     location: 'Buenos Aires',
-    description: 'Charla con Esteban Trebucq sobre política y economía.',
+    description: 'Una mirada sobre la coyuntura económica y política del país.',
     status: 'pasado',
     guest: 'Esteban Trebucq',
     guestRole: 'Periodista',
     cover: '/images/Eventos/trebucq.jpeg',
   },
   {
-    slug: 'charla-bulat',
-    title: 'Charla con Santiago Bulat',
-    date: '2025-09-16',
-    dateLabel: '16 de Septiembre, 2025',
-    location: 'Buenos Aires',
-    description: 'Charla con Santiago Bulat sobre economía.',
-    status: 'pasado',
-    guest: 'Santiago Bulat',
-    guestRole: 'Economista',
-    cover: '/images/Eventos/Bulat.webp',
-  },
-  {
     slug: 'conversacion-ruckauf',
     title: 'Conversación con Carlos Ruckauf',
     date: '2026-04-15',
-    dateLabel: '15 de Abril, 2026',
     location: 'Buenos Aires',
-    description: 'Charla abierta con Carlos Ruckauf sobre coyuntura económica, mercado inmobiliario y oportunidades en CABA.',
+    description:
+      'El escenario político y económico tras las elecciones, y cómo puede influir en las oportunidades de inversión de los próximos meses.',
     status: 'pasado',
     guest: 'Carlos Ruckauf',
     guestRole: 'Ex-Vicepresidente',
@@ -67,8 +55,7 @@ export const events: CommunityEvent[] = [
     slug: 'proximo-encuentro',
     title: 'Próximo encuentro',
     date: '2026-07-01',
-    dateLabel: 'Próximamente',
-    description: 'Estamos preparando el próximo evento de comunidad. Suscribite para enterarte primero.',
+    description: 'Estamos preparando el próximo encuentro. Suscribite para enterarte primero.',
     status: 'proximo',
   },
 ];

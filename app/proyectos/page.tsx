@@ -10,11 +10,11 @@ export const metadata = buildMetadata({
   title: 'Proyectos',
   path: '/proyectos',
   description:
-    'Todos los desarrollos inmobiliarios de Land Ventures en Buenos Aires: Palermo Hollywood, Colegiales, San Telmo y más. Filtrá por estado: en curso, terminados, próximamente.',
+    'Desarrollos propios y en construcción de Land Ventures en Belgrano, Nuñez, Palermo Hollywood, Colegiales, San Telmo y otras zonas premium de CABA.',
 });
 
 const STATUS_LABEL: Record<string, string> = {
-  'en-curso': 'En curso',
+  'en-construccion': 'En construcción',
   terminado: 'Terminado',
   proximamente: 'Próximamente',
 };
@@ -45,10 +45,16 @@ export default function ProyectosPage() {
         <BgRender opacity={0.55} variant="hero" />
         <div className="container-page relative">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="eyebrow mb-6 mx-auto justify-center w-fit">Portfolio</p>
+            <p className="eyebrow mb-6 mx-auto justify-center w-fit">Proyectos</p>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight text-balance">
-              Conocé <span className="serif-accent">nuestros proyectos</span>
+              Nuestros <span className="serif-accent">desarrollos</span>
             </h1>
+            <p className="mt-7 text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+              Cada proyecto nace de un terreno comprado en oportunidad y se desarrolla en las mejores zonas de CABA. Así construimos valor desde el origen.
+            </p>
+            <p className="mt-5 text-white/55 text-sm max-w-2xl mx-auto">
+              Desarrollos propios y en curso en Belgrano, Nuñez, Palermo Hollywood, Colegiales, San Telmo y otras zonas premium de la ciudad.
+            </p>
           </div>
         </div>
       </section>
@@ -202,6 +208,27 @@ export default function ProyectosPage() {
           </section>
         );
       })}
+
+      {/* CIERRE */}
+      <section className="py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="container-page max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-5xl font-light text-balance">
+            ¿Querés conocer el <span className="serif-accent">próximo desarrollo</span> antes de que salga al mercado?
+          </h2>
+          <p className="mt-5 text-white/70 max-w-lg mx-auto">Escribinos.</p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+            <a href={`mailto:${site.contact.email}`} className="btn-outline">{site.contact.email}</a>
+            <a
+              href={`https://wa.me/${site.contact.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline"
+            >
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

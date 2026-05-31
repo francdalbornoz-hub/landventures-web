@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { site } from '@/lib/content/site';
 import { projects } from '@/lib/content/projects';
-import { trackRecord } from '@/lib/content/timeline';
+import { trackRecordHome } from '@/lib/content/timeline';
 import { events } from '@/lib/content/community';
 import JsonLd from '@/components/JsonLd';
 import Reveal from '@/components/Reveal';
@@ -14,6 +14,25 @@ export const metadata = buildMetadata({
   path: '/',
   description: site.description,
 });
+
+const pillarCopy: Record<string, { label: string; tagline: string }> = {
+  proyectos: {
+    label: 'Proyectos',
+    tagline: 'Desarrollos propios en las mejores zonas de CABA.',
+  },
+  terrenos: {
+    label: 'Terrenos',
+    tagline: 'Invertí en tierra junto a nosotros, desde el origen de cada operación.',
+  },
+  oportunidades: {
+    label: 'Oportunidades',
+    tagline: 'Unidades en pozo seleccionadas una por una, con el respaldo de +30 operaciones.',
+  },
+  comunidad: {
+    label: 'Comunidad',
+    tagline: 'Eventos, charlas y encuentros con inversores e invitados.',
+  },
+};
 
 export default function HomePage() {
   const upcomingEvent = events.find((e) => e.status === 'proximo');
@@ -58,11 +77,14 @@ export default function HomePage() {
             priority
             className="mx-auto h-28 md:h-40 lg:h-48 w-auto brightness-0 invert opacity-95"
           />
-          <h1 className="sr-only">{site.name} — Desarrollos inmobiliarios y oportunidades de inversión en Buenos Aires</h1>
+          <h1 className="sr-only">
+            Land Ventures — Desarrollos e inversión inmobiliaria en Buenos Aires
+          </h1>
           <div className="mt-12 mx-auto w-px h-10 bg-brand/60" />
-          <p className="mt-10 text-2xl md:text-3xl lg:text-4xl font-light max-w-3xl mx-auto text-balance text-white/95 leading-snug">
-            Desarrollos, inversiones en tierra y oportunidades en pozo{' '}
-            <span className="serif-accent">en un solo lugar</span>.
+          <p className="mt-10 text-xl md:text-2xl lg:text-3xl font-light max-w-3xl mx-auto text-balance text-white/95 leading-snug">
+            Más de una década comprando tierra en las mejores zonas de CABA.
+            Desarrollamos, invertimos y abrimos cada operación a quienes quieren entrar{' '}
+            <span className="serif-accent">desde el origen</span>.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/proyectos" className="btn-outline-white">Ver proyectos</Link>
@@ -76,14 +98,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TAGLINE */}
+      {/* SUBHERO */}
       <section className="py-20 md:py-32">
         <div className="container-page text-center max-w-4xl mx-auto">
           <Reveal>
             <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug text-balance">
-              Identificamos{' '}
-              <span className="serif-accent">oportunidades estratégicas</span> y desarrollamos{' '}
-              <span className="serif-accent">proyectos inmobiliarios</span> modernos y diferenciales.
+              Compramos tierra en oportunidad en las mejores zonas de CABA y la transformamos en{' '}
+              <span className="serif-accent">unidades de alto valor</span>. Invertí con nosotros desde el origen del proyecto.
             </p>
           </Reveal>
           <Reveal delay={150}>
@@ -92,7 +113,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PILARES */}
+      {/* PILARES — LO QUE HACEMOS */}
       <section className="py-20 md:py-28 border-t border-white/[0.06] relative overflow-hidden">
         <BgRender />
         <div className="container-page max-w-6xl mx-auto relative">
@@ -105,38 +126,41 @@ export default function HomePage() {
             </h2>
           </Reveal>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {site.pillars.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 100} variant="fade-up">
-                <Link
-                  href={p.href}
-                  className="group card-soft card-hover p-7 h-full block relative overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 w-20 h-20 -mr-10 -mt-10 rounded-full bg-brand/5 group-hover:bg-brand/10 transition-colors duration-500" />
-                  <span className="text-[10px] font-medium text-brand/70 tracking-[0.3em]">
-                    0{i + 1}
-                  </span>
-                  <h3 className="text-xl md:text-2xl text-white mt-3 mb-4 font-light group-hover:text-brand transition-colors duration-500 leading-tight">
-                    {p.label}
-                  </h3>
-                  <p className="text-sm text-white/65 leading-relaxed">{p.tagline}</p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-brand opacity-70 group-hover:opacity-100 group-hover:gap-3 transition-all duration-500">
-                    Conocé más <span>→</span>
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
+            {site.pillars.map((p, i) => {
+              const copy = pillarCopy[p.slug] ?? { label: p.label, tagline: p.tagline };
+              return (
+                <Reveal key={p.slug} delay={i * 100} variant="fade-up">
+                  <Link
+                    href={p.href}
+                    className="group card-soft card-hover p-7 h-full block relative overflow-hidden"
+                  >
+                    <div className="absolute top-0 right-0 w-20 h-20 -mr-10 -mt-10 rounded-full bg-brand/5 group-hover:bg-brand/10 transition-colors duration-500" />
+                    <span className="text-[10px] font-medium text-brand/70 tracking-[0.3em]">
+                      0{i + 1}
+                    </span>
+                    <h3 className="text-xl md:text-2xl text-white mt-3 mb-4 font-light group-hover:text-brand transition-colors duration-500 leading-tight">
+                      {copy.label}
+                    </h3>
+                    <p className="text-sm text-white/65 leading-relaxed">{copy.tagline}</p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-brand opacity-70 group-hover:opacity-100 group-hover:gap-3 transition-all duration-500">
+                      Conocé más <span>→</span>
+                    </span>
+                  </Link>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* TRACK RECORD — fondo cream para romper monotonía */}
+      {/* TRACK RECORD — fondo cream */}
       <section className="py-20 md:py-24 border-t border-white/[0.06] bg-cream text-ink">
         <div className="container-page max-w-5xl mx-auto">
           <Reveal>
             <p className="eyebrow mb-12 mx-auto justify-center w-fit !text-coral">Track record</p>
           </Reveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-            {trackRecord.map((m, i) => (
+            {trackRecordHome.map((m, i) => (
               <Reveal key={m.label} delay={i * 100} variant="fade-up">
                 <div>
                   <p className="font-light text-3xl sm:text-4xl md:text-4xl lg:text-5xl text-brand leading-none whitespace-nowrap">
@@ -208,7 +232,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TERRENOS */}
+      {/* BLOQUE TERRENOS */}
       <section className="py-20 md:py-28 border-t border-white/[0.06] bg-ink-dark/40 relative overflow-hidden">
         <div className="absolute top-1/2 -translate-y-1/2 -right-32 w-96 h-96 rounded-full bg-brand/5 blur-3xl" aria-hidden />
         <div className="container-page max-w-5xl mx-auto relative">
@@ -217,10 +241,11 @@ export default function HomePage() {
               <div>
                 <p className="eyebrow mb-4">Terrenos</p>
                 <h2 className="text-3xl md:text-5xl font-light mb-6 text-balance leading-tight">
-                  +30 terrenos <span className="serif-accent">comprados en CABA</span>
+                  Una década comprando, canjeando y vendiendo tierra en las{' '}
+                  <span className="serif-accent">mejores zonas</span> de Buenos Aires.
                 </h2>
                 <p className="text-white/75 leading-relaxed mb-8 max-w-md">
-                  Más de una década comprando, canjeando y vendiendo tierra junto a inversores en los mejores corredores de Buenos Aires.
+                  Cada operación, con nuestro propio capital adentro.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <Link href="/terrenos" className="btn-outline">
@@ -247,7 +272,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* COMUNIDAD — fondo blanco con imagen sutil de personas */}
+      {/* COMUNIDAD — fondo blanco con imagen sutil */}
       <section className="py-24 md:py-32 border-t border-white/[0.06] bg-white text-ink relative overflow-hidden">
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <Image
@@ -276,7 +301,7 @@ export default function HomePage() {
           {upcomingEvent && (
             <Reveal delay={300}>
               <div className="inline-block border border-ink/15 rounded-lg p-6 md:p-8 max-w-md mx-auto mb-10 text-left bg-cream/50">
-                <p className="text-[10px] uppercase tracking-[0.28em] text-coral mb-2">{upcomingEvent.dateLabel}</p>
+                <p className="text-[10px] uppercase tracking-[0.28em] text-coral mb-2">Próximo evento</p>
                 <h3 className="text-xl font-medium mb-2">{upcomingEvent.title}</h3>
                 <p className="text-sm text-ink/70">{upcomingEvent.description}</p>
               </div>

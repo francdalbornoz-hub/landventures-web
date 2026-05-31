@@ -5,19 +5,21 @@
  *  3. Agregá un objeto al array `projects` con los datos
  *  4. Listo — aparece en home, /proyectos, sitemap, JSON-LD y llms.txt automáticamente.
  *
- * El campo `winbuildUrl` apunta a la página de renders WinBuild de cada proyecto.
- * Cuando se aprueba la URL real, reemplazá el placeholder.
+ * El campo `winbuildUrl` apunta a la página de renders/proyecto de cada desarrollo.
+ *
+ * IMPORTANTE: NO publicar el rol de cada proyecto (propio / co-desarrollo / canje).
+ * Todas las fichas se muestran parejas en el público.
  */
 
-export type ProjectStatus = 'proximamente' | 'en-curso' | 'terminado';
+export type ProjectStatus = 'proximamente' | 'en-construccion' | 'terminado';
 
 export type Project = {
   slug: string;
   /** Nombre corto, ej: "Dorrego" */
   name: string;
-  /** Sufijo en serif, ej: "Place", "2305", "435" */
+  /** Sufijo, ej: "Place", "2305" */
   suffix?: string;
-  /** Conector corto en mayúsculas: "Triple esquina", "Esquina", "Entre" */
+  /** Conector corto en mayúsculas: "Esquina", "Entre" */
   locationHeadline: string;
   /** Calle / intersección (ej: "Dorrego, Arévalo y Av. Córdoba") */
   locationDetail: string;
@@ -42,7 +44,7 @@ export type Project = {
   status: ProjectStatus;
   /** Año tentativo de finalización (opcional) */
   year?: number;
-  /** URL de la página de renders WinBuild del proyecto */
+  /** URL de la página de renders del proyecto */
   winbuildUrl?: string;
   /** URL de la carpeta del proyecto (PDF) */
   brochureUrl?: string;
@@ -51,51 +53,6 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  {
-    slug: 'dorrego-place',
-    name: 'Dorrego',
-    suffix: 'Place',
-    locationHeadline: 'Triple esquina',
-    locationDetail: 'Dorrego, Arévalo y Av. Córdoba',
-    neighborhood: 'Palermo Hollywood',
-    image: '/images/projects/Dorrego-portada.webp',
-    gallery: [
-      '/images/projects/Dorrego-2.webp',
-      '/images/projects/Dorrego-3.webp',
-    ],
-    description:
-      'Triple esquina en Palermo Hollywood. Excelente accesibilidad en el polo gastronómico y cultural del barrio. Unidades de 1 y 2 ambientes con cocinas integradas.',
-    units: ['1 ambiente', '2 ambientes con cocina integrada'],
-    unitCount: 39,
-    surface: 2200,
-    commercial: true,
-    commercialCount: 1,
-    status: 'en-curso',
-    winbuildUrl: 'https://winbuild.com.ar/dorrego-place', // TODO: reemplazar por URL real
-  },
-  {
-    slug: 'newbery-place',
-    name: 'Newbery',
-    suffix: 'Place',
-    locationHeadline: 'Esquina',
-    locationDetail: 'Newbery y Zapata',
-    neighborhood: 'Colegiales',
-    image: '/images/projects/Newbery-portada.webp',
-    gallery: [
-      '/images/projects/Newbery-1.webp',
-      '/images/projects/Newbery-2.webp',
-      '/images/projects/Newbery-3.webp',
-    ],
-    description:
-      'Esquina única en Colegiales, a metros de Las Cañitas y Belgrano. Unidades de 1, 2 y 3 ambientes en una zona en pleno crecimiento.',
-    units: ['1 ambiente', '2 ambientes', '3 ambientes'],
-    unitCount: 22,
-    surface: 1500,
-    commercial: true,
-    commercialCount: 1,
-    status: 'en-curso',
-    winbuildUrl: 'https://winbuild.com.ar/newbery-place', // TODO
-  },
   {
     slug: 'bonpland-2305',
     name: 'Bonpland',
@@ -115,7 +72,7 @@ export const projects: Project[] = [
     surface: 1800,
     commercial: true,
     commercialCount: 2,
-    status: 'en-curso',
+    status: 'terminado',
     winbuildUrl: 'https://winbuild.com.ar/bonpland-2305', // TODO
   },
   {
@@ -139,13 +96,13 @@ export const projects: Project[] = [
     surface: 2400,
     commercial: true,
     commercialCount: 1,
-    status: 'en-curso',
+    status: 'terminado',
     winbuildUrl: 'https://winbuild.com.ar/ene-nicaragua', // TODO
   },
   {
-    slug: 'caseros-435',
-    name: 'Caseros',
-    suffix: '435',
+    slug: 'late-san-telmo',
+    name: 'LATE',
+    suffix: 'San Telmo',
     locationHeadline: 'Entre',
     locationDetail: 'Defensa y Bolivia',
     neighborhood: 'San Telmo',
@@ -162,13 +119,58 @@ export const projects: Project[] = [
     surface: 1300,
     commercial: true,
     commercialCount: 1,
-    status: 'en-curso',
-    winbuildUrl: 'https://winbuild.com.ar/caseros-435', // TODO
+    status: 'en-construccion',
+    winbuildUrl: 'https://winbuild.com.ar/late-san-telmo', // TODO
   },
   {
-    slug: 'aguilar-2403',
+    slug: 'newbery-place',
+    name: 'Newbery',
+    suffix: 'Place',
+    locationHeadline: 'Esquina',
+    locationDetail: 'Newbery y Zapata',
+    neighborhood: 'Colegiales',
+    image: '/images/projects/Newbery-portada.webp',
+    gallery: [
+      '/images/projects/Newbery-1.webp',
+      '/images/projects/Newbery-2.webp',
+      '/images/projects/Newbery-3.webp',
+    ],
+    description:
+      'Esquina única en Colegiales, a metros de Las Cañitas y Belgrano. Unidades de 1, 2 y 3 ambientes en una zona en pleno crecimiento.',
+    units: ['1 ambiente', '2 ambientes', '3 ambientes'],
+    unitCount: 22,
+    surface: 1500,
+    commercial: true,
+    commercialCount: 1,
+    status: 'en-construccion',
+    winbuildUrl: 'https://winbuild.com.ar/newbery-place', // TODO
+  },
+  {
+    slug: 'dorrego-place',
+    name: 'Dorrego',
+    suffix: 'Place',
+    locationHeadline: 'Triple esquina',
+    locationDetail: 'Dorrego, Arévalo y Av. Córdoba',
+    neighborhood: 'Palermo Hollywood',
+    image: '/images/projects/Dorrego-portada.webp',
+    gallery: [
+      '/images/projects/Dorrego-2.webp',
+      '/images/projects/Dorrego-3.webp',
+    ],
+    description:
+      'Triple esquina en Palermo Hollywood. Excelente accesibilidad en el polo gastronómico y cultural del barrio. Unidades de 1 y 2 ambientes con cocinas integradas.',
+    units: ['1 ambiente', '2 ambientes con cocina integrada'],
+    unitCount: 39,
+    surface: 2200,
+    commercial: true,
+    commercialCount: 1,
+    status: 'en-construccion',
+    winbuildUrl: 'https://winbuild.com.ar/dorrego-place', // TODO
+  },
+  {
+    slug: 'aguilar-place',
     name: 'Aguilar',
-    suffix: '2403',
+    suffix: 'Place',
     locationHeadline: 'Esquina',
     locationDetail: 'Aguilar y Cabildo',
     neighborhood: 'Colegiales / Belgrano',
@@ -185,8 +187,24 @@ export const projects: Project[] = [
     surface: 2000,
     commercial: true,
     commercialCount: 2,
-    status: 'en-curso',
+    status: 'en-construccion',
     winbuildUrl: 'https://aguilarplace.vercel.app/',
+  },
+  {
+    slug: 'belnovo-olleros',
+    name: 'Belnovo',
+    suffix: 'Olleros',
+    locationHeadline: 'Sobre',
+    locationDetail: 'Olleros',
+    neighborhood: 'Colegiales',
+    image: '/images/block-default.jpg', // TODO: poner Belnovo-portada.webp cuando esté
+    gallery: [],
+    description:
+      'Nuevo desarrollo sobre Olleros, en pleno corazón de Colegiales. Diseño contemporáneo en una zona en crecimiento.',
+    units: ['1 ambiente', '2 ambientes', '3 ambientes'],
+    commercial: false,
+    status: 'en-construccion',
+    winbuildUrl: 'https://winbuild.com.ar/belnovo-olleros', // TODO
   },
 ];
 

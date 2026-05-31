@@ -42,7 +42,7 @@ export default function ComunidadPage() {
       {upcoming.length > 0 && (
         <section className="py-12 md:py-16 border-t border-white/10">
           <div className="container-page max-w-5xl mx-auto">
-            <p className="eyebrow mb-6">Próximos eventos</p>
+            <p className="eyebrow mb-6">Próximo evento</p>
             <div className="grid gap-6 md:grid-cols-2">
               {upcoming.map((e) => (
                 <EventCard key={e.slug} event={e} highlight />
@@ -65,14 +65,14 @@ export default function ComunidadPage() {
           <div className="absolute inset-0 grain" />
         </div>
         <div className="container-page max-w-5xl mx-auto relative">
-          <p className="eyebrow mb-6">Encuentros y charlas</p>
+          <p className="eyebrow mb-6">Eventos pasados</p>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {past.map((e) => (
               <EventCard key={e.slug} event={e} />
             ))}
           </div>
           {past.length === 0 && (
-            <p className="text-white/60">Pronto vamos a sumar el archivo de encuentros pasados.</p>
+            <p className="text-white/60">Pronto vamos a sumar el archivo de eventos pasados.</p>
           )}
         </div>
       </section>
@@ -124,18 +124,17 @@ function EventCard({
         </div>
       ) : (
         <div className="relative aspect-[16/9] bg-gradient-to-br from-brand/20 via-ink-dark to-ink-deep grid place-items-center">
-          <span className="font-light italic text-brand/60 text-2xl">{event.dateLabel ?? event.date}</span>
+          <span className="font-light italic text-brand/60 text-2xl">{event.title}</span>
         </div>
       )}
       <div className="p-6">
-        <p className="eyebrow mb-2">{event.dateLabel ?? event.date}</p>
-        <h3 className="text-xl font-medium mb-2">{event.title}</h3>
         {event.guest && (
           <p className="text-sm mb-3">
             <span className="text-brand">{event.guest}</span>
             {event.guestRole && <span className="text-white/55"> · {event.guestRole}</span>}
           </p>
         )}
+        <h3 className="text-xl font-medium mb-2">{event.title}</h3>
         <p className="text-sm text-white/70 leading-relaxed">{event.description}</p>
         {event.externalUrl && (
           <a

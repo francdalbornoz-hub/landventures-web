@@ -43,20 +43,34 @@ export const timeline: Milestone[] = [
   },
 ];
 
-/** Métricas de track record. Cada entrada define el valor numérico (animable como
- *  counter) y los strings de prefijo/sufijo. Editar con valores reales. */
-export const trackRecord: Array<{
+type Stat = {
   value: number;
   prefix?: string;
   suffix?: string;
   decimals?: number;
   label: string;
-}> = [
+};
+
+/** Métricas para el bloque Track Record del HOME y de NOSOTROS.
+ *  El ~29,8% NO va acá — solo aparece en Terrenos como "más m² por canje". */
+export const trackRecordHome: Stat[] = [
   { value: 30, prefix: '+', label: 'Terrenos operados' },
   { value: 15, prefix: '+', suffix: 'M', label: 'USD invertidos' },
-  { value: 29.8, prefix: '~', suffix: '%', decimals: 1, label: 'Retorno promedio' },
+  { value: 25000, prefix: '+', label: 'm² vendibles generados' },
   { value: 10, prefix: '+', label: 'Años en el mercado' },
 ];
+
+/** Métricas para el bloque Track Record de TERRENOS.
+ *  Acá sí va el 29,8% como "más m² por canje" (nunca "retorno"). */
+export const trackRecordTerrenos: Stat[] = [
+  { value: 30, prefix: '+', label: 'Terrenos operados' },
+  { value: 15, prefix: '+', suffix: 'M', label: 'USD invertidos' },
+  { value: 29.8, prefix: '~', suffix: '%', decimals: 1, label: 'más m² por canje' },
+  { value: 10, prefix: '+', label: 'Años en el mercado' },
+];
+
+/** Alias retrocompatible. Apunta al de Terrenos por default. */
+export const trackRecord = trackRecordTerrenos;
 
 /** Valores de la empresa. */
 export const values = [
