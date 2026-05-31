@@ -178,18 +178,18 @@ export default function TerrenosPage() {
           </Reveal>
           <Reveal delay={250}>
             <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-              <a href={`mailto:${site.contact.email}?subject=Inversión en tierra`} className="btn-outline">
-                {site.contact.email}
-              </a>
               <a
                 href={`https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(
                   'Hola, me interesa invertir en tierra con Land Ventures.',
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline"
+                className="btn-brand"
               >
-                WhatsApp
+                Quiero invertir
+              </a>
+              <a href={`mailto:${site.contact.email}?subject=Inversión en tierra`} className="btn-outline">
+                {site.contact.email}
               </a>
             </div>
           </Reveal>

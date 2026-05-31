@@ -110,12 +110,12 @@ export default function OportunidadesPage() {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#listado" className="btn-outline">Ver oportunidades</a>
             <a
-              href={`https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent('Hola, me interesa recibir las oportunidades de pozo.')}`}
+              href={`https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent('Hola, me interesa invertir en una oportunidad en pozo.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline"
             >
-              Hablar por WhatsApp
+              Quiero invertir
             </a>
           </div>
         </div>
@@ -142,9 +142,15 @@ export default function OportunidadesPage() {
 
       <section id="listado" className="py-16 md:py-24 border-t border-white/[0.06] scroll-mt-24">
         <div className="container-page max-w-6xl mx-auto">
-          <div className="mb-10">
-            <p className="eyebrow mb-2">Listado</p>
-            <h2 className="text-3xl md:text-4xl font-light">Oportunidades <span className="serif-accent">activas</span></h2>
+          <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div>
+              <p className="eyebrow mb-2">Listado</p>
+              <h2 className="text-3xl md:text-4xl font-light">Oportunidades <span className="serif-accent">activas</span></h2>
+            </div>
+            <p className="text-sm text-white/55 max-w-md md:text-right leading-relaxed">
+              Mostramos información general: barrio, tipología, precio y entrega.
+              La ficha completa (dirección, planos, condiciones) se envía por privado.
+            </p>
           </div>
           <OpportunitiesGrid />
         </div>
@@ -195,16 +201,16 @@ export default function OportunidadesPage() {
           </h2>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={`https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent('Hola, quiero sumarme a la lista de oportunidades.')}`}
+              href={`https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent('Hola, me interesa invertir en una oportunidad en pozo.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-brand"
             >
-              Sumarme por WhatsApp
+              Quiero invertir
             </a>
-            <Link href="/contacto" className="btn-outline">
-              Escribir un mensaje
-            </Link>
+            <a href={`mailto:${site.contact.email}`} className="btn-outline">
+              {site.contact.email}
+            </a>
           </div>
         </div>
       </section>

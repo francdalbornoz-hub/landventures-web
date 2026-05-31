@@ -161,7 +161,7 @@ export default function ProyectosPage() {
                       rel="noopener noreferrer"
                       className={isLight ? 'btn border-ink/40 text-ink hover:bg-ink hover:text-white' : 'btn-outline'}
                     >
-                      Contactate
+                      Quiero invertir
                     </a>
                   </div>
                 </div>

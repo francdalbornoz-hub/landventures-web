@@ -4,8 +4,12 @@
  * IMPORTANTE — privacidad:
  * - NO incluir direcciones exactas, nombres de desarrolladores ni renders identificables.
  * - Formato genérico: tipología + barrio + precio + condiciones.
- * - La ficha completa con dirección, plano y desarrollador se envía a interesados por canal privado (WhatsApp / email).
+ * - La ficha completa con dirección, plano y desarrollador se envía a interesados por
+ *   canal privado (WhatsApp / email).
  * - Mostrar máximo 3-4 oportunidades activas por vez.
+ *
+ * El filtro de barrios se genera dinámicamente desde estas entradas. Para sumar San Telmo,
+ * Núñez u otra zona al filtro, alcanza con crear una oportunidad en esa zona.
  */
 
 export type FormaPago = 'Contado' | 'Contado / Cuotas' | 'Cuotas';
@@ -38,7 +42,7 @@ export const opportunities: Opportunity[] = [
     id: 'op-001',
     tipologia: '2 ambientes',
     ambientes: 2,
-    barrio: 'Palermo',
+    barrio: 'Palermo Hollywood',
     precio: 130000,
     precioM2: 2600,
     m2: 50,
@@ -79,26 +83,36 @@ export const opportunities: Opportunity[] = [
     id: 'op-004',
     tipologia: '2 ambientes',
     ambientes: 2,
-    barrio: 'Villa Urquiza',
-    precio: 108000,
-    precioM2: 2400,
-    m2: 45,
+    barrio: 'San Telmo',
+    precio: 112000,
+    precioM2: 2450,
+    m2: 46,
     formaPago: 'Contado',
     entrega: 'Q2 2026',
     financiacion: false,
     activo: true,
   },
+  {
+    id: 'op-005',
+    tipologia: '2 ambientes',
+    ambientes: 2,
+    barrio: 'Núñez',
+    precio: 118000,
+    precioM2: 2520,
+    m2: 47,
+    formaPago: 'Contado / Cuotas',
+    entrega: 'Q4 2026',
+    financiacion: true,
+    activo: true,
+  },
 ];
 
-/** Referencia de precios por barrio — sirve como contexto en la vista. */
+/** Referencia de precios por barrio (no se muestra públicamente — bloque removido).
+ *  Se mantiene como dato interno por si vuelve a usarse. */
 export const priceReference: { barrio: string; precioM2: number }[] = [
   { barrio: 'Belgrano', precioM2: 2600 },
-  { barrio: 'Palermo', precioM2: 2730 },
+  { barrio: 'Palermo Hollywood', precioM2: 2730 },
   { barrio: 'Núñez', precioM2: 2500 },
-  { barrio: 'Villa Urquiza', precioM2: 2400 },
-  { barrio: 'Saavedra', precioM2: 2480 },
   { barrio: 'Colegiales', precioM2: 2520 },
-  { barrio: 'Palermo Soho', precioM2: 2800 },
-  { barrio: 'Chacarita', precioM2: 2450 },
-  { barrio: 'Recoleta', precioM2: 3100 },
+  { barrio: 'San Telmo', precioM2: 2450 },
 ];
