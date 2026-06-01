@@ -56,15 +56,15 @@ export default function ProyectosPage() {
         </div>
       </section>
 
-      {/* SUBHERO — al estilo del home, texto grande de zonas */}
-      <section className="py-20 md:py-28 border-t border-white/[0.06]">
-        <div className="container-page text-center max-w-4xl mx-auto">
-          <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug text-balance">
+      {/* SUBHERO — info secundaria, no compite con el hero */}
+      <section className="py-10 md:py-14 border-t border-white/[0.06]">
+        <div className="container-page text-center max-w-3xl mx-auto">
+          <p className="eyebrow mb-4 mx-auto justify-center w-fit">Zonas</p>
+          <p className="text-base md:text-lg text-white/75 leading-relaxed text-balance">
             Desarrollos propios y en curso en{' '}
-            <span className="serif-accent">Belgrano, Nuñez, Palermo Hollywood, Colegiales, San Telmo</span>{' '}
-            y otras zonas premium de la ciudad.
+            <span className="text-brand">Belgrano · Nuñez · Palermo Hollywood · Colegiales · San Telmo</span>
+            {' '}y otras zonas premium de la ciudad.
           </p>
-          <div className="divider-line" />
         </div>
       </section>
 
