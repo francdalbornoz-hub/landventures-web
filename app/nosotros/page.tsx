@@ -129,22 +129,21 @@ export default function NosotrosPage() {
               Conocé al equipo de <span className="serif-accent">Land Ventures</span>
             </h2>
           </Reveal>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {team.map((member, i) => (
-              <Reveal key={member.slug} delay={i * 100}>
-                <article className="bg-white/60 border border-ink/10 p-7 text-center h-full hover:border-coral/40 transition-colors">
-                  <div className="relative w-36 h-36 md:w-40 md:h-40 mx-auto mb-6 rounded-full overflow-hidden bg-gradient-to-br from-brand/20 to-ink/10 border border-ink/10">
+              <Reveal key={member.slug} delay={i * 80}>
+                <article className="bg-white/60 border border-ink/10 p-6 text-center h-full hover:border-coral/40 transition-colors">
+                  <div className="relative w-28 h-28 md:w-32 md:h-32 mx-auto mb-5 rounded-full overflow-hidden bg-gradient-to-br from-brand/20 to-ink/10 border border-ink/10">
                     {member.photo ? (
-                      <Image src={member.photo} alt={member.name} fill sizes="160px" className="object-cover" />
+                      <Image src={member.photo} alt={member.name} fill sizes="128px" className="object-cover" />
                     ) : (
-                      <div className="absolute inset-0 grid place-items-center font-light text-4xl text-brand/80">
+                      <div className="absolute inset-0 grid place-items-center font-light text-3xl text-brand/80">
                         {member.name[0]}
                       </div>
                     )}
                   </div>
-                  <h3 className="text-xl font-medium text-ink">{member.name}</h3>
-                  <p className="text-[10px] uppercase tracking-[0.28em] text-coral mb-3">{member.role}</p>
-                  {member.bio && <p className="text-sm text-ink/70 leading-relaxed">{member.bio}</p>}
+                  <h3 className="text-lg font-medium text-ink">{member.name}</h3>
+                  <p className="text-[10px] uppercase tracking-[0.22em] text-coral mt-2">{member.role}</p>
                 </article>
               </Reveal>
             ))}
