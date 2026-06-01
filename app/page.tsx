@@ -202,7 +202,7 @@ export default function HomePage() {
             {projects.slice(0, 6).map((p, i) => (
               <Reveal key={p.slug} delay={i * 80}>
                 <Link
-                  href={`/proyectos/${p.slug}`}
+                  href={`/proyectos#${p.slug}`}
                   className="group block relative overflow-hidden"
                 >
                   <div className="relative aspect-[4/5] overflow-hidden bg-neutral-900">
