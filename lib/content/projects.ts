@@ -190,22 +190,6 @@ export const projects: Project[] = [
     status: 'en-construccion',
     winbuildUrl: 'https://aguilarplace.vercel.app/',
   },
-  {
-    slug: 'belnovo-olleros',
-    name: 'Belnovo',
-    suffix: 'Olleros',
-    locationHeadline: 'Sobre',
-    locationDetail: 'Olleros',
-    neighborhood: 'Colegiales',
-    image: '/images/block-default.jpg', // TODO: poner Belnovo-portada.webp cuando esté
-    gallery: [],
-    description:
-      'Nuevo desarrollo sobre Olleros, en pleno corazón de Colegiales. Diseño contemporáneo en una zona en crecimiento.',
-    units: ['1 ambiente', '2 ambientes', '3 ambientes'],
-    commercial: false,
-    status: 'en-construccion',
-    winbuildUrl: 'https://winbuild.com.ar/belnovo-olleros', // TODO
-  },
 ];
 
 export function getProject(slug: string): Project | undefined {
