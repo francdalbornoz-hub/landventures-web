@@ -15,17 +15,17 @@ export const metadata = buildMetadata({
 
 const offerings = [
   {
-    icon: 'curator',
+    icon: 'building',
     title: 'Distintos proyectos',
     body: 'Unidades disponibles en varios de nuestros desarrollos en CABA.',
   },
   {
-    icon: 'handshake',
+    icon: 'stages',
     title: 'Distintas etapas',
     body: 'En pozo, en construcción o terminadas, según lo que estés buscando.',
   },
   {
-    icon: 'private',
+    icon: 'dollar',
     title: 'Precio de oportunidad',
     body: 'Mejores zonas de la ciudad, con un precio de entrada difícil de igualar.',
   },
@@ -34,33 +34,41 @@ const offerings = [
 function StepIcon({ icon, className = '' }: { icon: string; className?: string }) {
   const common = 'fill-none stroke-current';
   switch (icon) {
-    case 'curator':
-      // lupa con corazón / curaduría
+    case 'building':
+      // edificio — Distintos proyectos
       return (
         <svg viewBox="0 0 32 32" className={`${common} ${className}`} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <circle cx="13" cy="13" r="8" />
-          <path d="M19 19l8 8" />
-          <path d="M13 11.5c-1.5-1.5-4-.5-4 1.5 0 2 2.5 4 4 5 1.5-1 4-3 4-5 0-2-2.5-3-4-1.5z" />
+          <rect x="7" y="4" width="18" height="24" />
+          <line x1="11" y1="9" x2="13" y2="9" />
+          <line x1="19" y1="9" x2="21" y2="9" />
+          <line x1="11" y1="14" x2="13" y2="14" />
+          <line x1="19" y1="14" x2="21" y2="14" />
+          <line x1="11" y1="19" x2="13" y2="19" />
+          <line x1="19" y1="19" x2="21" y2="19" />
+          <rect x="14" y="22" width="4" height="6" />
         </svg>
       );
-    case 'private':
-      // candado con doc
+    case 'stages':
+      // progresión / escalera — Distintas etapas
       return (
         <svg viewBox="0 0 32 32" className={`${common} ${className}`} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <rect x="7" y="14" width="18" height="14" rx="2" />
-          <path d="M11 14v-4a5 5 0 0110 0v4" />
-          <circle cx="16" cy="21" r="1.5" fill="currentColor" stroke="none" />
+          <path d="M4 26h6v-6" />
+          <path d="M10 20h6v-6" />
+          <path d="M16 14h6V8" />
+          <path d="M22 8h6V2" />
+          <circle cx="7" cy="26" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="13" cy="20" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="19" cy="14" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="25" cy="8" r="1.5" fill="currentColor" stroke="none" />
         </svg>
       );
-    case 'handshake':
-      // apretón de manos
+    case 'dollar':
+      // símbolo dólar — Precio de oportunidad
       return (
         <svg viewBox="0 0 32 32" className={`${common} ${className}`} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <path d="M4 14l5-5 4 4" />
-          <path d="M28 14l-5-5-4 4" />
-          <path d="M9 14l5 5a2 2 0 002.83 0L19 16.5" />
-          <path d="M14 19l3 3a2 2 0 002.83 0l3.17-3.17" />
-          <path d="M23 14l-3.5 3.5" />
+          <circle cx="16" cy="16" r="12" />
+          <path d="M19.5 12c-.5-1.5-2-2.5-3.5-2.5-2 0-3.5 1-3.5 2.5s1.5 2 3.5 2.5c2 .5 3.5 1 3.5 2.5s-1.5 2.5-3.5 2.5c-1.5 0-3-1-3.5-2.5" />
+          <path d="M16 7v18" />
         </svg>
       );
     default:
@@ -110,12 +118,12 @@ export default function OportunidadesPage() {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#listado" className="btn-outline">Ver oportunidades</a>
             <a
-              href={`https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent('Hola, me interesa invertir en una oportunidad en pozo.')}`}
+              href={`https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent('Hola, me interesa recibir las oportunidades de pozo.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline"
             >
-              Quiero invertir
+              Hablar por WhatsApp
             </a>
           </div>
         </div>

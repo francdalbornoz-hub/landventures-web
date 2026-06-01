@@ -52,10 +52,19 @@ export default function ProyectosPage() {
             <p className="mt-7 text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
               Cada proyecto nace de un terreno comprado en oportunidad y se desarrolla en las mejores zonas de CABA. Así construimos valor desde el origen.
             </p>
-            <p className="mt-5 text-white/55 text-sm max-w-2xl mx-auto">
-              Desarrollos propios y en curso en Belgrano, Nuñez, Palermo Hollywood, Colegiales, San Telmo y otras zonas premium de la ciudad.
-            </p>
           </div>
+        </div>
+      </section>
+
+      {/* SUBHERO — al estilo del home, texto grande de zonas */}
+      <section className="py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="container-page text-center max-w-4xl mx-auto">
+          <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug text-balance">
+            Desarrollos propios y en curso en{' '}
+            <span className="serif-accent">Belgrano, Nuñez, Palermo Hollywood, Colegiales, San Telmo</span>{' '}
+            y otras zonas premium de la ciudad.
+          </p>
+          <div className="divider-line" />
         </div>
       </section>
 

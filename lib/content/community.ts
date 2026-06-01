@@ -55,7 +55,7 @@ export const events: CommunityEvent[] = [
     slug: 'proximo-encuentro',
     title: 'Próximo encuentro',
     date: '2026-07-01',
-    description: 'Estamos preparando el próximo encuentro. Suscribite para enterarte primero.',
+    description: 'Estamos preparando el próximo encuentro. Sumate a la comunidad por WhatsApp o seguinos en Instagram.',
     status: 'proximo',
   },
 ];

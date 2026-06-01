@@ -6,7 +6,6 @@ import BgRender from '@/components/BgRender';
 import CountUp from '@/components/CountUp';
 import { site } from '@/lib/content/site';
 import { trackRecordTerrenos } from '@/lib/content/timeline';
-import { lands } from '@/lib/content/lands';
 import LandsMap from '@/components/LandsMapClient';
 
 export const metadata = buildMetadata({
@@ -44,8 +43,6 @@ const advantages = [
 ];
 
 export default function TerrenosPage() {
-  const totalOps = lands.length;
-
   return (
     <>
       <JsonLd
@@ -104,9 +101,6 @@ export default function TerrenosPage() {
               </Reveal>
             ))}
           </div>
-          <p className="text-center text-[10px] uppercase tracking-[0.22em] text-ink/40 mt-8">
-            Datos promedio de operaciones realizadas
-          </p>
         </div>
       </section>
 
@@ -115,7 +109,7 @@ export default function TerrenosPage() {
         <BgRender opacity={0.04} />
         <div className="container-page max-w-6xl mx-auto relative">
           <Reveal>
-            <p className="eyebrow mb-4 mx-auto justify-center w-fit">Por qué invertir</p>
+            <p className="eyebrow mb-4 mx-auto justify-center w-fit">Por qué invertir en tierra con nosotros</p>
           </Reveal>
           <Reveal delay={100}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center mb-16 text-balance">
@@ -144,11 +138,11 @@ export default function TerrenosPage() {
         <div className="container-page">
           <div className="max-w-5xl mx-auto mb-8">
             <Reveal>
-              <p className="eyebrow mb-3">Track record</p>
+              <p className="eyebrow mb-3">Mapa de terrenos</p>
             </Reveal>
             <Reveal delay={100}>
               <h2 className="text-3xl md:text-5xl font-light text-balance">
-                +{totalOps} <span className="serif-accent">operaciones en CABA</span>
+                +30 <span className="serif-accent">operaciones en CABA</span>
               </h2>
             </Reveal>
             <Reveal delay={200}>
