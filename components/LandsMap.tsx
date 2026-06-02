@@ -81,15 +81,23 @@ export default function LandsMap() {
     };
   }, []);
 
-  // Inicializar mapa
+  // Inicializar mapa — totalmente estático, sin interacciones
   useEffect(() => {
     if (!LeafletMod || !containerRef.current || mapRef.current) return;
     const L = LeafletMod;
     const map = L.map(containerRef.current, {
       center: [-34.575, -58.445],
-      zoom: 13,
-      zoomControl: true,
+      zoom: 12,
+      // Deshabilitamos TODA interacción: el mapa es decorativo y siempre muestra
+      // el bounding box de las operaciones.
+      zoomControl: false,
       scrollWheelZoom: false,
+      dragging: false,
+      touchZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      tap: false,
     });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; OpenStreetMap &copy; CARTO',
@@ -122,12 +130,7 @@ export default function LandsMap() {
     visible.forEach((land: Land) => {
       const color = landStatusColors[land.status];
       const iconName = landStatusIcons[land.status];
-      const isFeatured =
-        land.status === 'en-desarrollo' || land.status === 'abierto' || land.status === 'proximo';
-      const size = isFeatured ? 46 : 40;
-      const pulse = isFeatured
-        ? `animation: brand-pulse 2.2s ease-out infinite;`
-        : '';
+      const size = 36;
 
       const icon = L.divIcon({
         className: 'lv-marker',
@@ -139,37 +142,32 @@ export default function LandsMap() {
             border-radius:50%;
             background:${color};
             border:2px solid rgba(255,255,255,0.92);
-            box-shadow:0 6px 20px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.3);
-            ${pulse}
+            box-shadow:0 6px 18px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,0,0,0.3);
           ">
-            ${iconSvg(iconName)}
+            ${iconSvg(iconName, 18)}
           </span>
         `,
         iconSize: [size, size],
         iconAnchor: [size / 2, size / 2],
-        popupAnchor: [0, -size / 2 + 2],
       });
 
-      const m = L.marker([land.lat, land.lng], { icon, riseOnHover: true });
-
-      const popup = `
-        <div style="font-family: Montserrat, system-ui, sans-serif; min-width:220px;">
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-            <span style="
-              display:inline-flex; align-items:center; justify-content:center;
-              width:28px; height:28px; border-radius:50%; background:${color};
-            ">${iconSvg(iconName).replace('width="20"', 'width="14"').replace('height="20"', 'height="14"')}</span>
-            <span style="font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:${color}; font-weight:600;">${landStatusLabels[land.status]}</span>
-          </div>
-          <div style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size:18px; color:#fff; margin-bottom:6px; line-height:1.2;">${land.label}</div>
-          <div style="font-size:11px; color:#bcb3a8; text-transform:uppercase; letter-spacing:.12em;">${land.zona}</div>
-          <div style="font-size:13px; color:#dcd4cb; margin-top:8px; line-height:1.5;">${land.info}</div>
-        </div>
-      `;
-      m.bindPopup(popup, { closeButton: true, className: 'lv-popup' });
+      // Marker estático — sin popup, sin interacción. La distinción de tipo
+      // queda en la leyenda debajo del mapa.
+      const m = L.marker([land.lat, land.lng], {
+        icon,
+        interactive: false,
+        keyboard: false,
+      });
       m.addTo(map);
       markersRef.current.push(m);
     });
+
+    // Englobar todos los markers visibles en una sola vista — el mapa
+    // siempre muestra el bounding box completo, sin que el usuario lo mueva.
+    if (visible.length > 0) {
+      const bounds = L.latLngBounds(visible.map((l) => [l.lat, l.lng] as [number, number]));
+      map.fitBounds(bounds, { padding: [50, 50], animate: false });
+    }
   }, [LeafletMod, filter]);
 
   return (
