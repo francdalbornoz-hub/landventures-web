@@ -97,7 +97,6 @@ export default function LandsMap() {
       doubleClickZoom: false,
       boxZoom: false,
       keyboard: false,
-      tap: false,
     });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; OpenStreetMap &copy; CARTO',
