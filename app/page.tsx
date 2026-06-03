@@ -107,7 +107,7 @@ export default function HomePage() {
 
       {/* PILARES — LO QUE HACEMOS */}
       <section className="py-20 md:py-28 border-t border-white/[0.06] relative overflow-hidden">
-        <BgRender src="/images/pilares-bg.jpg" opacity={0.5} />
+        <BgRender src="/images/pilares-bg.webp" opacity={0.5} />
         <div className="container-page max-w-6xl mx-auto relative">
           <Reveal>
             <p className="eyebrow mb-5 mx-auto justify-center w-fit">Lo que hacemos</p>
