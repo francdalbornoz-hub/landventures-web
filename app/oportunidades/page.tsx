@@ -110,10 +110,10 @@ export default function OportunidadesPage() {
         <div className="container-page max-w-4xl mx-auto text-center relative">
           <p className="eyebrow mb-5 mx-auto justify-center w-fit">Land Ventures · Pozo Club</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-balance">
-            Oportunidades <span className="serif-accent">en pozo</span> exclusivas
+            Oportunidades <span className="serif-accent">exclusivas</span>
           </h1>
           <p className="mt-6 text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-            Unidades en pozo seleccionadas en las mejores zonas de CABA. Entramos a cada proyecto desde el origen, y eso se traduce en mejores condiciones de entrada para vos.
+            Unidades seleccionadas en las mejores zonas de CABA. Entramos a cada proyecto desde el origen, y eso se traduce en mejores condiciones de entrada para vos.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#listado" className="btn-outline">Ver oportunidades</a>
@@ -129,9 +129,19 @@ export default function OportunidadesPage() {
         </div>
       </section>
 
-      {/* QUÉ OFRECEMOS — fondo gris claro */}
-      <section className="py-20 md:py-24 border-t border-white/[0.06] bg-[#dad7d1] text-ink">
-        <div className="container-page max-w-5xl mx-auto">
+      {/* QUÉ OFRECEMOS — fondo gris claro con imagen sutil */}
+      <section className="py-20 md:py-24 border-t border-white/[0.06] bg-[#dad7d1] text-ink relative overflow-hidden">
+        <div aria-hidden className="absolute inset-0 pointer-events-none">
+          <Image
+            src="/images/que-ofrecemos-bg.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover opacity-25"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#dad7d1]/75 via-[#dad7d1]/65 to-[#dad7d1]/85" />
+        </div>
+        <div className="container-page max-w-5xl mx-auto relative">
           <p className="eyebrow mb-3 mx-auto justify-center w-fit !text-coral">Lo que ofrecemos</p>
           <h2 className="text-3xl md:text-4xl font-light text-center mb-12">
             ¿Qué <span className="serif-accent">ofrecemos</span>?
