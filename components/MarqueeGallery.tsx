@@ -10,6 +10,10 @@ type Props = {
   heightClass?: string;
   /** Dirección del scroll */
   reverse?: boolean;
+  /** Cantidad aproximada de imágenes visibles a la vez en desktop. */
+  visibleDesktop?: number;
+  /** Cantidad aproximada de imágenes visibles a la vez en mobile. */
+  visibleMobile?: number;
 };
 
 /**
@@ -26,10 +30,17 @@ export default function MarqueeGallery({
   speed = 50,
   heightClass = 'h-56 md:h-72 lg:h-80',
   reverse = false,
+  visibleDesktop = 3,
+  visibleMobile = 1.2,
 }: Props) {
   if (images.length === 0) return null;
   // Duplicamos para crear el loop infinito sin salto visible.
   const doubled = [...images, ...images];
+
+  // El ancho de cada slide se calcula como % del viewport para garantizar
+  // que entren exactamente `visibleDesktop`/`visibleMobile` por vista.
+  const widthMobile = `calc((100vw - 2rem) / ${visibleMobile})`;
+  const widthDesktop = `calc((100vw - 6rem) / ${visibleDesktop})`;
 
   return (
     <div className={`relative ${heightClass} overflow-hidden w-full select-none`} aria-hidden>
@@ -42,19 +53,30 @@ export default function MarqueeGallery({
         {doubled.map((img, i) => (
           <div
             key={`${img.src}-${i}`}
-            className="relative flex-shrink-0 h-full aspect-[4/5] overflow-hidden bg-ink-deep"
+            className="relative flex-shrink-0 h-full overflow-hidden bg-ink-deep"
+            style={{
+              width: widthMobile,
+              ['--w-md' as string]: widthDesktop,
+            }}
           >
             <Image
               src={img.src}
               alt={img.alt}
               fill
-              sizes="(min-width:1024px) 280px, 220px"
+              sizes="(min-width:768px) 33vw, 80vw"
               className="object-cover"
               priority={i < images.length}
             />
           </div>
         ))}
       </div>
+      <style jsx>{`
+        @media (min-width: 768px) {
+          div[style*="--w-md"] {
+            width: var(--w-md) !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

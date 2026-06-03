@@ -11,7 +11,7 @@ export const site = {
   description:
     'Desarrolladora inmobiliaria en Buenos Aires. Identificamos oportunidades estratégicas y desarrollamos proyectos inmobiliarios modernos y diferenciales.',
   shortDescription:
-    'Identificamos oportunidades estratégicas y desarrollamos proyectos inmobiliarios modernos y diferenciales.',
+    'Invertimos y desarrollamos en las mejores zonas de Buenos Aires.',
   tagline: {
     line1: 'Identificamos oportunidades',
     highlight1: 'estratégicas',

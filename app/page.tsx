@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { site } from '@/lib/content/site';
 import { projects } from '@/lib/content/projects';
 import { trackRecordHome } from '@/lib/content/timeline';
-import { events } from '@/lib/content/community';
 import JsonLd from '@/components/JsonLd';
 import Reveal from '@/components/Reveal';
 import BgRender from '@/components/BgRender';
@@ -47,8 +46,6 @@ const pillarCopy: Record<string, { label: string; tagline: string }> = {
 };
 
 export default function HomePage() {
-  const upcomingEvent = events.find((e) => e.status === 'proximo');
-
   return (
     <>
       <JsonLd
@@ -236,11 +233,11 @@ export default function HomePage() {
               <div>
                 <p className="eyebrow mb-4">Terrenos</p>
                 <h2 className="text-3xl md:text-5xl font-light mb-6 text-balance leading-tight">
-                  Una década comprando, canjeando y vendiendo tierra en las{' '}
+                  Una década comprando e invirtiendo en las{' '}
                   <span className="serif-accent">mejores zonas</span> de Buenos Aires.
                 </h2>
                 <p className="text-white/75 leading-relaxed mb-8 max-w-md">
-                  Cada operación, con nuestro propio capital adentro.
+                  Capital propio en cada operación.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <Link href="/terrenos" className="btn-outline">
@@ -285,21 +282,18 @@ export default function HomePage() {
           </Reveal>
         </div>
 
-        {/* Galería marquee — movimiento continuo de fotos de eventos */}
+        {/* Galería marquee — 3 fotos visibles a la vez con scroll continuo */}
         <Reveal delay={250}>
-          <MarqueeGallery images={communityGallery} speed={45} heightClass="h-60 md:h-80 lg:h-96" />
+          <MarqueeGallery
+            images={communityGallery}
+            speed={45}
+            heightClass="h-72 md:h-96 lg:h-[28rem]"
+            visibleDesktop={3}
+            visibleMobile={1.2}
+          />
         </Reveal>
 
         <div className="container-page max-w-4xl mx-auto text-center relative mt-12 md:mt-16">
-          {upcomingEvent && (
-            <Reveal delay={300}>
-              <div className="inline-block border border-ink/15 rounded-lg p-6 md:p-8 max-w-md mx-auto mb-10 text-left bg-cream/50">
-                <p className="text-[10px] uppercase tracking-[0.28em] text-coral mb-2">Próximo evento</p>
-                <h3 className="text-xl font-medium mb-2">{upcomingEvent.title}</h3>
-                <p className="text-sm text-ink/70">{upcomingEvent.description}</p>
-              </div>
-            </Reveal>
-          )}
           <Reveal delay={400}>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/comunidad" className="btn border-ink/40 text-ink hover:bg-ink hover:text-white">

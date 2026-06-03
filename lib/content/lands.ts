@@ -68,31 +68,51 @@ export const lands: Land[] = [
   // { label: 'Próxima operación en Colegiales', zona: 'Colegiales', status: 'proximo', info: 'En proceso de cierre', lat: -34.573, lng: -58.450 },
 ];
 
+/** Estado visual simplificado del mapa: en desarrollo vs finalizado.
+ *  Todos los cerrados (compraventa, canje, local) se muestran como 'finalizado'. */
+export type LandVisualStatus = 'en-desarrollo' | 'finalizado';
+
+export function toVisualStatus(status: LandStatus): LandVisualStatus {
+  if (status === 'en-desarrollo') return 'en-desarrollo';
+  return 'finalizado';
+}
+
 export const landStatusLabels: Record<LandStatus, string> = {
-  'cerrado-compraventa': 'Compraventa realizada',
-  'cerrado-canje': 'Canje finalizado',
-  'cerrado-local': 'Local comercial',
+  'cerrado-compraventa': 'Finalizado',
+  'cerrado-canje': 'Finalizado',
+  'cerrado-local': 'Finalizado',
   'en-desarrollo': 'En desarrollo',
-  abierto: 'Oportunidad abierta',
-  proximo: 'Próximamente',
+  abierto: 'En desarrollo',
+  proximo: 'En desarrollo',
 };
 
-/** Color por estado — distintos tonos de naranja + verde abierto + violeta próximo. */
+/** Colores en 2 tonos de naranja: oscuro = en desarrollo, claro = finalizado. */
+export const landVisualColors: Record<LandVisualStatus, string> = {
+  'en-desarrollo': '#C9502A', // naranja oscuro / terracota
+  finalizado: '#E8B978', // naranja claro / arena
+};
+
+export const landVisualLabels: Record<LandVisualStatus, string> = {
+  'en-desarrollo': 'En desarrollo',
+  finalizado: 'Finalizado',
+};
+
 export const landStatusColors: Record<LandStatus, string> = {
-  'cerrado-compraventa': '#C9502A', // terracota
-  'cerrado-canje': '#E8943A', // naranja medio
-  'cerrado-local': '#D4944A', // naranja claro
-  'en-desarrollo': '#F0A84E', // naranja brillante
-  abierto: '#4ade80', // verde — oportunidad activa
-  proximo: '#a78bfa', // violeta — próximamente
+  'cerrado-compraventa': landVisualColors.finalizado,
+  'cerrado-canje': landVisualColors.finalizado,
+  'cerrado-local': landVisualColors.finalizado,
+  'en-desarrollo': landVisualColors['en-desarrollo'],
+  abierto: landVisualColors['en-desarrollo'],
+  proximo: landVisualColors['en-desarrollo'],
 };
 
-/** Familia de íconos para los markers del mapa. Mapea a SVGs en /public/images/Icons/ */
-export const landStatusIcons: Record<LandStatus, 'compraventa' | 'canje' | 'local' | 'desarrollo' | 'handshake'> = {
-  'cerrado-compraventa': 'compraventa',
-  'cerrado-canje': 'canje',
-  'cerrado-local': 'local',
-  'en-desarrollo': 'desarrollo',
-  abierto: 'handshake',
-  proximo: 'handshake',
+/** Todos los markers usan el mismo ícono (pin de ubicación tipo Canje.svg).
+ *  La distinción es sólo por color. */
+export const landStatusIcons: Record<LandStatus, 'pin'> = {
+  'cerrado-compraventa': 'pin',
+  'cerrado-canje': 'pin',
+  'cerrado-local': 'pin',
+  'en-desarrollo': 'pin',
+  abierto: 'pin',
+  proximo: 'pin',
 };

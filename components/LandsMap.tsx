@@ -5,34 +5,33 @@ import {
   lands,
   landStatusColors,
   landStatusIcons,
-  landStatusLabels,
+  landVisualColors,
+  landVisualLabels,
+  toVisualStatus,
   type Land,
-  type LandStatus,
+  type LandVisualStatus,
 } from '@/lib/content/lands';
 
 type LeafletNS = typeof import('leaflet');
 
-const FILTERS: { label: string; value: 'todos' | LandStatus }[] = [
+type FilterValue = 'todos' | LandVisualStatus;
+
+const FILTERS: { label: string; value: FilterValue }[] = [
   { label: 'Todos', value: 'todos' },
   { label: 'En desarrollo', value: 'en-desarrollo' },
-  { label: 'Compraventas', value: 'cerrado-compraventa' },
-  { label: 'Canjes', value: 'cerrado-canje' },
-  { label: 'Locales', value: 'cerrado-local' },
+  { label: 'Finalizados', value: 'finalizado' },
 ];
 
-/** Estados que se muestran en la leyenda del mapa. Excluye 'abierto' y 'proximo'
- *  porque son tipos reservados para uso futuro y no se exponen en la UI pública. */
-const LEGEND_STATUSES: LandStatus[] = [
-  'en-desarrollo',
-  'cerrado-compraventa',
-  'cerrado-canje',
-  'cerrado-local',
-];
+/** Estados visuales que se muestran en la leyenda. */
+const LEGEND_STATUSES: LandVisualStatus[] = ['en-desarrollo', 'finalizado'];
 
-/** SVGs reales de /public/images/Icons, con color blanco. Devuelve markup inline.
+/** SVGs con color blanco. Devuelve markup inline.
  *  `size` controla el ancho/alto del SVG renderizado dentro del marker. */
 function iconSvg(name: string, size = 20): string {
   switch (name) {
+    case 'pin':
+      // Pin de ubicación con punto central (Canje.svg)
+      return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.75 10.5C15.75 11.4946 15.3549 12.4484 14.6517 13.1517C13.9484 13.8549 12.9946 14.25 12 14.25C11.0054 14.25 10.0516 13.8549 9.34835 13.1517C8.64509 12.4484 8.25 11.4946 8.25 10.5C8.25 9.50544 8.64509 8.55161 9.34835 7.84835C10.0516 7.14509 11.0054 6.75 12 6.75C12.9946 6.75 13.9484 7.14509 14.6517 7.84835C15.3549 8.55161 15.75 9.50544 15.75 10.5ZM14.25 10.5C14.2498 11.0969 14.0125 11.6693 13.5902 12.0913C13.168 12.5133 12.5954 12.7502 11.9985 12.75C11.4016 12.7498 10.8292 12.5125 10.4072 12.0902C9.98524 11.668 9.7483 11.0954 9.7485 10.4985C9.7487 9.90156 9.98602 9.32916 10.4083 8.9072C10.8305 8.48524 11.4031 8.2483 12 8.2485C12.5969 8.2487 13.1693 8.48602 13.5913 8.90826C14.0133 9.3305 14.2502 9.90306 14.25 10.5Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21 10.5C21 17.25 13.5 24 12 24C10.5 24 3 17.25 3 10.5C3 5.535 7.035 1.5 12 1.5C16.965 1.5 21 5.535 21 10.5ZM19.5 10.5C19.5 13.365 17.88 16.41 15.9 18.84C14.9295 20.031 13.92 21.015 13.095 21.675C12.7515 21.9588 12.3847 22.2132 11.9985 22.4355L11.9205 22.3935C11.5629 22.1801 11.2219 21.9399 10.9005 21.675C10.0725 21.006 9.0705 20.025 8.0955 18.84C6.1155 16.41 4.4955 13.365 4.4955 10.5C4.4955 6.36 7.8555 3 11.9955 3C16.1355 3 19.4955 6.36 19.4955 10.5H19.5Z"/></svg>`;
     case 'canje':
       // Edificio sólido (Canje.svg)
       return `<svg width="${size}" height="${size}" viewBox="0 0 21 28" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M4.8125 7.875C5.1606 7.875 5.49444 7.73672 5.74058 7.49058C5.98672 7.24444 6.125 6.9106 6.125 6.5625C6.125 6.2144 5.98672 5.88056 5.74058 5.63442C5.49444 5.38828 5.1606 5.25 4.8125 5.25C4.4644 5.25 4.13056 5.38828 3.88442 5.63442C3.63828 5.88056 3.5 6.2144 3.5 6.5625C3.5 6.9106 3.63828 7.24444 3.88442 7.49058C4.13056 7.73672 4.4644 7.875 4.8125 7.875ZM6.125 11.8125C6.125 12.1606 5.98672 12.4944 5.74058 12.7406C5.49444 12.9867 5.1606 13.125 4.8125 13.125C4.4644 13.125 4.13056 12.9867 3.88442 12.7406C3.63828 12.4944 3.5 12.1606 3.5 11.8125C3.5 11.4644 3.63828 11.1306 3.88442 10.8844C4.13056 10.6383 4.4644 10.5 4.8125 10.5C5.1606 10.5 5.49444 10.6383 5.74058 10.8844C5.98672 11.1306 6.125 11.4644 6.125 11.8125ZM4.8125 18.375C5.1606 18.375 5.49444 18.2367 5.74058 17.9906C5.98672 17.7444 6.125 17.4106 6.125 17.0625C6.125 16.7144 5.98672 16.3806 5.74058 16.1344C5.49444 15.8883 5.1606 15.75 4.8125 15.75C4.4644 15.75 4.13056 15.8883 3.88442 16.1344C3.63828 16.3806 3.5 16.7144 3.5 17.0625C3.5 17.4106 3.63828 17.7444 3.88442 17.9906C4.13056 18.2367 4.4644 18.375 4.8125 18.375ZM11.375 6.5625C11.375 6.9106 11.2367 7.24444 10.9906 7.49058C10.7444 7.73672 10.4106 7.875 10.0625 7.875C9.7144 7.875 9.38056 7.73672 9.13442 7.49058C8.88828 7.24444 8.75 6.9106 8.75 6.5625C8.75 6.2144 8.88828 5.88056 9.13442 5.63442C9.38056 5.38828 9.7144 5.25 10.0625 5.25C10.4106 5.25 10.7444 5.38828 10.9906 5.63442C11.2367 5.88056 11.375 6.2144 11.375 6.5625ZM10.0625 13.125C10.4106 13.125 10.7444 12.9867 10.9906 12.7406C11.2367 12.4944 11.375 12.1606 11.375 11.8125C11.375 11.4644 11.2367 11.1306 10.9906 10.8844C10.7444 10.6383 10.4106 10.5 10.0625 10.5C9.7144 10.5 9.38056 10.6383 9.13442 10.8844C8.88828 11.1306 8.75 11.4644 8.75 11.8125C8.75 12.1606 8.88828 12.4944 9.13442 12.7406C9.38056 12.9867 9.7144 13.125 10.0625 13.125ZM11.375 17.0625C11.375 17.4106 11.2367 17.7444 10.9906 17.9906C10.7444 18.2367 10.4106 18.375 10.0625 18.375C9.7144 18.375 9.38056 18.2367 9.13442 17.9906C8.88828 17.7444 8.75 17.4106 8.75 17.0625C8.75 16.7144 8.88828 16.3806 9.13442 16.1344C9.38056 15.8883 9.7144 15.75 10.0625 15.75C10.4106 15.75 10.7444 15.8883 10.9906 16.1344C11.2367 16.3806 11.375 16.7144 11.375 17.0625ZM15.3125 18.375C15.6606 18.375 15.9944 18.2367 16.2406 17.9906C16.4867 17.7444 16.625 17.4106 16.625 17.0625C16.625 16.7144 16.4867 16.3806 16.2406 16.1344C15.9944 15.8883 15.6606 15.75 15.3125 15.75C14.9644 15.75 14.6306 15.8883 14.3844 16.1344C14.1383 16.3806 14 16.7144 14 17.0625C14 17.4106 14.1383 17.7444 14.3844 17.9906C14.6306 18.2367 14.9644 18.375 15.3125 18.375ZM0.875 28C0.642936 28 0.420376 27.9078 0.256282 27.7437C0.0921874 27.5796 0 27.3571 0 27.125V2.625C0 1.92881 0.276561 1.26113 0.768844 0.768845C1.26113 0.276562 1.92881 0 2.625 0H13.125C13.8212 0 14.4889 0.276562 14.9812 0.768845C15.4734 1.26113 15.75 1.92881 15.75 2.625V10.5H18.375C19.0712 10.5 19.7389 10.7766 20.2312 11.2688C20.7234 11.7611 21 12.4288 21 13.125V27.125C21 27.3571 20.9078 27.5796 20.7437 27.7437C20.5796 27.9078 20.3571 28 20.125 28H0.875ZM1.75 2.625V26.25H5.25V21.875C5.25 21.6429 5.34219 21.4204 5.50628 21.2563C5.67038 21.0922 5.89294 21 6.125 21H14.875C15.1071 21 15.3296 21.0922 15.4937 21.2563C15.6578 21.4204 15.75 21.6429 15.75 21.875V26.25H19.25V13.125C19.25 12.8929 19.1578 12.6704 18.9937 12.5063C18.8296 12.3422 18.6071 12.25 18.375 12.25H14.875C14.6429 12.25 14.4204 12.1578 14.2563 11.9937C14.0922 11.8296 14 11.6071 14 11.375V2.625C14 2.39294 13.9078 2.17038 13.7437 2.00628C13.5796 1.84219 13.3571 1.75 13.125 1.75H2.625C2.39294 1.75 2.17038 1.84219 2.00628 2.00628C1.84219 2.17038 1.75 2.39294 1.75 2.625ZM14 22.75H11.375V26.25H14V22.75ZM9.625 22.75H7V26.25H9.625V22.75Z"/></svg>`;
@@ -57,7 +56,7 @@ export default function LandsMap() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<unknown>(null);
   const markersRef = useRef<unknown[]>([]);
-  const [filter, setFilter] = useState<'todos' | LandStatus>('todos');
+  const [filter, setFilter] = useState<FilterValue>('todos');
   const [ready, setReady] = useState(false);
   const [LeafletMod, setLeafletMod] = useState<LeafletNS | null>(null);
 
@@ -124,7 +123,10 @@ export default function LandsMap() {
     });
     markersRef.current = [];
 
-    const visible = filter === 'todos' ? lands : lands.filter((l) => l.status === filter);
+    const visible =
+      filter === 'todos'
+        ? lands
+        : lands.filter((l) => toVisualStatus(l.status) === filter);
 
     visible.forEach((land: Land) => {
       const color = landStatusColors[land.status];
@@ -204,9 +206,9 @@ export default function LandsMap() {
           <div key={k} className="flex items-center gap-2">
             <span
               className="inline-block w-3 h-3 rounded-full"
-              style={{ background: landStatusColors[k], boxShadow: `0 0 0 1.5px rgba(255,255,255,0.9)` }}
+              style={{ background: landVisualColors[k], boxShadow: `0 0 0 1.5px rgba(255,255,255,0.9)` }}
             />
-            <span>{landStatusLabels[k]}</span>
+            <span>{landVisualLabels[k]}</span>
           </div>
         ))}
       </div>

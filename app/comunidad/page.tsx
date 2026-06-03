@@ -15,8 +15,10 @@ export const metadata = buildMetadata({
 });
 
 export default function ComunidadPage() {
+  // Eventos unificados: próximos primero, después pasados ordenados desc.
   const upcoming = events.filter((e) => e.status === 'proximo');
   const past = events.filter((e) => e.status === 'pasado').sort((a, b) => b.date.localeCompare(a.date));
+  const allEvents = [...upcoming, ...past];
 
   return (
     <>
@@ -40,20 +42,8 @@ export default function ComunidadPage() {
         </div>
       </section>
 
-      {upcoming.length > 0 && (
-        <section className="py-12 md:py-16 border-t border-white/10">
-          <div className="container-page max-w-5xl mx-auto">
-            <p className="eyebrow mb-6">Próximo evento</p>
-            <div className="grid gap-6 md:grid-cols-2">
-              {upcoming.map((e) => (
-                <EventCard key={e.slug} event={e} highlight />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      <section className="py-16 md:py-24 border-t border-white/10 relative overflow-hidden">
+      {/* EVENTOS — unificado próximos + pasados, con bg de comunidad */}
+      <section className="py-20 md:py-28 border-t border-white/10 relative overflow-hidden">
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           <Image
             src="/images/Eventos/Background-comunidad.jpg"
@@ -66,14 +56,14 @@ export default function ComunidadPage() {
           <div className="absolute inset-0 grain" />
         </div>
         <div className="container-page max-w-5xl mx-auto relative">
-          <p className="eyebrow mb-6">Eventos pasados</p>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {past.map((e) => (
-              <EventCard key={e.slug} event={e} />
+          <p className="eyebrow mb-8 mx-auto justify-center w-fit">Eventos</p>
+          <div className="grid gap-8 md:gap-10 md:grid-cols-2">
+            {allEvents.map((e) => (
+              <EventCard key={e.slug} event={e} highlight={e.status === 'proximo'} />
             ))}
           </div>
-          {past.length === 0 && (
-            <p className="text-white/60">Pronto vamos a sumar el archivo de eventos pasados.</p>
+          {allEvents.length === 0 && (
+            <p className="text-white/60 text-center">Pronto vamos a sumar el archivo de eventos.</p>
           )}
         </div>
       </section>
@@ -114,41 +104,57 @@ function EventCard({
   event,
   highlight = false,
 }: {
-  event: ReturnType<typeof Object> extends never ? never : (typeof events)[number];
+  event: (typeof events)[number];
   highlight?: boolean;
 }) {
+  const isUpcoming = event.status === 'proximo';
   return (
-    <article className={`border ${highlight ? 'border-brand/50' : 'border-white/10'} bg-ink-dark/40 overflow-hidden`}>
+    <article
+      className={`relative border ${
+        highlight ? 'border-brand/60' : 'border-white/10'
+      } bg-ink-dark/40 overflow-hidden`}
+    >
+      {/* Badge de estado: PRÓXIMO o PASADO */}
+      <span
+        className={`absolute top-4 left-4 z-20 text-[10px] uppercase tracking-[0.25em] font-medium px-2.5 py-1 rounded ${
+          isUpcoming
+            ? 'bg-brand text-white'
+            : 'bg-ink-deep/80 backdrop-blur-sm text-white/80 border border-white/15'
+        }`}
+      >
+        {isUpcoming ? 'Próximo' : 'Pasado'}
+      </span>
+
       {event.gallery && event.gallery.length > 0 ? (
         <Carousel
           images={event.gallery.map((src, i) => ({ src, alt: `${event.title} — foto ${i + 1}` }))}
-          aspectClass="aspect-[16/9]"
-          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          aspectClass="aspect-[4/3]"
+          sizes="(min-width: 768px) 50vw, 100vw"
         />
       ) : event.cover ? (
-        <div className="relative aspect-[16/9]">
+        <div className="relative aspect-[4/3]">
           <Image src={event.cover} alt={event.title} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
         </div>
       ) : (
-        <div className="relative aspect-[16/9] bg-gradient-to-br from-brand/20 via-ink-dark to-ink-deep grid place-items-center">
+        <div className="relative aspect-[4/3] bg-gradient-to-br from-brand/20 via-ink-dark to-ink-deep grid place-items-center">
           <span className="font-light italic text-brand/60 text-2xl">{event.title}</span>
         </div>
       )}
-      <div className="p-6">
+      <div className="p-7 md:p-8">
         {event.guest && (
           <p className="text-sm mb-3">
             <span className="text-brand">{event.guest}</span>
             {event.guestRole && <span className="text-white/55"> · {event.guestRole}</span>}
           </p>
         )}
-        <h3 className="text-xl font-medium mb-2">{event.title}</h3>
-        <p className="text-sm text-white/70 leading-relaxed">{event.description}</p>
+        <h3 className="text-2xl md:text-3xl font-light mb-3 leading-tight">{event.title}</h3>
+        <p className="text-sm md:text-base text-white/70 leading-relaxed">{event.description}</p>
         {event.externalUrl && (
           <a
             href={event.externalUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-block text-xs uppercase tracking-[0.15em] text-brand hover:underline"
+            className="mt-5 inline-block text-xs uppercase tracking-[0.15em] text-brand hover:underline"
           >
             Ver más →
           </a>
