@@ -1,46 +1,38 @@
 'use client';
 
-import Image from 'next/image';
-
 type Props = {
   images: { src: string; alt: string }[];
   /** Segundos para completar un ciclo completo. Más alto = más lento. */
   speed?: number;
-  /** Altura de las imágenes — usar clases tailwind. */
+  /** Altura de las imágenes — usar clases tailwind (ej. 'h-80 md:h-96'). */
   heightClass?: string;
   /** Dirección del scroll */
   reverse?: boolean;
-  /** Cantidad aproximada de imágenes visibles a la vez en desktop. */
-  visibleDesktop?: number;
-  /** Cantidad aproximada de imágenes visibles a la vez en mobile. */
-  visibleMobile?: number;
 };
 
 /**
- * Galería de imágenes que se desplaza horizontalmente en loop infinito.
- * Usada en el bloque Comunidad del home para mostrar muchas fotos y dar
- * sensación de movimiento continuo. Las imágenes se duplican para que el
- * loop sea seamless (no se nota el salto).
+ * Galería horizontal infinita con scroll continuo.
  *
- * No tiene controles — es decorativa. Pausa en hover para que el usuario
- * pueda apreciar una imagen.
+ * Cada imagen mantiene su aspect ratio natural (height fijo, width auto),
+ * por lo que el viewport muestra ~3 fotos a la vez dependiendo de los
+ * aspect ratios — no hay recorte ni letterbox.
+ *
+ * El componente NO ocupa el full-width: se renderiza dentro de un wrapper
+ * con padding (ej. container-page) que recibe el `clip` exterior.
+ * Las imágenes que están fuera del wrapper visible quedan ocultas por
+ * `overflow-hidden` en el contenedor padre.
+ *
+ * Pausa en hover. Respeta `prefers-reduced-motion`.
  */
 export default function MarqueeGallery({
   images,
   speed = 50,
-  heightClass = 'h-56 md:h-72 lg:h-80',
+  heightClass = 'h-72 md:h-80 lg:h-96',
   reverse = false,
-  visibleDesktop = 3,
-  visibleMobile = 1.2,
 }: Props) {
   if (images.length === 0) return null;
-  // Duplicamos para crear el loop infinito sin salto visible.
+  // Duplicamos las imágenes para que el loop sea seamless (sin salto).
   const doubled = [...images, ...images];
-
-  // El ancho de cada slide se calcula como % del viewport para garantizar
-  // que entren exactamente `visibleDesktop`/`visibleMobile` por vista.
-  const widthMobile = `calc((100vw - 2rem) / ${visibleMobile})`;
-  const widthDesktop = `calc((100vw - 6rem) / ${visibleDesktop})`;
 
   return (
     <div className={`relative ${heightClass} overflow-hidden w-full select-none`} aria-hidden>
@@ -51,32 +43,18 @@ export default function MarqueeGallery({
         style={{ animationDuration: `${speed}s` }}
       >
         {doubled.map((img, i) => (
-          <div
-            key={`${img.src}-${i}`}
-            className="relative flex-shrink-0 h-full overflow-hidden bg-ink-deep"
-            style={{
-              width: widthMobile,
-              ['--w-md' as string]: widthDesktop,
-            }}
-          >
-            <Image
+          <div key={`${img.src}-${i}`} className="relative h-full flex-shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={img.src}
               alt={img.alt}
-              fill
-              sizes="(min-width:768px) 33vw, 80vw"
-              className="object-cover"
-              priority={i < images.length}
+              className="h-full w-auto object-cover block"
+              loading={i < images.length ? 'eager' : 'lazy'}
+              decoding="async"
             />
           </div>
         ))}
       </div>
-      <style jsx>{`
-        @media (min-width: 768px) {
-          div[style*="--w-md"] {
-            width: var(--w-md) !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }

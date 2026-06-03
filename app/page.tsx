@@ -282,15 +282,17 @@ export default function HomePage() {
           </Reveal>
         </div>
 
-        {/* Galería marquee — 3 fotos visibles a la vez con scroll continuo */}
+        {/* Galería marquee — respeta el padding del container y cada imagen
+            mantiene su aspect ratio natural (mismo alto, ancho variable).
+            En desktop quedan ~3 fotos visibles a la vez según sus ratios. */}
         <Reveal delay={250}>
-          <MarqueeGallery
-            images={communityGallery}
-            speed={45}
-            heightClass="h-72 md:h-96 lg:h-[28rem]"
-            visibleDesktop={3}
-            visibleMobile={1.2}
-          />
+          <div className="container-page">
+            <MarqueeGallery
+              images={communityGallery}
+              speed={45}
+              heightClass="h-72 md:h-80 lg:h-96"
+            />
+          </div>
         </Reveal>
 
         <div className="container-page max-w-4xl mx-auto text-center relative mt-12 md:mt-16">
