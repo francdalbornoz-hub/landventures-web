@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { projects } from '@/lib/content/projects';
 import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
