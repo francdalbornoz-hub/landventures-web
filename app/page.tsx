@@ -8,7 +8,19 @@ import JsonLd from '@/components/JsonLd';
 import Reveal from '@/components/Reveal';
 import BgRender from '@/components/BgRender';
 import CountUp from '@/components/CountUp';
+import MarqueeGallery from '@/components/MarqueeGallery';
 import { buildMetadata } from '@/lib/seo';
+
+/** Galería de fotos de todos los eventos para el marquee del home. */
+const communityGallery = [
+  { src: '/images/comunidad/Ruckauf-1.png', alt: 'Comunidad Land Ventures' },
+  { src: '/images/comunidad/Trebucq-1.png', alt: 'Comunidad Land Ventures' },
+  { src: '/images/comunidad/Ruckauf-2.png', alt: 'Comunidad Land Ventures' },
+  { src: '/images/comunidad/Trebucq-2.png', alt: 'Comunidad Land Ventures' },
+  { src: '/images/comunidad/Ruckauf-3.png', alt: 'Comunidad Land Ventures' },
+  { src: '/images/comunidad/Trebucq-3.png', alt: 'Comunidad Land Ventures' },
+  { src: '/images/comunidad/Trebucq-4.png', alt: 'Comunidad Land Ventures' },
+];
 
 export const metadata = buildMetadata({
   path: '/',
@@ -255,19 +267,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* COMUNIDAD — fondo blanco con imagen sutil */}
+      {/* COMUNIDAD — fondo blanco con marquee de fotos de eventos */}
       <section className="py-24 md:py-32 border-t border-white/[0.06] bg-white text-ink relative overflow-hidden">
-        <div aria-hidden className="absolute inset-0 pointer-events-none">
-          <Image
-            src="/images/Eventos/Background-comunidad.jpg"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover opacity-25"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white" />
-        </div>
-        <div className="container-page max-w-4xl mx-auto text-center relative">
+        <div className="container-page max-w-4xl mx-auto text-center relative mb-12 md:mb-16">
           <Reveal>
             <p className="eyebrow mb-5 mx-auto justify-center w-fit !text-coral">Comunidad</p>
           </Reveal>
@@ -277,10 +279,18 @@ export default function HomePage() {
             </h2>
           </Reveal>
           <Reveal delay={200}>
-            <p className="text-ink/70 max-w-2xl mx-auto leading-relaxed text-base md:text-lg mb-10">
+            <p className="text-ink/70 max-w-2xl mx-auto leading-relaxed text-base md:text-lg">
               Encuentros, charlas e invitados que se suman a las conversaciones sobre mercado inmobiliario y nuevas oportunidades.
             </p>
           </Reveal>
+        </div>
+
+        {/* Galería marquee — movimiento continuo de fotos de eventos */}
+        <Reveal delay={250}>
+          <MarqueeGallery images={communityGallery} speed={45} heightClass="h-60 md:h-80 lg:h-96" />
+        </Reveal>
+
+        <div className="container-page max-w-4xl mx-auto text-center relative mt-12 md:mt-16">
           {upcomingEvent && (
             <Reveal delay={300}>
               <div className="inline-block border border-ink/15 rounded-lg p-6 md:p-8 max-w-md mx-auto mb-10 text-left bg-cream/50">

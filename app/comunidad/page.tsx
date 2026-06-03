@@ -5,6 +5,7 @@ import JsonLd from '@/components/JsonLd';
 import { site } from '@/lib/content/site';
 import { events } from '@/lib/content/community';
 import BgRender from '@/components/BgRender';
+import Carousel from '@/components/Carousel';
 
 export const metadata = buildMetadata({
   title: 'Comunidad',
@@ -118,7 +119,13 @@ function EventCard({
 }) {
   return (
     <article className={`border ${highlight ? 'border-brand/50' : 'border-white/10'} bg-ink-dark/40 overflow-hidden`}>
-      {event.cover ? (
+      {event.gallery && event.gallery.length > 0 ? (
+        <Carousel
+          images={event.gallery.map((src, i) => ({ src, alt: `${event.title} — foto ${i + 1}` }))}
+          aspectClass="aspect-[16/9]"
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+        />
+      ) : event.cover ? (
         <div className="relative aspect-[16/9]">
           <Image src={event.cover} alt={event.title} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
         </div>

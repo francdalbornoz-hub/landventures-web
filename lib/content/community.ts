@@ -17,8 +17,10 @@ export type CommunityEvent = {
   /** Descripción corta (1-2 oraciones) */
   description: string;
   status: EventStatus;
-  /** Imagen de cover, relativa a /public */
+  /** Imagen de cover (single), relativa a /public — usada cuando no hay gallery */
   cover?: string;
+  /** Carrusel del evento. Si tiene 2+ imágenes, se renderiza como carousel. */
+  gallery?: string[];
   /** Invitado / speaker destacado */
   guest?: string;
   /** Rol del invitado, ej. "Economista", "Periodista" */
@@ -38,6 +40,12 @@ export const events: CommunityEvent[] = [
     guest: 'Esteban Trebucq',
     guestRole: 'Periodista',
     cover: '/images/Eventos/trebucq.jpeg',
+    gallery: [
+      '/images/comunidad/Trebucq-1.png',
+      '/images/comunidad/Trebucq-2.png',
+      '/images/comunidad/Trebucq-3.png',
+      '/images/comunidad/Trebucq-4.png',
+    ],
   },
   {
     slug: 'conversacion-ruckauf',
@@ -50,6 +58,11 @@ export const events: CommunityEvent[] = [
     guest: 'Carlos Ruckauf',
     guestRole: 'Ex-Vicepresidente',
     cover: '/images/Eventos/ruckauf.jpg',
+    gallery: [
+      '/images/comunidad/Ruckauf-1.png',
+      '/images/comunidad/Ruckauf-2.png',
+      '/images/comunidad/Ruckauf-3.png',
+    ],
   },
   {
     slug: 'proximo-encuentro',

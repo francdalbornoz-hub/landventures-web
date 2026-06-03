@@ -168,6 +168,18 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
+/* Marquee horizontal infinito — usado en MarqueeGallery */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.animate-marquee { animation: marquee linear infinite; }
+.animate-marquee-reverse { animation: marquee-reverse linear infinite; }
+
 /* Pulso para markers destacados */
 @keyframes brand-pulse {
   0%, 100% { box-shadow: 0 6px 20px rgba(0,0,0,0.5), 0 0 0 0 rgba(224, 153, 0, 0.55), 0 0 0 1px rgba(0,0,0,0.3); }
