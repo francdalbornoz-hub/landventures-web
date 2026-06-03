@@ -46,7 +46,7 @@ export default function NosotrosPage() {
                   Somos <span className="serif-accent">Land Ventures</span>
                 </h1>
                 <p className="mt-6 text-white/80 leading-relaxed max-w-md text-base md:text-lg">
-                  Más de una década adquiriendo terrenos, financiando operaciones, diseñando y construyendo. Hoy integramos esa experiencia en una sola plataforma: desarrollos propios, inversión en tierra y oportunidades curadas.
+                  Más de una década adquiriendo terrenos, financiando operaciones, diseñando y construyendo. Esa experiencia hoy se traduce en tres líneas: desarrollos propios, inversión en tierra y oportunidades curadas.
                 </p>
               </div>
             </Reveal>

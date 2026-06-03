@@ -26,7 +26,7 @@ const pillarCopy: Record<string, { label: string; tagline: string }> = {
   },
   oportunidades: {
     label: 'Oportunidades',
-    tagline: 'Unidades en pozo seleccionadas una por una, con el respaldo de +30 operaciones.',
+    tagline: 'Unidades seleccionadas para comprar al mejor precio, con el respaldo de +30 operaciones.',
   },
   comunidad: {
     label: 'Comunidad',
@@ -82,9 +82,7 @@ export default function HomePage() {
           </h1>
           <div className="mt-12 mx-auto w-px h-10 bg-brand/60" />
           <p className="mt-10 text-xl md:text-2xl lg:text-3xl font-light max-w-3xl mx-auto text-balance text-white/95 leading-snug">
-            Más de una década comprando tierra en las mejores zonas de CABA.
-            Desarrollamos, invertimos y abrimos cada operación a quienes quieren entrar{' '}
-            <span className="serif-accent">desde el origen</span>.
+            Una década definiendo <span className="serif-accent">dónde vale la pena construir</span> en Buenos Aires.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/proyectos" className="btn-outline-white">Ver proyectos</Link>
@@ -95,21 +93,6 @@ export default function HomePage() {
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-scroll-hint" aria-hidden>
           <span className="text-[10px] uppercase tracking-[0.3em] text-white/60">Scroll</span>
           <div className="w-px h-10 bg-gradient-to-b from-white/60 to-transparent" />
-        </div>
-      </section>
-
-      {/* SUBHERO */}
-      <section className="py-20 md:py-32">
-        <div className="container-page text-center max-w-4xl mx-auto">
-          <Reveal>
-            <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug text-balance">
-              Compramos tierra en oportunidad en las mejores zonas de CABA y la transformamos en{' '}
-              <span className="serif-accent">unidades de alto valor</span>. Invertí con nosotros desde el origen del proyecto.
-            </p>
-          </Reveal>
-          <Reveal delay={150}>
-            <div className="divider-line" />
-          </Reveal>
         </div>
       </section>
 
@@ -132,17 +115,17 @@ export default function HomePage() {
                 <Reveal key={p.slug} delay={i * 100} variant="fade-up">
                   <Link
                     href={p.href}
-                    className="group card-soft card-hover p-7 h-full block relative overflow-hidden"
+                    className="group h-full flex flex-col relative p-7 border-l border-white/10 hover:border-brand transition-colors duration-500"
                   >
-                    <div className="absolute top-0 right-0 w-20 h-20 -mr-10 -mt-10 rounded-full bg-brand/5 group-hover:bg-brand/10 transition-colors duration-500" />
-                    <span className="text-[10px] font-medium text-brand/70 tracking-[0.3em]">
+                    <span className="text-[10px] font-medium text-brand tracking-[0.3em]">
                       0{i + 1}
                     </span>
                     <h3 className="text-xl md:text-2xl text-white mt-3 mb-4 font-light group-hover:text-brand transition-colors duration-500 leading-tight">
                       {copy.label}
                     </h3>
                     <p className="text-sm text-white/65 leading-relaxed">{copy.tagline}</p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-brand opacity-70 group-hover:opacity-100 group-hover:gap-3 transition-all duration-500">
+                    {/* Conocé más siempre alineado al final */}
+                    <span className="mt-auto pt-8 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-brand/80 group-hover:text-brand group-hover:gap-3 transition-all duration-500">
                       Conocé más <span>→</span>
                     </span>
                   </Link>
@@ -329,9 +312,8 @@ export default function HomePage() {
       <section className="py-24 md:py-32 border-t border-white/[0.06]">
         <div className="container-page text-center max-w-3xl mx-auto">
           <Reveal>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-balance leading-tight">
-              Ponete en <span className="serif-accent">contacto</span> y organizamos una{' '}
-              <span className="serif-accent">reunión</span>.
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-light text-balance leading-tight">
+              <span className="serif-accent">Conversemos</span>.
             </h2>
           </Reveal>
           <Reveal delay={200}>
