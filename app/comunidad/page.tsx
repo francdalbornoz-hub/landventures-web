@@ -55,9 +55,11 @@ export default function ComunidadPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink/85" />
           <div className="absolute inset-0 grain" />
         </div>
-        <div className="container-page max-w-5xl mx-auto relative">
+        {/* Container más ancho y con menos padding para que los 3 eventos
+            entren en una sola hilera manteniendo el tamaño actual de las cards. */}
+        <div className="relative mx-auto w-full max-w-[1500px] px-4 md:px-6">
           <p className="eyebrow mb-8 mx-auto justify-center w-fit">Eventos</p>
-          <div className="grid gap-8 md:gap-10 md:grid-cols-2">
+          <div className="grid gap-5 md:gap-6 grid-cols-1 md:grid-cols-3">
             {allEvents.map((e) => (
               <EventCard key={e.slug} event={e} highlight={e.status === 'proximo'} />
             ))}
