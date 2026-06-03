@@ -50,7 +50,7 @@ export default function ProyectosPage() {
               Nuestros <span className="serif-accent">desarrollos</span>
             </h1>
             <p className="mt-7 text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-              Cada proyecto nace de un terreno comprado en oportunidad y se desarrolla en las mejores zonas de CABA. Así construimos valor desde el origen.
+              Cada proyecto nace de un terreno comprado junto a nuestros inversores y desarrollado en las mejores zonas de Buenos Aires.
             </p>
           </div>
         </div>
