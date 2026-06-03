@@ -98,7 +98,7 @@ export default function HomePage() {
 
       {/* PILARES — LO QUE HACEMOS */}
       <section className="py-20 md:py-28 border-t border-white/[0.06] relative overflow-hidden">
-        <BgRender />
+        <BgRender src="/images/pilares-bg.jpg" opacity={0.5} />
         <div className="container-page max-w-6xl mx-auto relative">
           <Reveal>
             <p className="eyebrow mb-5 mx-auto justify-center w-fit">Lo que hacemos</p>
@@ -115,7 +115,7 @@ export default function HomePage() {
                 <Reveal key={p.slug} delay={i * 100} variant="fade-up">
                   <Link
                     href={p.href}
-                    className="group h-full flex flex-col relative p-7 border-l border-white/10 hover:border-brand transition-colors duration-500"
+                    className="group h-full flex flex-col relative p-7 bg-ink/70 backdrop-blur-md border border-white/10 border-l-2 border-l-brand/60 hover:bg-ink/85 hover:border-l-brand hover:border-white/20 transition-all duration-500"
                   >
                     <span className="text-[10px] font-medium text-brand tracking-[0.3em]">
                       0{i + 1}
@@ -123,7 +123,7 @@ export default function HomePage() {
                     <h3 className="text-xl md:text-2xl text-white mt-3 mb-4 font-light group-hover:text-brand transition-colors duration-500 leading-tight">
                       {copy.label}
                     </h3>
-                    <p className="text-sm text-white/65 leading-relaxed">{copy.tagline}</p>
+                    <p className="text-sm text-white/70 leading-relaxed">{copy.tagline}</p>
                     {/* Conocé más siempre alineado al final */}
                     <span className="mt-auto pt-8 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-brand/80 group-hover:text-brand group-hover:gap-3 transition-all duration-500">
                       Conocé más <span>→</span>
