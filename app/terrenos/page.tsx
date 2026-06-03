@@ -25,8 +25,8 @@ const advantages = [
   {
     icon: 'star',
     title: 'Negociamos las mejores condiciones',
-    body: 'Comprar el terreno en oportunidad es solo la mitad. La otra es el canje: nuestra experiencia negociando con desarrolladores nos da, en promedio, ~29,8% de canje por metros en cada obra.',
-    badge: '~29,8% más m² por canje',
+    body: 'Comprar el terreno en oportunidad es solo la mitad. La otra es el canje: nuestra experiencia negociando con desarrolladores nos da las mejores condiciones del mercado en cada obra.',
+    badge: undefined,
   },
   {
     icon: 'lock',
@@ -123,9 +123,11 @@ export default function TerrenosPage() {
                   <AdvantageIcon icon={adv.icon} className="h-11 w-11 text-brand mb-5" />
                   <h3 className="text-lg font-medium mb-3 leading-tight">{adv.title}</h3>
                   <p className="text-sm text-white/70 leading-relaxed mb-5 flex-1">{adv.body}</p>
-                  <span className="inline-block self-start text-[11px] font-medium text-brand bg-brand/[0.08] border border-brand/30 rounded px-2.5 py-1.5 leading-snug">
-                    {adv.badge}
-                  </span>
+                  {adv.badge && (
+                    <span className="inline-block self-start text-[11px] font-medium text-brand bg-brand/[0.08] border border-brand/30 rounded px-2.5 py-1.5 leading-snug">
+                      {adv.badge}
+                    </span>
+                  )}
                 </article>
               </Reveal>
             ))}
