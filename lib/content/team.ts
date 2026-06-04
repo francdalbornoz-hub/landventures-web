@@ -31,6 +31,7 @@ export const team: TeamMember[] = [
     slug: 'damian',
     name: 'Damián',
     role: 'Director Comercial',
+    photo: '/images/Team/damian.png',
   },
   {
     slug: 'diego',

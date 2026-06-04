@@ -125,30 +125,42 @@ export default function NosotrosPage() {
 
       {/* EQUIPO — fondo gris claro contrastante */}
       <section className="py-20 md:py-28 border-t border-white/[0.06] bg-[#e6e3dd] text-ink">
-        <div className="container-page max-w-5xl mx-auto">
+        {/* Container un poco más ancho para que las 4 cards entren en una sola fila cómodas */}
+        <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
           <Reveal>
             <p className="eyebrow mb-4 mx-auto justify-center w-fit !text-coral">Equipo</p>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center mb-14 text-balance">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center mb-16 text-balance">
               Conocé al equipo de <span className="serif-accent">Land Ventures</span>
             </h2>
           </Reveal>
-          <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          <div className="grid gap-6 md:gap-7 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {team.map((member, i) => (
               <Reveal key={member.slug} delay={i * 80}>
-                <article className="bg-white/60 border border-ink/10 p-6 text-center h-full hover:border-coral/40 transition-colors">
-                  <div className="relative w-28 h-28 md:w-32 md:h-32 mx-auto mb-5 rounded-full overflow-hidden bg-gradient-to-br from-brand/20 to-ink/10 border border-ink/10">
+                <article className="group relative bg-white border border-ink/10 p-8 md:p-9 text-center h-full overflow-hidden transition-all duration-500 hover:border-coral/50 hover:shadow-[0_18px_40px_-20px_rgba(0,0,0,0.18)] hover:-translate-y-1">
+                  {/* Acento decorativo: línea superior coral que aparece en hover */}
+                  <span className="absolute top-0 left-0 right-0 h-px bg-coral scale-x-0 origin-center group-hover:scale-x-100 transition-transform duration-500" />
+                  {/* Detalle de número */}
+                  <span className="absolute top-4 right-5 text-[10px] tracking-[0.3em] text-ink/30 font-medium">
+                    0{i + 1}
+                  </span>
+                  <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-full overflow-hidden bg-gradient-to-br from-brand/15 to-ink/5 ring-1 ring-ink/10 ring-offset-4 ring-offset-white">
                     {member.photo ? (
-                      <Image src={member.photo} alt={member.name} fill sizes="128px" className="object-cover" />
+                      <Image src={member.photo} alt={member.name} fill sizes="160px" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                     ) : (
-                      <div className="absolute inset-0 grid place-items-center font-light text-3xl text-brand/80">
+                      <div className="absolute inset-0 grid place-items-center font-light text-4xl text-brand/80">
                         {member.name[0]}
                       </div>
                     )}
                   </div>
-                  <h3 className="text-lg font-medium text-ink">{member.name}</h3>
-                  <p className="text-[10px] uppercase tracking-[0.22em] text-coral mt-2">{member.role}</p>
+                  <h3 className="text-xl md:text-2xl font-light text-ink leading-tight">
+                    {member.name}
+                  </h3>
+                  <span className="block w-8 h-px bg-coral/60 mx-auto my-3" />
+                  <p className="text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-coral font-medium">
+                    {member.role}
+                  </p>
                 </article>
               </Reveal>
             ))}
