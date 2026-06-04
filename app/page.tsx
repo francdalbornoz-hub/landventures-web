@@ -105,8 +105,10 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-scroll-hint" aria-hidden>
-          <span className="text-[10px] uppercase tracking-[0.3em] text-white/60">Scroll</span>
+        <div className="absolute bottom-10 inset-x-0 z-10 flex flex-col items-center gap-2 animate-scroll-hint pointer-events-none" aria-hidden>
+          {/* pl-[0.3em] compensa el letter-spacing del último char,
+              así el texto queda ópticamente centrado sobre la línea. */}
+          <span className="text-[10px] uppercase tracking-[0.3em] text-white/60 pl-[0.3em]">Scroll</span>
           <div className="w-px h-10 bg-gradient-to-b from-white/60 to-transparent" />
         </div>
       </section>
