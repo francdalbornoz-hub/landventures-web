@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
+import { buildMetadata, breadcrumbJsonLd, personJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import Reveal from '@/components/Reveal';
 import BgRender from '@/components/BgRender';
@@ -33,10 +33,13 @@ export default function NosotrosPage() {
   return (
     <>
       <JsonLd
-        data={breadcrumbJsonLd([
-          { name: 'Inicio', href: '/' },
-          { name: 'Nosotros', href: '/nosotros' },
-        ])}
+        data={[
+          breadcrumbJsonLd([
+            { name: 'Inicio', href: '/' },
+            { name: 'Nosotros', href: '/nosotros' },
+          ]),
+          ...team.map((member) => personJsonLd(member)),
+        ]}
       />
 
       {/* HERO con logo en lugar de foto */}

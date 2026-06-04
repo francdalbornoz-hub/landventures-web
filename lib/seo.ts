@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { site } from './content/site';
 import type { Project } from './content/projects';
 import type { CommunityEvent } from './content/community';
+import type { TeamMember } from './content/team';
 
 type BuildMetadataInput = {
   title?: string;
@@ -71,21 +72,31 @@ export function buildMetadata({
   };
 }
 
+/**
+ * Organization JSON-LD enriquecida.
+ * Combina RealEstateAgent + LocalBusiness para Google Maps + búsquedas locales.
+ * Incluye opening hours, hasMap, areaServed específica y knowsAbout.
+ */
 export function organizationJsonLd() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'RealEstateAgent',
+    '@type': ['RealEstateAgent', 'LocalBusiness'],
     '@id': `${site.url}#organization`,
     name: site.name,
     legalName: site.legalName,
     url: site.url,
-    logo: `${site.url}/images/logo.png`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${site.url}/images/logo.png`,
+      width: 2522,
+      height: 1240,
+    },
     image: `${site.url}/images/logo.png`,
     description: site.description,
     email: site.contact.email,
     telephone: site.contact.phone,
     foundingDate: '2014',
-    areaServed: { '@type': 'City', name: 'Buenos Aires' },
+    priceRange: '$$$',
     address: {
       '@type': 'PostalAddress',
       streetAddress: site.contact.address.street,
@@ -98,12 +109,62 @@ export function organizationJsonLd() {
       latitude: site.contact.address.lat,
       longitude: site.contact.address.lng,
     },
+    hasMap: site.contact.address.mapsUrl,
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+    ],
+    areaServed: [
+      { '@type': 'City', name: 'Buenos Aires' },
+      { '@type': 'AdministrativeArea', name: 'CABA' },
+      { '@type': 'Place', name: 'Palermo Hollywood' },
+      { '@type': 'Place', name: 'Belgrano' },
+      { '@type': 'Place', name: 'Colegiales' },
+      { '@type': 'Place', name: 'San Telmo' },
+      { '@type': 'Place', name: 'Núñez' },
+    ],
     sameAs: [site.social.instagram],
     knowsAbout: [
       'Inversión inmobiliaria',
       'Desarrollo de proyectos inmobiliarios',
       'Compra conjunta de terrenos',
       'Unidades en pozo',
+      'Banca de tierras',
+      'Land banking',
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      telephone: site.contact.phone,
+      email: site.contact.email,
+      availableLanguage: ['Spanish', 'es'],
+      areaServed: 'AR',
+    },
+  };
+}
+
+/**
+ * Person JSON-LD por miembro del equipo.
+ * Cada uno queda vinculado a la Organization como `worksFor`,
+ * lo cual ayuda a Google a entender la estructura del equipo.
+ */
+export function personJsonLd(member: TeamMember) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${site.url}#person-${member.slug}`,
+    name: member.name,
+    jobTitle: member.role,
+    image: member.photo ? `${site.url}${member.photo}` : undefined,
+    worksFor: { '@id': `${site.url}#organization` },
+    knowsAbout: [
+      'Inversión inmobiliaria',
+      'Desarrollo inmobiliario',
+      'Mercado inmobiliario Buenos Aires',
     ],
   };
 }
