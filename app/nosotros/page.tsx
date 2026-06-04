@@ -14,7 +14,12 @@ export const metadata = buildMetadata({
   title: 'Nosotros',
   path: '/nosotros',
   description:
-    'Equipo y expertise de Land Ventures: +10 años desarrollando, comprando y curando oportunidades inmobiliarias en CABA.',
+    'Somos Land Ventures: una década adquiriendo terrenos, financiando, diseñando y construyendo en las mejores zonas de CABA. Conocé al equipo y nuestro track record.',
+  keywords: [
+    'equipo Land Ventures',
+    'desarrolladora Buenos Aires',
+    'experiencia inmobiliaria CABA',
+  ],
 });
 
 const expertise = [

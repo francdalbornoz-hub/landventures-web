@@ -10,7 +10,13 @@ export const metadata = buildMetadata({
   title: 'Contacto',
   path: '/contacto',
   description:
-    'Contactá a Land Ventures: info@landventures.com.ar, +54 9 11 5163-6153, WhatsApp e Instagram. Olazábal 1483 Of. 503, Belgrano, CABA.',
+    'Hablemos: info@landventures.com.ar · +54 9 11 5163-6153 · WhatsApp · Instagram @landventures.ar · Oficina: Olazábal 1483 Of. 503, DOME Olazábal, Belgrano, CABA.',
+  keywords: [
+    'contacto Land Ventures',
+    'oficina Belgrano',
+    'DOME Olazábal',
+    'WhatsApp inversión inmobiliaria',
+  ],
 });
 
 type ChannelKind = 'mail' | 'whatsapp' | 'instagram';

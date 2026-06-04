@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { projects } from '@/lib/content/projects';
-import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
+import { buildMetadata, breadcrumbJsonLd, projectListJsonLd, projectJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import { site } from '@/lib/content/site';
 import BgRender from '@/components/BgRender';
@@ -9,7 +9,18 @@ export const metadata = buildMetadata({
   title: 'Proyectos',
   path: '/proyectos',
   description:
-    'Desarrollos propios y en construcción de Land Ventures en Belgrano, Nuñez, Palermo Hollywood, Colegiales, San Telmo y otras zonas premium de CABA.',
+    'Nuestros desarrollos propios y en construcción en las mejores zonas de Buenos Aires: Palermo Hollywood, Colegiales, San Telmo, Belgrano y más. Cada proyecto nace de un terreno comprado en oportunidad.',
+  keywords: [
+    'departamentos en pozo Buenos Aires',
+    'desarrollos Palermo Hollywood',
+    'edificios nuevos CABA',
+    'Bonpland 2305',
+    'Dorrego Place',
+    'Newbery Place',
+    'Aguilar Place',
+    'LATE San Telmo',
+    'ENE Nicaragua',
+  ],
 });
 
 const STATUS_LABEL: Record<string, string> = {
@@ -27,16 +38,8 @@ export default function ProyectosPage() {
             { name: 'Inicio', href: '/' },
             { name: 'Proyectos', href: '/proyectos' },
           ]),
-          {
-            '@context': 'https://schema.org',
-            '@type': 'ItemList',
-            itemListElement: projects.map((p, i) => ({
-              '@type': 'ListItem',
-              position: i + 1,
-              url: `${site.url}/proyectos/${p.slug}`,
-              name: `${p.name} ${p.suffix ?? ''}`.trim(),
-            })),
-          },
+          projectListJsonLd(projects),
+          ...projects.map((p) => projectJsonLd(p)),
         ]}
       />
 
@@ -125,22 +128,30 @@ export default function ProyectosPage() {
                     )}
                   </dl>
 
-                  {/* BOTÓN PRINCIPAL: VER RENDERS WINBUILD */}
-                  {p.winbuildUrl && (
-                    <div className="mt-10">
-                      <a
-                        href={p.winbuildUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={isLight ? 'btn-brand text-base !px-9 !py-4' : 'btn-brand text-base !px-9 !py-4'}
-                      >
-                        Conocé más del proyecto
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-1 h-4 w-4" aria-hidden>
-                          <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </a>
-                    </div>
-                  )}
+                  {/* BOTÓN PRINCIPAL: 'Conocé más del proyecto'.
+                      Si el proyecto tiene URL WinBuild apunta ahí. Si no, fallback
+                      al Instagram del proyecto, y si tampoco al Instagram general. */}
+                  {(() => {
+                    const fallbackIg = p.instagramHandle
+                      ? `https://www.instagram.com/${p.instagramHandle}/`
+                      : site.social.instagram;
+                    const href = p.winbuildUrl ?? fallbackIg;
+                    return (
+                      <div className="mt-10">
+                        <a
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-brand text-base !px-9 !py-4"
+                        >
+                          Conocé más del proyecto
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-1 h-4 w-4" aria-hidden>
+                            <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </a>
+                      </div>
+                    );
+                  })()}
 
                   <div className="mt-5 flex flex-wrap gap-3">
                     {p.brochureUrl && (

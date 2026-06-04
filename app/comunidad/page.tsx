@@ -4,14 +4,22 @@ import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import { site } from '@/lib/content/site';
 import { events } from '@/lib/content/community';
+import { eventJsonLd } from '@/lib/seo';
 import BgRender from '@/components/BgRender';
 import Carousel from '@/components/Carousel';
 
 export const metadata = buildMetadata({
-  title: 'Comunidad',
+  title: 'Comunidad · Eventos y charlas',
   path: '/comunidad',
   description:
-    'Eventos, charlas y encuentros de Land Ventures. Conocé a la comunidad de inversores y referentes que se suman a nuestros encuentros.',
+    'Eventos, charlas y encuentros de la comunidad Land Ventures. Conversaciones sobre mercado inmobiliario, coyuntura económica y oportunidades de inversión, con invitados como Carlos Ruckauf y Esteban Trebucq.',
+  keywords: [
+    'eventos inmobiliarios Buenos Aires',
+    'charlas inversión Argentina',
+    'comunidad de inversores CABA',
+    'Carlos Ruckauf charla',
+    'Esteban Trebucq charla',
+  ],
 });
 
 export default function ComunidadPage() {
@@ -23,10 +31,13 @@ export default function ComunidadPage() {
   return (
     <>
       <JsonLd
-        data={breadcrumbJsonLd([
-          { name: 'Inicio', href: '/' },
-          { name: 'Comunidad', href: '/comunidad' },
-        ])}
+        data={[
+          breadcrumbJsonLd([
+            { name: 'Inicio', href: '/' },
+            { name: 'Comunidad', href: '/comunidad' },
+          ]),
+          ...events.map((e) => eventJsonLd(e)),
+        ]}
       />
 
       <section className="pt-36 pb-12 md:pt-44 md:pb-16 relative overflow-hidden">

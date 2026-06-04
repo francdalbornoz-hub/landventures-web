@@ -38,9 +38,5 @@ export const team: TeamMember[] = [
     role: 'Director de Operaciones',
     photo: '/images/Team/Diego.png',
   },
-  {
-    slug: 'nico',
-    name: 'Nico',
-    role: 'Administración',
-  },
+  // Nico (Administración) temporalmente fuera. Re-agregar cuando se decida volver.
 ];

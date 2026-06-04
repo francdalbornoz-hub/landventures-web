@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
+import { buildMetadata, breadcrumbJsonLd, serviceJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import Reveal from '@/components/Reveal';
 import BgRender from '@/components/BgRender';
@@ -9,10 +9,17 @@ import { trackRecordTerrenos } from '@/lib/content/timeline';
 import LandsMap from '@/components/LandsMapClient';
 
 export const metadata = buildMetadata({
-  title: 'Terrenos',
+  title: 'Terrenos · Inversión en tierra',
   path: '/terrenos',
   description:
-    'Invertí en tierra desde el origen junto a Land Ventures: compra conjunta en las mejores zonas de CABA y +30 operaciones de track record.',
+    'Invertí en tierra desde el origen junto a Land Ventures: compra conjunta de terrenos en las mejores zonas de Buenos Aires. +30 operaciones cerradas, capital propio en cada compra.',
+  keywords: [
+    'inversión en tierra CABA',
+    'compra conjunta de terrenos',
+    'land banking Buenos Aires',
+    'banca de tierras Argentina',
+    'invertir en terrenos Palermo',
+  ],
 });
 
 const advantages = [
@@ -46,10 +53,18 @@ export default function TerrenosPage() {
   return (
     <>
       <JsonLd
-        data={breadcrumbJsonLd([
-          { name: 'Inicio', href: '/' },
-          { name: 'Terrenos', href: '/terrenos' },
-        ])}
+        data={[
+          breadcrumbJsonLd([
+            { name: 'Inicio', href: '/' },
+            { name: 'Terrenos', href: '/terrenos' },
+          ]),
+          serviceJsonLd({
+            name: 'Inversión en tierra · Land Ventures',
+            description:
+              'Compra conjunta de terrenos en las mejores zonas de Buenos Aires. +30 operaciones cerradas, capital propio en cada operación.',
+            path: '/terrenos',
+          }),
+        ]}
       />
 
       {/* HERO */}

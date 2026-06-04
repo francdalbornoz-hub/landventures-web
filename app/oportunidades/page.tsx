@@ -1,16 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { buildMetadata, breadcrumbJsonLd } from '@/lib/seo';
+import { buildMetadata, breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import { site } from '@/lib/content/site';
 import OpportunitiesGrid from '@/components/OpportunitiesGrid';
 import BgRender from '@/components/BgRender';
 
 export const metadata = buildMetadata({
-  title: 'Oportunidades',
+  title: 'Oportunidades · Pozo Club',
   path: '/oportunidades',
   description:
-    'Unidades en pozo curadas en CABA: barrio, precio, superficie y entrega. La ficha completa se envía a interesados en privado.',
+    'Land Ventures Pozo Club: unidades en pozo exclusivas en las mejores zonas de CABA. Entramos a cada proyecto desde el origen, con las mejores condiciones de entrada.',
+  keywords: [
+    'oportunidades en pozo',
+    'departamentos pozo Buenos Aires',
+    'Pozo Club Land Ventures',
+    'invertir en pozo CABA',
+    'unidades pozo Palermo',
+    'unidades pozo Belgrano',
+    'unidades pozo San Telmo',
+  ],
 });
 
 const offerings = [
@@ -99,10 +108,19 @@ export default function OportunidadesPage() {
   return (
     <>
       <JsonLd
-        data={breadcrumbJsonLd([
-          { name: 'Inicio', href: '/' },
-          { name: 'Oportunidades', href: '/oportunidades' },
-        ])}
+        data={[
+          breadcrumbJsonLd([
+            { name: 'Inicio', href: '/' },
+            { name: 'Oportunidades', href: '/oportunidades' },
+          ]),
+          serviceJsonLd({
+            name: 'Land Ventures Pozo Club',
+            description:
+              'Curaduría de unidades en pozo en proyectos de Land Ventures. Entramos a cada proyecto desde el origen con las mejores condiciones de entrada.',
+            path: '/oportunidades',
+          }),
+          faqJsonLd(faq),
+        ]}
       />
 
       <section className="pt-36 pb-12 md:pt-44 md:pb-16 relative overflow-hidden">

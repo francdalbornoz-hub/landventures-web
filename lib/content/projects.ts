@@ -73,7 +73,6 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 2,
     status: 'terminado',
-    winbuildUrl: 'https://winbuild.com.ar/bonpland-2305', // TODO
   },
   {
     slug: 'ene-nicaragua-6078',
@@ -97,7 +96,6 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'terminado',
-    winbuildUrl: 'https://winbuild.com.ar/ene-nicaragua', // TODO
   },
   {
     slug: 'late-san-telmo',
@@ -120,7 +118,6 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'en-construccion',
-    winbuildUrl: 'https://winbuild.com.ar/late-san-telmo', // TODO
   },
   {
     slug: 'newbery-place',
@@ -143,7 +140,6 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'en-construccion',
-    winbuildUrl: 'https://winbuild.com.ar/newbery-place', // TODO
   },
   {
     slug: 'dorrego-place',
@@ -165,7 +161,6 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'en-construccion',
-    winbuildUrl: 'https://winbuild.com.ar/dorrego-place', // TODO
   },
   {
     slug: 'aguilar-place',

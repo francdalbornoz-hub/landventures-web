@@ -23,7 +23,13 @@ const communityGallery = [
 
 export const metadata = buildMetadata({
   path: '/',
-  description: site.description,
+  description:
+    'Land Ventures: desarrollos propios, inversión en tierra y oportunidades en pozo en las mejores zonas de Buenos Aires. +30 operaciones de tierra y +10 años en el mercado.',
+  keywords: [
+    'desarrollos inmobiliarios premium',
+    'inversión inmobiliaria desde el origen',
+    'comprar departamento en pozo CABA',
+  ],
 });
 
 const pillarCopy: Record<string, { label: string; tagline: string }> = {

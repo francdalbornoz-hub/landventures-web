@@ -5,8 +5,23 @@ import { site } from '@/lib/content/site';
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error';
 
+/**
+ * Formulario de contacto conectado a Web3Forms.
+ *
+ * Setup:
+ * 1. Crear cuenta gratis en https://web3forms.com (usar info@landventures.com.ar
+ *    como email destino).
+ * 2. Copiar el Access Key que te dan.
+ * 3. En Vercel: Settings → Environment Variables → agregar
+ *    NEXT_PUBLIC_WEB3FORMS_KEY con ese valor.
+ * 4. Redeploy y listo — las consultas llegan directo al email.
+ *
+ * Fallback: si la env var no está configurada, abre el cliente de email
+ * del usuario con mailto: pre-llenado (comportamiento anterior).
+ */
 export default function ContactForm() {
   const [state, setState] = useState<FormState>('idle');
+  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -18,9 +33,45 @@ export default function ContactForm() {
     const asunto = String(data.get('asunto') ?? '');
     const telefono = String(data.get('telefono') ?? '');
     const mensaje = String(data.get('mensaje') ?? '');
+    const subject = asunto || `Consulta desde landventures.com.ar de ${nombre} ${apellido}`.trim();
 
-    // Fallback: abre el cliente de email del usuario con el contenido prellenado.
-    // En el futuro, conectar un endpoint (Formspree, Resend, /api/contact) y reemplazar.
+    setState('submitting');
+
+    // ✅ Camino 1: Web3Forms configurado → POST al endpoint
+    if (accessKey) {
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: accessKey,
+            from_name: `${nombre} ${apellido}`.trim() || 'Web Land Ventures',
+            subject,
+            email,
+            phone: telefono,
+            message: mensaje,
+            replyto: email,
+            // Honeypot
+            botcheck: data.get('botcheck') ?? '',
+          }),
+        });
+        const json = await res.json();
+        if (json.success) {
+          setState('success');
+          form.reset();
+          return;
+        }
+        console.error('Web3Forms error:', json);
+        setState('error');
+        return;
+      } catch (err) {
+        console.error('Web3Forms fetch failed:', err);
+        setState('error');
+        return;
+      }
+    }
+
+    // ⚠️ Camino 2: fallback mailto (sin Web3Forms configurado)
     const body = [
       `Nombre: ${nombre} ${apellido}`,
       `Email: ${email}`,
@@ -28,12 +79,7 @@ export default function ContactForm() {
       '',
       mensaje,
     ].join('\n');
-
-    const mailto = `mailto:${site.contact.email}?subject=${encodeURIComponent(
-      asunto || `Consulta de ${nombre} ${apellido}`.trim(),
-    )}&body=${encodeURIComponent(body)}`;
-
-    setState('submitting');
+    const mailto = `mailto:${site.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     try {
       window.location.href = mailto;
       setState('success');
@@ -44,6 +90,16 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-6">
+      {/* Honeypot anti-spam para Web3Forms */}
+      <input
+        type="checkbox"
+        name="botcheck"
+        className="hidden"
+        style={{ display: 'none' }}
+        tabIndex={-1}
+        autoComplete="off"
+      />
+
       <div className="grid gap-5 md:grid-cols-2">
         <Field name="nombre" label="Nombre" placeholder="Tu nombre" />
         <Field name="apellido" label="Apellido" placeholder="Tu apellido" />
@@ -82,10 +138,12 @@ export default function ContactForm() {
         </button>
 
         {state === 'success' && (
-          <p className="text-sm text-brand">¡Listo! Abrimos tu cliente de email.</p>
+          <p className="text-sm text-brand">
+            {accessKey ? '¡Gracias! Te respondemos a la brevedad.' : '¡Listo! Abrimos tu cliente de email.'}
+          </p>
         )}
         {state === 'error' && (
-          <p className="text-sm text-coral">Escribinos directo a {site.contact.email}.</p>
+          <p className="text-sm text-coral">No pudimos enviar el mensaje. Escribinos a {site.contact.email}.</p>
         )}
       </div>
     </form>
