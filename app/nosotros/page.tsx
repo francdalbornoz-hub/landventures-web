@@ -14,7 +14,7 @@ export const metadata = buildMetadata({
   title: 'Nosotros',
   path: '/nosotros',
   description:
-    'Somos Land Ventures: una década adquiriendo terrenos, financiando, diseñando y construyendo en las mejores zonas de CABA. Conocé al equipo y nuestro track record.',
+    'Somos Land Ventures: una década adquiriendo terrenos, financiando y construyendo en las mejores zonas de CABA. Conocé al equipo y el track record.',
   keywords: [
     'equipo Land Ventures',
     'desarrolladora Buenos Aires',

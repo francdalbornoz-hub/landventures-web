@@ -9,7 +9,7 @@ export const metadata = buildMetadata({
   title: 'Proyectos',
   path: '/proyectos',
   description:
-    'Nuestros desarrollos propios y en construcción en las mejores zonas de Buenos Aires: Palermo Hollywood, Colegiales, San Telmo, Belgrano y más. Cada proyecto nace de un terreno comprado en oportunidad.',
+    'Nuestros desarrollos en las mejores zonas de Buenos Aires: Palermo Hollywood, Colegiales, San Telmo, Belgrano y más.',
   keywords: [
     'departamentos en pozo Buenos Aires',
     'desarrollos Palermo Hollywood',

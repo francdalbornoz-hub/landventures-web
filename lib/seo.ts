@@ -39,7 +39,7 @@ export function buildMetadata({
   const url = `${site.url}${path}`;
   const fullTitle = title
     ? `${title} | ${site.name}`
-    : `${site.name} — Desarrollos e inversión inmobiliaria en Buenos Aires`;
+    : `${site.name} · Desarrollos e inversión en Buenos Aires`;
   const absoluteImage = image.startsWith('http') ? image : `${site.url}${image}`;
 
   return {

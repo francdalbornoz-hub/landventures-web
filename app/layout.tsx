@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Desarrollos e inversión inmobiliaria en Buenos Aires`,
+    default: `${site.name} · Desarrollos e inversión en Buenos Aires`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -61,13 +61,13 @@ export const metadata: Metadata = {
     locale: site.locale,
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — Desarrollos e inversión inmobiliaria en Buenos Aires`,
+    title: `${site.name} · Desarrollos e inversión en Buenos Aires`,
     description: site.description,
     images: [{ url: '/images/logo.png', width: 1200, height: 630, alt: site.name }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${site.name} — Desarrollos e inversión inmobiliaria en Buenos Aires`,
+    title: `${site.name} · Desarrollos e inversión en Buenos Aires`,
     description: site.description,
     images: ['/images/logo.png'],
   },

@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
   title: 'Terrenos · Inversión en tierra',
   path: '/terrenos',
   description:
-    'Invertí en tierra desde el origen junto a Land Ventures: compra conjunta de terrenos en las mejores zonas de Buenos Aires. +30 operaciones cerradas, capital propio en cada compra.',
+    'Invertí en tierra desde el origen: compra conjunta de terrenos en las mejores zonas de CABA. +30 Terrenos operados, capital propio en cada compra.',
   keywords: [
     'inversión en tierra CABA',
     'compra conjunta de terrenos',

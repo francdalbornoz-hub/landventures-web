@@ -10,7 +10,7 @@ export const metadata = buildMetadata({
   title: 'Oportunidades · Pozo Club',
   path: '/oportunidades',
   description:
-    'Land Ventures Pozo Club: unidades en pozo exclusivas en las mejores zonas de CABA. Entramos a cada proyecto desde el origen, con las mejores condiciones de entrada.',
+    'Pozo Club: Unidades seleccionadas en las mejores zonas de CABA. Entramos a cada proyecto desde el origen, con las mejores condiciones de entrada.',
   keywords: [
     'oportunidades en pozo',
     'departamentos pozo Buenos Aires',

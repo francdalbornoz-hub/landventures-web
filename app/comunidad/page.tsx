@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
   title: 'Comunidad · Eventos y charlas',
   path: '/comunidad',
   description:
-    'Eventos, charlas y encuentros de la comunidad Land Ventures. Conversaciones sobre mercado inmobiliario, coyuntura económica y oportunidades de inversión, con invitados como Carlos Ruckauf y Esteban Trebucq.',
+    'Eventos, charlas y encuentros sobre mercado inmobiliario y oportunidades de inversión, con invitados como Carlos Ruckauf y Esteban Trebucq.',
   keywords: [
     'eventos inmobiliarios Buenos Aires',
     'charlas inversión Argentina',
