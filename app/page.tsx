@@ -289,8 +289,10 @@ export default function HomePage() {
           <div className="container-page">
             <MarqueeGallery
               images={communityGallery}
-              speed={45}
+              speed={30}
               heightClass="h-72 md:h-80 lg:h-96"
+              arrows
+              arrowsTheme="ink"
             />
           </div>
         </Reveal>
