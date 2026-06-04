@@ -33,7 +33,9 @@ export function buildMetadata({
   title,
   description = site.description,
   path = '/',
-  image = '/images/projects/Dorrego-portada.webp',
+  // Imagen default para Open Graph (WhatsApp, Facebook, Twitter, LinkedIn).
+  // Debe ser 1200x630 JPG en /public/images/og-image.jpg.
+  image = '/images/og-image.jpg',
   type = 'website',
   keywords = [],
 }: BuildMetadataInput = {}): Metadata {
