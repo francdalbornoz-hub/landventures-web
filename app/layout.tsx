@@ -49,12 +49,14 @@ export const metadata: Metadata = {
   ],
   category: 'real estate',
   formatDetection: { telephone: true, email: true, address: true },
+  /** Next.js detecta automáticamente `app/icon.svg` y lo expone como favicon.
+   *  Mantenemos también `public/favicon.ico` como fallback para browsers viejos
+   *  y `public/favicon.svg` accesible vía URL directa. */
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
     ],
-    apple: '/apple-icon.png',
   },
   openGraph: {
     type: 'website',
