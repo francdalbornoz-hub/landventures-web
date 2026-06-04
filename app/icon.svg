@@ -2,8 +2,9 @@
 <svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154.11 62.46">
   <defs>
     <style>
-      .cls-1 {
-        fill: #f4fafc;
+      .cls-1 { fill: #1a1817; }
+      @media (prefers-color-scheme: dark) {
+        .cls-1 { fill: #f4fafc; }
       }
     </style>
   </defs>
