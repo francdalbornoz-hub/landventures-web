@@ -102,7 +102,7 @@ export const projects: Project[] = [
     name: 'LATE',
     suffix: 'San Telmo',
     locationHeadline: 'Entre',
-    locationDetail: 'Defensa y Bolivia',
+    locationDetail: 'Defensa y Bolívar',
     neighborhood: 'San Telmo',
     image: '/images/projects/Caseros-portada.webp',
     gallery: [
