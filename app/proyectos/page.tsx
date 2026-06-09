@@ -138,7 +138,7 @@ export default function ProyectosPage() {
                   <p className={`eyebrow mb-3 ${isLight ? '!text-coral' : ''}`}>
                     {p.locationHeadline} — <span>{p.locationDetail}</span>
                   </p>
-                  <h2 className={`font-extralight italic text-4xl md:text-6xl mb-2 ${isLight ? 'text-ink' : ''}`}>
+                  <h2 className={`font-extralight italic text-4xl md:text-6xl mb-5 ${isLight ? 'text-ink' : ''}`}>
                     {p.name}{' '}
                     {p.suffix && (
                       <span className={`not-italic ${isLight ? 'text-ink/60' : 'text-white/80'}`}>
