@@ -214,6 +214,16 @@ export default function HomePage() {
                       className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
+                    {/* Pill de estado en esquina superior izquierda */}
+                    <span
+                      className={`absolute top-4 left-4 z-10 text-[10px] uppercase tracking-[0.25em] font-medium px-3 py-1.5 rounded-full backdrop-blur-md ${
+                        p.status === 'terminado'
+                          ? 'bg-brand/90 text-white'
+                          : 'bg-white/15 text-white border border-white/25'
+                      }`}
+                    >
+                      {p.status === 'terminado' ? 'Terminado' : 'En construcción'}
+                    </span>
                     <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
                       <p className="eyebrow mb-2 !text-white/80">{p.neighborhood}</p>
                       <h3 className="font-extralight italic text-2xl md:text-3xl leading-tight">

@@ -70,6 +70,38 @@ export default function ProyectosPage() {
         </div>
       </section>
 
+      {/* MENÚ DE ANCLAS — navegación rápida con estado de cada proyecto */}
+      <section className="py-10 md:py-12 border-t border-white/[0.06] bg-ink-dark/40">
+        <div className="container-page max-w-6xl mx-auto">
+          <p className="eyebrow mb-6 text-center mx-auto justify-center w-fit">Saltar a proyecto</p>
+          <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+            {projects.map((p) => (
+              <a
+                key={p.slug}
+                href={`#${p.slug}`}
+                className="group relative bg-ink/60 border border-white/10 hover:border-brand/50 hover:bg-ink rounded-md p-4 transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <span
+                  className={`inline-block text-[9px] uppercase tracking-[0.22em] font-medium px-2 py-0.5 rounded-full mb-2 ${
+                    p.status === 'terminado'
+                      ? 'bg-brand/90 text-white'
+                      : 'bg-white/10 text-white/80 border border-white/15'
+                  }`}
+                >
+                  {p.status === 'terminado' ? 'Terminado' : 'En construcción'}
+                </span>
+                <p className="font-extralight italic text-base md:text-lg text-white leading-tight">
+                  {p.name} <span className="not-italic text-white/60">{p.suffix}</span>
+                </p>
+                <p className="text-[10px] uppercase tracking-[0.15em] text-white/45 mt-1 truncate">
+                  {p.neighborhood}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECCIONES DETALLE POR PROYECTO — alterna 3 fondos para romper la monotonía */}
       {projects.map((p, idx) => {
         const bgClass =

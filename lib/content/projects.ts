@@ -64,6 +64,7 @@ export const projects: Project[] = [
     gallery: [
       '/images/projects/Bonpland-1.webp',
       '/images/projects/Bonpland-2.webp',
+      '/images/projects/Bonpland-3.webp',
     ],
     description:
       'Esquina única en Palermo Hollywood. Unidades de 1, 2 y 3 ambientes, todas al frente y con luz natural.',
@@ -86,7 +87,6 @@ export const projects: Project[] = [
       '/images/projects/Nicaragua-1.webp',
       '/images/projects/Nicaragua-2.webp',
       '/images/projects/Nicaragua-3.webp',
-      '/images/projects/Nicaragua-4.webp',
     ],
     description:
       'Edificio sobre Nicaragua 6078, entre Dorrego y Arévalo. Diseño cuidado en el corazón de Palermo Hollywood.',
