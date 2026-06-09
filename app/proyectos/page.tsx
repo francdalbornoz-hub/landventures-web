@@ -146,13 +146,30 @@ export default function ProyectosPage() {
                       </span>
                     )}
                   </h2>
-                  <p
-                    className={`text-xs uppercase tracking-[0.22em] mb-6 ${
-                      isLight ? 'text-coral' : 'text-brand'
+                  {/* Pill de estado destacada — más notoria que el texto plano anterior */}
+                  <span
+                    className={`inline-flex items-center gap-2 text-[11px] md:text-xs uppercase tracking-[0.25em] font-medium px-4 py-2 rounded-full mb-6 ${
+                      p.status === 'terminado'
+                        ? isLight
+                          ? 'bg-coral text-white shadow-[0_6px_18px_-6px_rgba(210,94,53,0.5)]'
+                          : 'bg-brand text-white shadow-[0_6px_18px_-6px_rgba(224,153,0,0.5)]'
+                        : isLight
+                          ? 'bg-ink/[0.06] text-ink border border-ink/20'
+                          : 'bg-white/[0.08] text-white border border-white/25'
                     }`}
                   >
+                    {/* Dot indicador */}
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        p.status === 'terminado'
+                          ? 'bg-white'
+                          : isLight
+                            ? 'bg-ink/60'
+                            : 'bg-white/70'
+                      } ${p.status !== 'terminado' ? 'animate-pulse' : ''}`}
+                    />
                     {STATUS_LABEL[p.status]}
-                  </p>
+                  </span>
                   <p
                     className={`leading-relaxed text-balance max-w-prose ${
                       isLight ? 'text-ink/80' : 'text-white/85'
