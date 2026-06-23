@@ -192,14 +192,20 @@ export default function ProyectosPage() {
                     )}
                   </dl>
 
-                  {/* BOTÓN PRINCIPAL: 'Conocé más del proyecto'.
-                      Si el proyecto tiene URL WinBuild apunta ahí. Si no, fallback
-                      al Instagram del proyecto, y si tampoco al Instagram general. */}
+                  {/* BOTÓN PRINCIPAL:
+                      - Si el proyecto tiene showroom virtual (winbuildUrl) → "Acceder al showroom virtual"
+                      - Else si tiene brochure (PDF) → "Descargar Brochure"
+                      - Else fallback al Instagram. */}
                   {(() => {
                     const fallbackIg = p.instagramHandle
                       ? `https://www.instagram.com/${p.instagramHandle}/`
                       : site.social.instagram;
-                    const href = p.winbuildUrl ?? fallbackIg;
+                    const primaryLabel = p.winbuildUrl
+                      ? 'Acceder al showroom virtual'
+                      : p.brochureUrl
+                        ? 'Descargar Brochure'
+                        : 'Conocé más del proyecto';
+                    const href = p.winbuildUrl ?? p.brochureUrl ?? fallbackIg;
                     return (
                       <div className="mt-10">
                         <a
@@ -208,7 +214,7 @@ export default function ProyectosPage() {
                           rel="noopener noreferrer"
                           className="btn-brand text-base !px-9 !py-4"
                         >
-                          Conocé más del proyecto
+                          {primaryLabel}
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-1 h-4 w-4" aria-hidden>
                             <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
@@ -218,24 +224,17 @@ export default function ProyectosPage() {
                   })()}
 
                   <div className="mt-5 flex flex-wrap gap-3">
-                    {p.brochureUrl && (
+                    {/* Si hay showroom virtual Y brochure, exponemos el brochure como secundario */}
+                    {p.winbuildUrl && p.brochureUrl && (
                       <a
                         href={p.brochureUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={isLight ? 'btn border-ink/40 text-ink hover:bg-ink hover:text-white' : 'btn-outline'}
                       >
-                        Descargá la carpeta
+                        Descargar Brochure
                       </a>
                     )}
-                    <a
-                      href={site.social.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={isLight ? 'btn border-ink/40 text-ink hover:bg-ink hover:text-white' : 'btn-outline'}
-                    >
-                      Avances en Instagram
-                    </a>
                     <a
                       href={`https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(
                         `Hola, quiero más información sobre ${p.name} ${p.suffix ?? ''}`.trim(),

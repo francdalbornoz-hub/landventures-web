@@ -96,6 +96,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'terminado',
+    brochureUrl: '/Brochures/Ene-Nicaragua.pdf',
   },
   {
     slug: 'late-san-telmo',
@@ -118,6 +119,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'en-construccion',
+    brochureUrl: '/Brochures/LATE-San-Telmo.pdf',
   },
   {
     slug: 'newbery-place',
@@ -140,6 +142,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'en-construccion',
+    brochureUrl: '/Brochures/Newbery-Place.pdf',
   },
   {
     slug: 'dorrego-place',
@@ -161,6 +164,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'en-construccion',
+    brochureUrl: '/Brochures/Dorrego-Place.pdf',
   },
   {
     slug: 'aguilar-place',
@@ -184,6 +188,7 @@ export const projects: Project[] = [
     commercialCount: 2,
     status: 'en-construccion',
     winbuildUrl: 'https://aguilarplace.vercel.app/',
+    brochureUrl: '/Brochures/Aguilar-Place.pdf',
   },
 ];
 
