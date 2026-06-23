@@ -96,6 +96,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'terminado',
+    winbuildUrl: 'https://metaverse.winbuild.app/Land%20Ventures/nicaragua-6078',
     brochureUrl: '/Brochures/Ene-Nicaragua.pdf',
   },
   {
