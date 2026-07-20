@@ -120,6 +120,7 @@ export const projects: Project[] = [
     commercial: true,
     commercialCount: 1,
     status: 'en-construccion',
+    winbuildUrl: 'https://metaverse.winbuild.app/Land%20Ventures/late-san-telmo-1',
     brochureUrl: '/Brochures/LATE-San-Telmo.pdf',
   },
   {
